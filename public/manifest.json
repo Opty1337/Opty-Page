@@ -1,0 +1,13 @@
+{
+    "name": "Opty Page",
+    "short_name": "Opty",
+    "icons": [
+        {
+            "src": "code.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#FFFFFF",
+    "background_color": "#FFFFFF"
+}
