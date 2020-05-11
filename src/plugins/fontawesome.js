@@ -7,9 +7,15 @@ import {
   faUserGraduate,
   faProjectDiagram,
   faFilePdf,
-  faMedal
+  faMedal,
+  faEnvelope
 } from "@fortawesome/free-solid-svg-icons";
-import { faFortAwesome, faGithub } from "@fortawesome/free-brands-svg-icons";
+import {
+  faFortAwesome,
+  faFacebookSquare,
+  faGithub,
+  faLinkedin
+} from "@fortawesome/free-brands-svg-icons";
 
 library.add(
   faUserSecret,
@@ -18,7 +24,10 @@ library.add(
   faFilePdf,
   faMedal,
   faFortAwesome,
-  faGithub
+  faGithub,
+  faEnvelope,
+  faFacebookSquare,
+  faLinkedin
 );
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);

@@ -1,17 +1,18 @@
 <template>
   <v-app id="app">
-    <Toolbar></Toolbar>
-    <Home></Home>
+    <OptyToolbar />
+    <OptyFooter />
   </v-app>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import Toolbar from "./views/Toolbar.vue";
+import OptyToolbar from "./components/OptyToolbar.vue";
+import OptyFooter from "./components/OptyFooter.vue";
 import Home from "./views/Home.vue";
 
 @Component({
-  components: { Toolbar, Home }
+  components: { OptyToolbar, OptyFooter, Home }
 })
 export default class App extends Vue {}
 </script>
