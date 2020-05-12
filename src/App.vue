@@ -9,10 +9,9 @@
 import { Component, Vue } from "vue-property-decorator";
 import OptyToolbar from "./components/OptyToolbar.vue";
 import OptyFooter from "./components/OptyFooter.vue";
-import Home from "./views/Home.vue";
 
 @Component({
-  components: { OptyToolbar, OptyFooter, Home }
+  components: { OptyToolbar, OptyFooter }
 })
 export default class App extends Vue {}
 </script>

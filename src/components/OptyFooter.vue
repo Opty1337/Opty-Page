@@ -1,16 +1,14 @@
 <template>
-  <v-footer padless dark fixed>
-    <v-card class="flex indigo lighten-1" flat tile>
-      <v-card-text>
+  <v-footer app padless dark absolute>
+    <v-card v-bind:class="bindClass" flat tile>
+      <v-card-text class="pa-2">
         <v-btn v-for="(link, i) in links" :key="i" :href="link.href" dark icon>
           <font-awesome-icon :icon="link.icon" size="2x" />
         </v-btn>
       </v-card-text>
-
-      <v-divider></v-divider>
-      <v-card-text class="white--text">
-        {{ getDate() }} - Ricardo Grade
-      </v-card-text>
+      <v-divider />
+      <!---->
+      <v-card-text class="pa-2" v-text="date + ' - Ricardo Grade'" />
     </v-card>
   </v-footer>
 </template>
@@ -20,6 +18,10 @@ import { Vue, Component } from "vue-property-decorator";
 
 @Component
 export default class OptyFooter extends Vue {
+  bindClass: string[] = ["blue", "darken-1", "flex"];
+
+  date: string = new Date().toDateString();
+
   links: object = [
     {
       icon: ["fas", "envelope"],
@@ -38,11 +40,11 @@ export default class OptyFooter extends Vue {
       href: "https://github.com/Opty1337"
     }
   ];
-
-  getDate() {
-    return new Date().toDateString();
-  }
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.theme--dark.v-card > .v-card__text {
+  color: white;
+}
+</style>
