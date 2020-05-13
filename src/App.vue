@@ -1,13 +1,14 @@
 <template>
   <v-app id="app">
     <OptyToolbar />
+    <router-view />
     <OptyFooter />
   </v-app>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import OptyToolbar from "./components/OptyToolbar.vue";
+import OptyToolbar from "./components/OptyToolBar.vue";
 import OptyFooter from "./components/OptyFooter.vue";
 
 @Component({

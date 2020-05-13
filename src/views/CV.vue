@@ -1,12 +1,14 @@
 <template>
-  <h1>Academic Projects</h1>
+  <v-card flat>
+    <h1>Curriculum Vitae</h1>
+  </v-card>
 </template>
 
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
 
 @Component
-export default class AcademicProjects extends Vue {}
+export default class CV extends Vue {}
 </script>
 
 <style scoped></style>

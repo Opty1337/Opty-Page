@@ -1,6 +1,6 @@
 <template>
   <v-card flat>
-    <h1>Home</h1>
+    <h1>Academic Score</h1>
   </v-card>
 </template>
 
@@ -8,7 +8,7 @@
 import { Vue, Component } from "vue-property-decorator";
 
 @Component
-export default class Home extends Vue {}
+export default class AcademicScore extends Vue {}
 </script>
 
 <style scoped></style>

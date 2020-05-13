@@ -1,27 +1,23 @@
 <template>
   <div>
-    <!---->
+    <!-- TopBar -->
     <v-toolbar v-bind:class="bindClass" dark>
-      <v-toolbar-items v-if="!inMobile">
+      <v-app-bar-nav-icon v-if="inMobile" @click.stop="drawer = !drawer" />
+      <v-spacer v-if="inMobile" />
+      <v-toolbar-items>
         <v-btn to="/" active-class="no-effect" text>
           <v-toolbar-title v-text="pageTitle" />
         </v-btn>
       </v-toolbar-items>
-      <v-app-bar-nav-icon v-else @click.stop="drawer = !drawer" />
-      <v-spacer />
+      <v-spacer v-if="!inMobile" />
       <v-toolbar-items v-if="!inMobile">
         <v-btn v-for="(item, i) in menu" :key="i" :to="item.to" text>
-          {{ item.text }}
           <font-awesome-icon class="ma-2" :icon="item.icon" size="2x" />
-        </v-btn>
-      </v-toolbar-items>
-      <v-toolbar-items v-else>
-        <v-btn to="/" active-class="no-effect" text>
-          <v-toolbar-title v-text="pageTitle" />
+          {{ item.text }}
         </v-btn>
       </v-toolbar-items>
     </v-toolbar>
-    <!---->
+    <!-- Mobile Side Menu -->
     <v-navigation-drawer
       v-if="inMobile"
       v-bind:class="bindClass"
@@ -65,22 +61,22 @@
 import { Vue, Component } from "vue-property-decorator";
 
 @Component
-export default class OptyToolbar extends Vue {
-  bindClass: string[] = ["blue", "darken-1"];
+export default class OptyToolBar extends Vue {
+  bindClass: string[] = ["light-blue", "darken-2"];
   pageTitle: string = "Opty@Page";
-  inMobile: boolean = window.innerWidth < 1000;
 
+  inMobile: boolean = window.innerWidth < 1250;
   drawer: boolean = false;
   menu: object = [
     {
-      icon: ["fab", "fort-awesome"],
+      icon: ["fas", "user-secret"],
       text: "Home",
-      to: "/Home"
+      to: "/"
     },
     {
-      icon: ["fas", "user-secret"],
-      text: "About Me",
-      to: "/AboutMe"
+      icon: ["fas", "phone-alt"],
+      text: "Contacts",
+      to: "/Contacts"
     },
     {
       icon: ["fab", "github"],
@@ -88,16 +84,27 @@ export default class OptyToolbar extends Vue {
       to: "/Projects"
     },
     {
+      icon: ["fas", "user-graduate"],
+      text: "Academic Score",
+      to: "/AcademicScore"
+    },
+    {
       icon: ["fas", "file-pdf"],
       text: "Curriculum Vitae",
-      to: "/Projects"
+      to: "/CV"
     },
     {
       icon: ["fas", "medal"],
-      text: "Awards",
-      to: "/Projects"
+      text: "Academic Awards",
+      to: "/Awards"
     }
   ];
+
+  async created() {
+    window.addEventListener("resize", () => {
+      this.inMobile = window.innerWidth < 1250;
+    });
+  }
 }
 </script>
 
@@ -105,6 +112,7 @@ export default class OptyToolbar extends Vue {
 .v-toolbar__title,
 .v-list--dense .v-list-item .v-list-item__subtitle {
   color: white;
+  font-style: oblique;
 }
 .v-btn {
   font-weight: normal;

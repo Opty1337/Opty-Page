@@ -1,13 +1,14 @@
 <template>
   <v-footer app padless dark absolute>
     <v-card v-bind:class="bindClass" flat tile>
+      <!-- Contacts -->
       <v-card-text class="pa-2">
         <v-btn v-for="(link, i) in links" :key="i" :href="link.href" dark icon>
           <font-awesome-icon :icon="link.icon" size="2x" />
         </v-btn>
       </v-card-text>
       <v-divider />
-      <!---->
+      <!-- Author -->
       <v-card-text class="pa-2" v-text="date + ' - Ricardo Grade'" />
     </v-card>
   </v-footer>
@@ -18,14 +19,14 @@ import { Vue, Component } from "vue-property-decorator";
 
 @Component
 export default class OptyFooter extends Vue {
-  bindClass: string[] = ["blue", "darken-1", "flex"];
+  bindClass: string[] = ["light-blue", "darken-2", "flex"];
 
   date: string = new Date().toDateString();
 
   links: object = [
     {
-      icon: ["fas", "envelope"],
-      href: "mailto:gradericardo@hotmail.com"
+      icon: ["fab", "discord"],
+      href: "https://discord.gg/sXMSwTy"
     },
     {
       icon: ["fab", "facebook-square"],
@@ -38,6 +39,10 @@ export default class OptyFooter extends Vue {
     {
       icon: ["fab", "github"],
       href: "https://github.com/Opty1337"
+    },
+    {
+      icon: ["fas", "envelope"],
+      href: "mailto:gradericardo@hotmail.com"
     }
   ];
 }
