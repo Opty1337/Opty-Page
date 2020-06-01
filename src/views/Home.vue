@@ -50,9 +50,9 @@ import { Vue, Component } from "vue-property-decorator";
 @Component
 export default class Home extends Vue {
   description: string[] = [
-    "Hello! My name is Ricardo Grade. I am 20 Years old. I am a 3rd Year Computer Science & Engineering Student @Instituto Superior Técnico.",
+    "Hello! My name is Ricardo Grade. I am 21 Years old. I am a 3rd Year Computer Science & Engineering Student @Instituto Superior Técnico.",
     "This semester I will finish my Degree and start my Master's in which I will spend a semester in the Erasmus Program.",
-    "Being a little lazy increases my creativity. I can always find a simpler way to solve the problems to which I am challenged.",
+    "Thanks to my creativity I can always find a simpler way to solve the problems to which I am challenged.",
     "I love to program. I love to be challenged. I like to solve difficult problems, think of solutions that no one thought of or discover better's."
   ];
 
