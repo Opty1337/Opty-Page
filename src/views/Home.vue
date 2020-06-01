@@ -59,7 +59,7 @@ export default class Home extends Vue {
   links: object = [
     {
       icon: ["fab", "discord"],
-      href: "https://discord.gg/sXMSwTy"
+      href: "https://discord.gg/TB86QHg"
     },
     {
       icon: ["fab", "facebook-square"],

@@ -1,4 +1,4 @@
-# opty-page
+# Opty-Page
 
 ## Project setup
 ```
