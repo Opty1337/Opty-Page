@@ -1,5 +1,6 @@
 <template>
   <v-card flat>
+    <!-- LinkedIn -->
     <div
       class="LI-profile-badge"
       data-version="v1"
@@ -26,12 +27,11 @@ export default class Contacts extends Vue {
   async created() {
     this.loadScript("https://platform.linkedin.com/badges/js/profile.js");
   }
-
   async loadScript(src: string) {
     const script = document.createElement("script");
     script.src = src;
     script.type = "text/javascript";
-    script.async = false;
+    script.async = true;
     script.defer = true;
     document.head.appendChild(script);
   }

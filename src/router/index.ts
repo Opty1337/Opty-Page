@@ -2,8 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "@/views/Home.vue";
 import Contacts from "@/views/Contacts.vue";
-import AcademicScore from "@/views/AcademicScore.vue";
-import Projects from "@/views/Projects.vue";
+import AC from "@/views/AC.vue";
 import CV from "@/views/CV.vue";
 import Awards from "@/views/Awards.vue";
 
@@ -28,19 +27,11 @@ export default new VueRouter({
       }
     },
     {
-      path: "/AcademicScore",
-      name: "AcademicScore",
-      component: AcademicScore,
+      path: "/AC",
+      name: "AcademicCurriculum",
+      component: AC,
       meta: {
         title: "Opty Score"
-      }
-    },
-    {
-      path: "/Projects",
-      name: "Projects",
-      component: Projects,
-      meta: {
-        title: "Opty Projects"
       }
     },
     {

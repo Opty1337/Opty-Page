@@ -9,7 +9,11 @@ import {
   faFilePdf,
   faMedal,
   faEnvelope,
-  faPhoneAlt
+  faPhoneAlt,
+  faChevronDown,
+  faCalculator,
+  faCode,
+  faCubes
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faFortAwesome,
@@ -31,7 +35,11 @@ library.add(
   faFacebookSquare,
   faLinkedin,
   faPhoneAlt,
-  faDiscord
+  faDiscord,
+  faChevronDown,
+  faCalculator,
+  faCode,
+  faCubes
 );
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);

@@ -79,14 +79,9 @@ export default class OptyToolBar extends Vue {
       to: "/Contacts"
     },
     {
-      icon: ["fab", "github"],
-      text: "Projects",
-      to: "/Projects"
-    },
-    {
       icon: ["fas", "user-graduate"],
-      text: "Academic Score",
-      to: "/AcademicScore"
+      text: "Academic Curriculum",
+      to: "/AC"
     },
     {
       icon: ["fas", "file-pdf"],

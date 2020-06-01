@@ -2,7 +2,6 @@
   <v-app id="app">
     <OptyToolbar />
     <router-view />
-    <OptyFooter />
   </v-app>
 </template>
 
@@ -19,10 +18,18 @@ export default class App extends Vue {}
 
 <style>
 #app {
+  background-image: url("assets/Background.jpg");
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+.table {
+  margin: 3%;
+  padding: 1%;
 }
 </style>
