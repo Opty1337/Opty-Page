@@ -8,10 +8,9 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import OptyToolbar from "./components/OptyToolBar.vue";
-import OptyFooter from "./components/OptyFooter.vue";
 
 @Component({
-  components: { OptyToolbar, OptyFooter }
+  components: { OptyToolbar }
 })
 export default class App extends Vue {}
 </script>
@@ -27,9 +26,5 @@ export default class App extends Vue {}
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-.table {
-  margin: 3%;
-  padding: 1%;
 }
 </style>

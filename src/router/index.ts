@@ -1,10 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "@/views/Home.vue";
-import Contacts from "@/views/Contacts.vue";
-import AC from "@/views/AC.vue";
-import CV from "@/views/CV.vue";
-import Awards from "@/views/Awards.vue";
+import Degree from "@/views/Degree.vue";
 
 Vue.use(VueRouter);
 
@@ -19,35 +16,39 @@ export default new VueRouter({
       }
     },
     {
-      path: "/Contacts",
-      name: "Contacts",
-      component: Contacts,
+      path: "/Degree",
+      name: "Degree",
+      component: Degree,
       meta: {
-        title: "Opty Contacts"
-      }
-    },
-    {
-      path: "/AC",
-      name: "AcademicCurriculum",
-      component: AC,
-      meta: {
-        title: "Opty Score"
+        title: "Opty Degree"
       }
     },
     {
       path: "/CV",
       name: "CV",
-      component: CV,
+      beforeEnter: (to, from, next) =>
+        (window.location.href =
+          "https://github.com/Opty1337/PP/blob/master/LateX/CV/Opty_CV.pdf"),
       meta: {
-        title: "Opty CV"
+        title: "Opty Curriculum"
       }
     },
     {
-      path: "/Awards",
-      name: "Awards",
-      component: Awards,
+      path: "/PP",
+      name: "PP",
+      beforeEnter: (to, from, next) =>
+        (window.location.href = "https://github.com/Opty1337/PP"),
       meta: {
-        title: "Opty Awards"
+        title: "Opty Projects"
+      }
+    },
+    {
+      path: "/Certificates",
+      name: "Certificates",
+      beforeEnter: (to, from, next) =>
+        (window.location.href = "https://github.com/Opty1337/Certificates"),
+      meta: {
+        title: "Opty Certificates"
       }
     },
     {

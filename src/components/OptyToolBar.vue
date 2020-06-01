@@ -28,7 +28,7 @@
       temporary
     >
       <v-toolbar v-bind:class="bindClass">
-        <v-list nav dense>
+        <v-list nav>
           <v-list-item>
             <v-list-item-avatar>
               <v-img src="../assets/Perfil.jpg" />
@@ -40,7 +40,7 @@
           </v-list-item>
         </v-list>
       </v-toolbar>
-      <v-list nav dense>
+      <v-list nav>
         <div v-for="(item, i) in menu" :key="i">
           <v-list-item :to="item.to" link>
             <v-list-item-action>
@@ -67,31 +67,31 @@ export default class OptyToolBar extends Vue {
 
   inMobile: boolean = window.innerWidth < 1250;
   drawer: boolean = false;
-  menu: object = [
+  menu: object[] = [
     {
       icon: ["fas", "user-secret"],
       text: "Home",
       to: "/"
     },
     {
-      icon: ["fas", "phone-alt"],
-      text: "Contacts",
-      to: "/Contacts"
-    },
-    {
       icon: ["fas", "user-graduate"],
-      text: "Academic Curriculum",
-      to: "/AC"
+      text: "Degree",
+      to: "/Degree"
     },
     {
-      icon: ["fas", "file-pdf"],
+      icon: ["fas", "id-card-alt"],
       text: "Curriculum Vitae",
       to: "/CV"
     },
     {
-      icon: ["fas", "medal"],
-      text: "Academic Awards",
-      to: "/Awards"
+      icon: ["fab", "github"],
+      text: "Personal Projects",
+      to: "/PP"
+    },
+    {
+      icon: ["fas", "certificate"],
+      text: "Certificates",
+      to: "/Certificates"
     }
   ];
 
@@ -105,7 +105,7 @@ export default class OptyToolBar extends Vue {
 
 <style scoped>
 .v-toolbar__title,
-.v-list--dense .v-list-item .v-list-item__subtitle {
+.v-list-item .v-list-item__subtitle {
   color: white;
   font-style: oblique;
 }
@@ -119,7 +119,7 @@ export default class OptyToolBar extends Vue {
 .v-btn.v-size--default {
   font-size: large;
 }
-.v-list--dense .v-list-item .v-list-item__title {
+.v-list-item .v-list-item__title {
   font-size: large;
 }
 .no-effect::before {
