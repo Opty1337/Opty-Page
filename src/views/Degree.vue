@@ -11,7 +11,13 @@
     >
       <template v-slot:top>
         <v-card-title>
-          Subjects
+          <font-awesome-icon
+            class="mr-6"
+            color="#0288D1"
+            :icon="groups[crrGid].icon"
+            size="2x"
+          />
+          Subjects ({{ groups[crrGid].name }})
           <v-spacer />
           <v-menu transition="fab-transition" offset-y>
             <template v-slot:activator="{ on }">
@@ -31,7 +37,7 @@
             </template>
             <v-list>
               <v-list-item
-                v-for="(group, i) in groups"
+                v-for="(group, i) in getGroups()"
                 :key="i"
                 @click="crrGid = group.id"
                 link
@@ -103,7 +109,7 @@ export default class Degree extends Vue {
     {
       id: CES,
       name: "Computer Engineering Sciences",
-      icon: ["fas", "code"]
+      icon: ["fas", "laptop-code"]
     },
     {
       id: ES,
@@ -464,6 +470,10 @@ export default class Degree extends Vue {
       ECTS += e.ECTS;
     });
     this.crrAvg /= ECTS;
+  }
+
+  getGroups() {
+    return this.groups.filter((e, id) => id != this.crrGid);
   }
 
   getScoreStyle(score: number) {

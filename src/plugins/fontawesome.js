@@ -14,7 +14,8 @@ import {
   faCalculator,
   faCode,
   faCubes,
-  faChevronRight
+  faChevronRight,
+  faLaptopCode
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faFortAwesome,
@@ -41,7 +42,8 @@ library.add(
   faCalculator,
   faCode,
   faCubes,
-  faChevronRight
+  faChevronRight,
+  faLaptopCode
 );
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);

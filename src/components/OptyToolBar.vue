@@ -11,7 +11,13 @@
       </v-toolbar-items>
       <v-spacer v-if="!inMobile" />
       <v-toolbar-items v-if="!inMobile">
-        <v-btn v-for="(item, i) in menu" :key="i" :to="item.to" text>
+        <v-btn
+          v-for="(item, i) in menu"
+          :key="i"
+          :to="item.to"
+          :target="item.target"
+          text
+        >
           <font-awesome-icon class="ma-2" :icon="item.icon" size="2x" />
           {{ item.text }}
         </v-btn>
@@ -42,7 +48,7 @@
       </v-toolbar>
       <v-list nav>
         <div v-for="(item, i) in menu" :key="i">
-          <v-list-item :to="item.to" link>
+          <v-list-item :to="item.to" :target="item.target" link>
             <v-list-item-action>
               <font-awesome-icon :icon="item.icon" size="2x" />
             </v-list-item-action>
@@ -71,27 +77,32 @@ export default class OptyToolBar extends Vue {
     {
       icon: ["fas", "user-secret"],
       text: "Home",
-      to: "/"
+      to: "/",
+      target: undefined
     },
     {
       icon: ["fas", "user-graduate"],
       text: "Degree",
-      to: "/Degree"
+      to: "/Degree",
+      target: undefined
     },
     {
       icon: ["fas", "id-card-alt"],
       text: "Curriculum Vitae",
-      to: "/CV"
+      to: "/CV",
+      target: "_blank"
     },
     {
       icon: ["fab", "github"],
       text: "Personal Projects",
-      to: "/PP"
+      to: "/PP",
+      target: "_blank"
     },
     {
       icon: ["fas", "certificate"],
       text: "Certificates",
-      to: "/Certificates"
+      to: "/Certificates",
+      target: "_blank"
     }
   ];
 

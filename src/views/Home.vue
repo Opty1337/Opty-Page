@@ -15,6 +15,7 @@
                 v-for="(link, i) in links"
                 :key="i"
                 :href="link.href"
+                target="_blank"
                 icon
               >
                 <font-awesome-icon :icon="link.icon" size="3x" />
