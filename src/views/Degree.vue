@@ -54,11 +54,11 @@
       </template>
 
       <template v-slot:item.name="{ item }">
-        <a :href="item.href" v-text="item.name" />
+        <a :href="item.href" target="_blank" v-text="item.name" />
       </template>
 
       <template v-slot:item.github="{ item }">
-        <v-btn :href="item.github" color="primary" icon>
+        <v-btn :href="item.github" target="_blank" color="primary" icon>
           <font-awesome-icon :icon="['fab', 'github']" size="3x" />
         </v-btn>
       </template>
