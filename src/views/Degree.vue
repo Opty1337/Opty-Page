@@ -12,8 +12,7 @@
       <template v-slot:top>
         <v-card-title>
           <font-awesome-icon
-            class="mr-6"
-            color="#0288D1"
+            class="mx-5"
             :icon="groups[crrGid].icon"
             size="2x"
           />
@@ -21,13 +20,8 @@
           <v-spacer />
           <v-menu transition="fab-transition" offset-y>
             <template v-slot:activator="{ on }">
-              <v-btn id="btn" color="#0288D1" dark v-on="on">
-                <font-awesome-icon
-                  class="mx-2"
-                  :icon="['fas', 'project-diagram']"
-                  v-on="on"
-                />
-                Group
+              <v-btn id="btn" color="secondary" dark v-on="on">
+                Subjects Group
                 <font-awesome-icon
                   class="mx-2"
                   :icon="['fas', 'chevron-down']"
@@ -42,11 +36,7 @@
                 @click="crrGid = group.id"
                 link
               >
-                <font-awesome-icon
-                  color="#0288D1"
-                  :icon="group.icon"
-                  size="2x"
-                />
+                <font-awesome-icon :icon="group.icon" size="2x" />
                 <v-list-item-title class="mx-5" v-text="group.name" />
               </v-list-item>
             </v-list>

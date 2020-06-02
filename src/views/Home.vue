@@ -10,7 +10,7 @@
             <!-- Contacts -->
             <v-card-text>
               <v-btn
-                class="mx-2"
+                :class="inMobile ? 'mx-1' : 'mx-3'"
                 color="primary"
                 v-for="(link, i) in links"
                 :key="i"
@@ -18,7 +18,10 @@
                 target="_blank"
                 icon
               >
-                <font-awesome-icon :icon="link.icon" size="3x" />
+                <font-awesome-icon
+                  :icon="link.icon"
+                  :size="inMobile ? '2x' : '3x'"
+                />
               </v-btn>
             </v-card-text>
           </v-card>
@@ -33,7 +36,7 @@
                 <font-awesome-icon
                   color="orangered"
                   :icon="['fas', 'chevron-right']"
-                  size="3x"
+                  :size="inMobile ? '2x' : '3x'"
                 />
               </v-list-item-icon>
               <v-list-item-content class="text-left" v-text="desc" />
@@ -41,6 +44,22 @@
           </v-list>
         </v-card>
       </v-col>
+    </v-row>
+    <v-row class="ma-3" no-gutters>
+      <v-spacer />
+      <v-btn
+        class="pa-5"
+        color="secondary"
+        href="https://github.com/Opty1337/Opty-Page"
+        target="_blank"
+        dark
+      >
+        <font-awesome-icon
+          class="ma-2"
+          :icon="['fab', 'github']"
+          size="2x"
+        />Source Code
+      </v-btn>
     </v-row>
   </v-card>
 </template>
@@ -50,6 +69,8 @@ import { Vue, Component } from "vue-property-decorator";
 
 @Component
 export default class Home extends Vue {
+  inMobile: boolean = window.innerWidth < 1250;
+
   description: string[] = [
     "Hello! My name is Ricardo Grade. I am 21 Years old. I am a 3rd Year Computer Science & Engineering Student @Instituto Superior Técnico.",
     "This semester I will finish my Degree and start my Master's in which I will spend a semester in the Erasmus Program.",
@@ -57,7 +78,7 @@ export default class Home extends Vue {
     "I love to program. I love to be challenged. I like to solve difficult problems, think of solutions that no one thought of or discover better's."
   ];
 
-  links: object = [
+  links: object[] = [
     {
       icon: ["fab", "discord"],
       href: "https://discord.gg/TB86QHg"
@@ -79,13 +100,16 @@ export default class Home extends Vue {
       href: "mailto:gradericardo@hotmail.com"
     }
   ];
+
+  async created() {
+    window.addEventListener("resize", () => {
+      this.inMobile = window.innerWidth < 1250;
+    });
+  }
 }
 </script>
 
 <style scoped>
-.v-card__title {
-  font-size: x-large;
-}
 #card {
   background-color: rgba(255, 255, 255, 0.925);
   margin: 2%;
@@ -97,6 +121,19 @@ export default class Home extends Vue {
 }
 #list {
   background-color: transparent;
+  font-size: large;
+}
+.v-card__title {
+  font-size: x-large;
+}
+.v-btn {
+  font-weight: normal;
+  letter-spacing: normal;
+  text-indent: inherit;
+  text-transform: none;
+  white-space: normal;
+}
+.v-btn.v-size--default {
   font-size: large;
 }
 </style>
