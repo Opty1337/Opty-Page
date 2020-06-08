@@ -18,7 +18,7 @@
           />
           Subjects ({{ groups[crrGid].name }})
           <v-spacer />
-          <v-menu transition="fab-transition" offset-y>
+          <v-menu transition="slide-y-transition" offset-y>
             <template v-slot:activator="{ on }">
               <v-btn id="btn" color="secondary" dark v-on="on">
                 Subjects Group
