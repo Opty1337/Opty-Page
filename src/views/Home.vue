@@ -72,9 +72,8 @@ export default class Home extends Vue {
   inMobile: boolean = window.innerWidth < 1250;
 
   description: string[] = [
-    "Hello! My name is Ricardo Grade. I am 21 Years old. I am a 3rd Year Computer Science & Engineering Student @Instituto Superior Técnico.",
-    "This semester I will finish my Degree and start my Master's in which I will spend a semester in the Erasmus Program.",
-    "Thanks to my creativity I can always find a simpler way to solve the problems to which I am challenged.",
+    "Hello! My name is Ricardo Grade. I am 21 Years old. I am a Master's Degree Student in Computer Science & Engineering @Instituto Superior Técnico.",
+    "I am ambitious. I am guided by goals. I am always improving myself. Thanks to my creativity I can always find a simpler way to solve the problems to which I am challenged.",
     "I love to program. I love to be challenged. I like to solve difficult problems, think of solutions that no one thought of or discover better's."
   ];
 
@@ -110,11 +109,6 @@ export default class Home extends Vue {
 </script>
 
 <style scoped>
-#card {
-  background-color: rgba(255, 255, 255, 0.925);
-  margin: 2%;
-  padding: 0 2% 0 2%;
-}
 #card-1,
 #card-2 {
   background-color: transparent;

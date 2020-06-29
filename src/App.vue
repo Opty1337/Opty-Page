@@ -27,4 +27,9 @@ export default class App extends Vue {}
   text-align: center;
   color: #2c3e50;
 }
+#card {
+  background-color: rgba(255, 255, 255, 0.925);
+  margin: 2%;
+  padding: 2%;
+}
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- TopBar -->
-    <v-toolbar v-bind:class="bindClass" dark>
+    <v-toolbar dark>
       <v-app-bar-nav-icon v-if="inMobile" @click.stop="drawer = !drawer" />
       <v-spacer v-if="inMobile" />
       <v-toolbar-items>
@@ -26,14 +26,13 @@
     <!-- Mobile Side Menu -->
     <v-navigation-drawer
       v-if="inMobile"
-      v-bind:class="bindClass"
       v-model="drawer"
       app
       dark
       absolute
       temporary
     >
-      <v-toolbar v-bind:class="bindClass">
+      <v-toolbar>
         <v-list nav>
           <v-list-item>
             <v-list-item-avatar>
@@ -47,17 +46,20 @@
         </v-list>
       </v-toolbar>
       <v-list nav>
-        <div v-for="(item, i) in menu" :key="i">
-          <v-list-item :to="item.to" :target="item.target" link>
-            <v-list-item-action>
-              <font-awesome-icon :icon="item.icon" size="2x" />
-            </v-list-item-action>
-            <v-list-item-content>
-              <v-list-item-title v-text="item.text" />
-            </v-list-item-content>
-          </v-list-item>
-          <v-divider />
-        </div>
+        <v-list-item
+          v-for="(item, i) in menu"
+          :key="i"
+          :to="item.to"
+          :target="item.target"
+          link
+        >
+          <v-list-item-action>
+            <font-awesome-icon :icon="item.icon" size="2x" />
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title v-text="item.text" />
+          </v-list-item-content>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
   </div>
@@ -68,7 +70,6 @@ import { Vue, Component } from "vue-property-decorator";
 
 @Component
 export default class OptyToolBar extends Vue {
-  bindClass: string[] = ["light-blue", "darken-2"];
   pageTitle: string = "Opty@Page";
 
   inMobile: boolean = window.innerWidth < 1250;

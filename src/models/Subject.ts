@@ -4,6 +4,7 @@ export class Subject {
   name!: string;
   github!: string;
   score!: number;
+  interest!: number;
   ECTS!: number;
   period!: string;
   year!: string;
@@ -13,6 +14,7 @@ export class Subject {
     name: string,
     href: string,
     score: number,
+    interest: number,
     ECTS: number,
     period: string,
     year: string,
@@ -22,6 +24,7 @@ export class Subject {
     this.name = name;
     this.href = href;
     this.score = score;
+    this.interest = interest;
     this.ECTS = ECTS;
     this.period = period;
     this.year = year;
