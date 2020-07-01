@@ -6,8 +6,6 @@
       :items="compItems"
       :search="search"
       @current-items="setAvg"
-      sort-by="interest"
-      :sort-desc="true"
       hide-default-footer
       disable-pagination
     >
@@ -244,7 +242,7 @@ export default class Degree extends Vue {
         7.5,
         "Year 3, Sem. 2",
         "2019/2020",
-        ""
+        "https://github.com/Opty1337/Quizzes-Tutor"
       ),
       new Subject(
         CES,
