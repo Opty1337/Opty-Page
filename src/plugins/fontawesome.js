@@ -22,7 +22,8 @@ import {
   faFacebookSquare,
   faGithub,
   faLinkedin,
-  faDiscord
+  faDiscord,
+  faCodepen
 } from "@fortawesome/free-brands-svg-icons";
 
 library.add(
@@ -31,19 +32,20 @@ library.add(
   faProjectDiagram,
   faIdCardAlt,
   faCertificate,
-  faFortAwesome,
-  faGithub,
   faEnvelope,
-  faFacebookSquare,
-  faLinkedin,
   faPhoneAlt,
-  faDiscord,
   faChevronDown,
   faCalculator,
   faCode,
   faCubes,
   faChevronRight,
-  faLaptopCode
+  faLaptopCode,
+  faFortAwesome,
+  faFacebookSquare,
+  faGithub,
+  faLinkedin,
+  faDiscord,
+  faCodepen
 );
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);

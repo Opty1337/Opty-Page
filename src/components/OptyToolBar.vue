@@ -6,7 +6,12 @@
       <v-spacer v-if="inMobile" />
       <v-toolbar-items>
         <v-btn to="/" active-class="no-effect" text>
-          <v-toolbar-title v-text="pageTitle" />
+          <font-awesome-icon
+            class="icon ma-2"
+            :icon="['fab', 'codepen']"
+            size="2x"
+          />
+          {{ pageTitle }}
         </v-btn>
       </v-toolbar-items>
       <v-spacer v-if="!inMobile" />
@@ -16,9 +21,10 @@
           :key="i"
           :to="item.to"
           :target="item.target"
+          active-class="effect"
           text
         >
-          <font-awesome-icon class="ma-2" :icon="item.icon" size="2x" />
+          <font-awesome-icon class="icon ma-2" :icon="item.icon" size="2x" />
           {{ item.text }}
         </v-btn>
       </v-toolbar-items>
@@ -54,7 +60,7 @@
           link
         >
           <v-list-item-action>
-            <font-awesome-icon :icon="item.icon" size="2x" />
+            <font-awesome-icon class="icon" :icon="item.icon" size="2x" />
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title v-text="item.text" />
@@ -116,11 +122,6 @@ export default class OptyToolBar extends Vue {
 </script>
 
 <style scoped>
-.v-toolbar__title,
-.theme--dark.v-list-item .v-list-item__subtitle,
-.theme--dark.v-list-item .v-list-item__action-text {
-  color: #4fc3f7;
-}
 .v-btn {
   font-weight: normal;
   letter-spacing: normal;
@@ -131,6 +132,9 @@ export default class OptyToolBar extends Vue {
 .v-btn.v-size--default,
 .v-list-item .v-list-item__title {
   font-size: medium;
+}
+.effect::before {
+  opacity: 0.15 !important;
 }
 .no-effect::before {
   opacity: 0 !important;
