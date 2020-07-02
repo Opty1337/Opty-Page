@@ -606,6 +606,6 @@ a {
   text-indent: inherit;
   text-transform: none;
   white-space: normal;
-  font-size: inherit;
+  font-size: medium;
 }
 </style>

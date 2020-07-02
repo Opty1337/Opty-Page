@@ -128,9 +128,7 @@ export default class OptyToolBar extends Vue {
   text-transform: none;
   white-space: normal;
 }
-.v-btn.v-size--default {
-  font-size: large;
-}
+.v-btn.v-size--default,
 .v-list-item .v-list-item__title {
   font-size: medium;
 }
