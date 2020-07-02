@@ -53,6 +53,7 @@
         href="https://github.com/Opty1337/Opty-Page"
         target="_blank"
         dark
+        :style="inMobile ? 'font-size: medium;' : 'font-size: large;'"
       >
         <font-awesome-icon
           class="ma-2"

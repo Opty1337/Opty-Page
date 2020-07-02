@@ -10,21 +10,18 @@
       disable-pagination
     >
       <template v-slot:top>
-        <v-card-title>
+        <v-card-title
+          :style="
+            inMobile
+              ? 'font-size: medium; line-height: 3;'
+              : 'font-size: large;'
+          "
+        >
           <font-awesome-icon
             class="mx-5"
             :icon="groups[crrGid].icon"
             size="2x"
           />
-          <v-spacer />
-          Average
-          <v-chip
-            class="mx-2"
-            :style="getScoreStyle(crrAvg)"
-            v-text="crrAvg.toFixed(1)"
-          />
-          <v-spacer />
-          Subjects ({{ groups[crrGid].name }})
           <v-spacer />
           <v-menu transition="slide-y-transition" offset-y>
             <template v-slot:activator="{ on }">
@@ -49,6 +46,17 @@
               </v-list-item>
             </v-list>
           </v-menu>
+          <v-spacer />
+          {{ groups[crrGid].name }}
+          <v-spacer />
+          <div>
+            Subjects Average
+            <v-chip
+              class="mx-2"
+              :style="getScoreStyle(crrAvg)"
+              v-text="crrAvg.toFixed(1)"
+            />
+          </div>
           <v-spacer />
           <v-text-field
             v-model="search"
@@ -96,6 +104,7 @@ const CCS = 2;
 
 @Component
 export default class Degree extends Vue {
+  inMobile: boolean = window.innerWidth < 1250;
   search: string = "";
   crrGid: number = CES;
   crrAvg: number = -1;
@@ -226,8 +235,11 @@ export default class Degree extends Vue {
   ];
   items!: Subject[];
 
-  created() {
+  async created() {
     this.loadData();
+    window.addEventListener("resize", () => {
+      this.inMobile = window.innerWidth < 1250;
+    });
   }
 
   loadData() {
@@ -583,7 +595,7 @@ export default class Degree extends Vue {
 <style scoped>
 a {
   text-decoration: none;
-  font-size: large;
+  font-size: medium;
 }
 #data-table {
   background-color: transparent;
@@ -594,6 +606,6 @@ a {
   text-indent: inherit;
   text-transform: none;
   white-space: normal;
-  font-size: large;
+  font-size: inherit;
 }
 </style>

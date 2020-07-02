@@ -70,7 +70,7 @@ import { Vue, Component } from "vue-property-decorator";
 
 @Component
 export default class OptyToolBar extends Vue {
-  pageTitle: string = "Opty@Page";
+  pageTitle: string = "Opty Page";
 
   inMobile: boolean = window.innerWidth < 1250;
   drawer: boolean = false;
@@ -117,9 +117,9 @@ export default class OptyToolBar extends Vue {
 
 <style scoped>
 .v-toolbar__title,
-.v-list-item .v-list-item__subtitle {
-  color: white;
-  font-style: oblique;
+.theme--dark.v-list-item .v-list-item__subtitle,
+.theme--dark.v-list-item .v-list-item__action-text {
+  color: #29b6f6;
 }
 .v-btn {
   font-weight: normal;
@@ -132,7 +132,7 @@ export default class OptyToolBar extends Vue {
   font-size: large;
 }
 .v-list-item .v-list-item__title {
-  font-size: large;
+  font-size: medium;
 }
 .no-effect::before {
   opacity: 0 !important;
