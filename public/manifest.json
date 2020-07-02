@@ -3,7 +3,7 @@
     "short_name": "Opty",
     "icons": [
         {
-            "src": "code.png",
+            "src": "codepen-brands.png",
             "sizes": "512x512",
             "type": "image/png"
         }

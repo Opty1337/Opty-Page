@@ -32,4 +32,7 @@ export default class App extends Vue {}
   margin: 2%;
   padding: 2%;
 }
+.v-btn {
+  font-weight: normal;
+}
 </style>
