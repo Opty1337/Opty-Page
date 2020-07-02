@@ -3,7 +3,7 @@ import Vue from "vue";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import {
-  faUserSecret,
+  faIgloo,
   faUserGraduate,
   faProjectDiagram,
   faIdCardAlt,
@@ -22,12 +22,11 @@ import {
   faFacebookSquare,
   faGithub,
   faLinkedin,
-  faDiscord,
-  faCodepen
+  faDiscord
 } from "@fortawesome/free-brands-svg-icons";
 
 library.add(
-  faUserSecret,
+  faIgloo,
   faUserGraduate,
   faProjectDiagram,
   faIdCardAlt,
@@ -44,8 +43,7 @@ library.add(
   faFacebookSquare,
   faGithub,
   faLinkedin,
-  faDiscord,
-  faCodepen
+  faDiscord
 );
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);

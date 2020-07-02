@@ -28,7 +28,7 @@
               <v-btn id="btn" color="secondary" dark v-on="on">
                 Subjects Group
                 <font-awesome-icon
-                  class="icon ma-2"
+                  class="ma-2"
                   :icon="['fas', 'chevron-down']"
                   v-on="on"
                 />

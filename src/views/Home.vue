@@ -56,7 +56,7 @@
         style="font-size: medium;"
       >
         <font-awesome-icon
-          class="icon ma-2"
+          class="ma-2"
           :icon="['fab', 'github']"
           size="2x"
         />Source Code

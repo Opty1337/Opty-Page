@@ -32,7 +32,4 @@ export default class App extends Vue {}
   margin: 2%;
   padding: 2%;
 }
-.icon {
-  color: #4fc3f7;
-}
 </style>
