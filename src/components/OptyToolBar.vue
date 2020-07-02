@@ -119,7 +119,7 @@ export default class OptyToolBar extends Vue {
 .v-toolbar__title,
 .theme--dark.v-list-item .v-list-item__subtitle,
 .theme--dark.v-list-item .v-list-item__action-text {
-  color: #29b6f6;
+  color: #4fc3f7;
 }
 .v-btn {
   font-weight: normal;
