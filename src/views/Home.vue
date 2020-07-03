@@ -56,9 +56,9 @@
       >
         <font-awesome-icon
           class="light-blue--text ma-2"
-          :icon="['fab', 'github']"
+          :icon="['fas', 'code']"
           size="2x"
-        />Source Code
+        />
       </v-btn>
     </v-row>
   </v-card>

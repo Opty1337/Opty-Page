@@ -33,9 +33,10 @@
                 :key="i"
                 @click="crrGid = group.id"
                 link
+                :style="inMobile ? 'font-size: medium;' : 'font-size: large;'"
               >
-                <font-awesome-icon :icon="group.icon" size="2x" />
-                <v-list-item-title class="mx-5" v-text="group.name" />
+                <font-awesome-icon class="mx-2" :icon="group.icon" size="2x" />
+                <v-list-item-title class="mx-2" v-text="group.name" />
               </v-list-item>
             </v-list>
           </v-menu>
@@ -48,6 +49,7 @@
               class="mx-2"
               :style="getScoreStyle(crrAvg)"
               v-text="crrAvg.toFixed(1)"
+              label
             />
           </div>
           <v-spacer />
@@ -77,7 +79,7 @@
       }}</template>
 
       <template v-slot:item.score="{ item }">
-        <v-chip :style="getScoreStyle(item.score)" v-text="item.score" />
+        <v-chip :style="getScoreStyle(item.score)" v-text="item.score" label />
       </template>
 
       <template v-slot:item.ECTS="{ item }">{{
