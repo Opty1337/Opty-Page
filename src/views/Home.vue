@@ -48,15 +48,14 @@
     <v-row class="ma-3" no-gutters>
       <v-spacer />
       <v-btn
-        class="pa-5"
+        class="pa-6"
         color="secondary"
         href="https://github.com/Opty1337/Opty-Page"
         target="_blank"
-        dark
-        style="font-size: medium;"
+        elevation="5"
       >
         <font-awesome-icon
-          class="ma-2"
+          class="light-blue--text ma-2"
           :icon="['fab', 'github']"
           size="2x"
         />Source Code

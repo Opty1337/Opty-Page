@@ -17,20 +17,13 @@
               : 'font-size: large;'
           "
         >
-          <font-awesome-icon
-            class="mx-5"
-            :icon="groups[crrGid].icon"
-            size="2x"
-          />
-          <v-spacer />
           <v-menu transition="slide-y-transition" offset-y>
             <template v-slot:activator="{ on }">
-              <v-btn id="btn" color="secondary" dark v-on="on">
-                Subjects Group
+              <v-btn class="transparent mx-2 pa-8" elevation="5" v-on="on">
+                <font-awesome-icon :icon="groups[crrGid].icon" size="3x" />
                 <font-awesome-icon
-                  class="ma-2"
-                  :icon="['fas', 'chevron-down']"
-                  v-on="on"
+                  class="mx-2 primary--text"
+                  :icon="['fas', 'arrow-down']"
                 />
               </v-btn>
             </template>
@@ -47,9 +40,9 @@
             </v-list>
           </v-menu>
           <v-spacer />
-          {{ groups[crrGid].name }}
+          <div class="mx-2" v-text="groups[crrGid].name" />
           <v-spacer />
-          <div>
+          <div class="mx-2">
             Subjects Average
             <v-chip
               class="mx-2"
@@ -600,12 +593,14 @@ a {
 #data-table {
   background-color: transparent;
 }
-#btn {
+.v-list-item__title {
+  font-size: inherit;
+}
+.v-btn {
   font-weight: normal;
   letter-spacing: normal;
   text-indent: inherit;
   text-transform: none;
   white-space: normal;
-  font-size: medium;
 }
 </style>
