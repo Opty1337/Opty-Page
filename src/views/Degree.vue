@@ -288,7 +288,7 @@ export default class Degree extends Vue {
         CCS,
         "Computing & Society",
         "https://fenix.tecnico.ulisboa.pt/disciplinas/CS1113264/2019-2020/2-semestre",
-        18,
+        17,
         5,
         3,
         "Year 3, Sem. 2",
@@ -345,7 +345,7 @@ export default class Degree extends Vue {
         "https://fenix.tecnico.ulisboa.pt/disciplinas/OC12179577/2019-2020/1-semestre",
         18,
         7,
-        7.5,
+        6,
         "Year 3, Sem. 1",
         "2019/2020",
         "https://github.com/Opty1337/CO"
