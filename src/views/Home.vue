@@ -48,17 +48,17 @@
     <v-row class="ma-3" no-gutters>
       <v-spacer />
       <v-btn
-        class="pa-6"
-        color="secondary"
+        class="secondary pa-6"
         href="https://github.com/Opty1337/Opty-Page"
         target="_blank"
         elevation="5"
       >
         <font-awesome-icon
           class="light-blue--text ma-2"
-          :icon="['fas', 'code']"
+          :icon="['fab', 'github']"
           size="2x"
         />
+        Source Code
       </v-btn>
     </v-row>
   </v-card>

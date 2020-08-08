@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- TopBar -->
-    <v-toolbar id="toolbar">
+    <v-toolbar id="toolbar" dark>
       <v-app-bar-nav-icon v-if="inMobile" @click.stop="drawer = !drawer" />
       <v-spacer v-if="inMobile" />
       <v-toolbar-items>
@@ -12,6 +12,7 @@
       <v-spacer v-if="!inMobile" />
       <v-toolbar-items v-if="!inMobile">
         <v-btn
+          active-class="effect"
           v-for="(item, i) in menu"
           :key="i"
           :to="item.to"
@@ -19,7 +20,7 @@
           text
         >
           <font-awesome-icon
-            class="primary--text ma-3"
+            class="light-blue--text ma-3"
             :icon="item.icon"
             size="2x"
           />
@@ -125,7 +126,7 @@ export default class OptyToolBar extends Vue {
 
 <style scoped>
 #toolbar {
-  background-color: rgba(255, 255, 255, 0.925);
+  background-color: rgba(15, 15, 15, 0.925);
 }
 .v-btn {
   font-weight: normal;
@@ -139,8 +140,5 @@ export default class OptyToolBar extends Vue {
 }
 .v-list-item .v-list-item__title {
   font-size: medium;
-}
-.no-effect::before {
-  opacity: 0 !important;
 }
 </style>

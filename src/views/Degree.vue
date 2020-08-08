@@ -19,12 +19,13 @@
         >
           <v-menu transition="slide-y-transition" offset-y>
             <template v-slot:activator="{ on }">
-              <v-btn class="transparent mx-2 pa-8" elevation="5" v-on="on">
-                <font-awesome-icon :icon="groups[crrGid].icon" size="3x" />
+              <v-btn class="secondary mx-2 pa-8" elevation="5" v-on="on" dark>
                 <font-awesome-icon
-                  class="mx-2 primary--text"
-                  :icon="['fas', 'arrow-down']"
+                  class="light-blue--text ma-2"
+                  :icon="groups[crrGid].icon"
+                  size="2x"
                 />
+                Group
               </v-btn>
             </template>
             <v-list>
@@ -65,12 +66,17 @@
       </template>
 
       <template v-slot:item.name="{ item }">
-        <a :href="item.href" target="_blank" v-text="item.name" />
+        <a
+          class="light-blue--text text--darken-3"
+          :href="item.href"
+          target="_blank"
+          v-text="item.name"
+        />
       </template>
 
       <template v-slot:item.github="{ item }">
         <v-btn :href="item.github" target="_blank" color="primary" icon>
-          <font-awesome-icon :icon="['fab', 'github']" size="3x" />
+          <font-awesome-icon :icon="['fab', 'github']" size="2x" />
         </v-btn>
       </template>
 
@@ -107,7 +113,7 @@ export default class Degree extends Vue {
     {
       id: CES,
       name: "Computer Engineering Sciences",
-      icon: ["fas", "laptop-code"]
+      icon: ["fas", "laptop"]
     },
     {
       id: ES,
@@ -604,5 +610,8 @@ a {
   text-indent: inherit;
   text-transform: none;
   white-space: normal;
+}
+.v-btn.v-size--default {
+  font-size: large;
 }
 </style>
