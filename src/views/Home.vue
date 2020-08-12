@@ -72,7 +72,7 @@ export default class Home extends Vue {
   inMobile: boolean = window.innerWidth < 1250;
 
   description: string[] = [
-    "Hello! My name is Ricardo Grade. I am 21 Years old. I am a Master's Degree Student in Computer Science & Engineering @Instituto Superior Técnico.",
+    "Hello! My name is Ricardo Grade. I am 21 Years old. I am a Bologna Master's Degree Student in Information Systems & Computer Engineering @Instituto Superior Técnico. In which I am specializing in Distributed Systems & Cybersecurity.",
     "I am ambitious. I am guided by goals. I am always improving myself. Thanks to my creativity I can always find a simpler way to solve the problems to which I am challenged.",
     "I love to program. I love to be challenged. I like to solve difficult problems, think of solutions that no one thought of or discover better's."
   ];
