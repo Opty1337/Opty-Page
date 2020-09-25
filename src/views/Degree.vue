@@ -255,7 +255,7 @@ export default class Degree extends Vue {
         7.5,
         "Year 3, Sem. 2",
         "2019/2020",
-        "https://github.com/Opty1337/Quizzes-Tutor"
+        "https://github.com/LEIC-Opty/Quizzes-Tutor"
       ),
       new Subject(
         CES,
@@ -266,7 +266,7 @@ export default class Degree extends Vue {
         7.5,
         "Year 3, Sem. 2",
         "2019/2020",
-        "https://github.com/Opty1337/DS"
+        "https://github.com/LEIC-Opty/DS"
       ),
       new Subject(
         CES,
@@ -277,7 +277,7 @@ export default class Degree extends Vue {
         6,
         "Year 3, Sem. 2",
         "2019/2020",
-        "https://github.com/Opty1337/Comp"
+        "https://github.com/LEIC-Opty/Comp"
       ),
       new Subject(
         CES,
@@ -288,7 +288,7 @@ export default class Degree extends Vue {
         6,
         "Year 3, Sem. 2",
         "2019/2020",
-        "https://github.com/Opty1337/SAM"
+        "https://github.com/LEIC-Opty/SAM"
       ),
       new Subject(
         CCS,
@@ -310,7 +310,7 @@ export default class Degree extends Vue {
         6,
         "Year 3, Sem. 1",
         "2019/2020",
-        "https://github.com/Opty1337/CN"
+        "https://github.com/LEIC-Opty/CN"
       ),
       new Subject(
         CES,
@@ -321,7 +321,7 @@ export default class Degree extends Vue {
         7.5,
         "Year 3, Sem. 1",
         "2019/2020",
-        "https://github.com/Opty1337/AI"
+        "https://github.com/LEIC-Opty/AI"
       ),
       new Subject(
         CES,
@@ -332,7 +332,7 @@ export default class Degree extends Vue {
         6,
         "Year 3, Sem. 1",
         "2019/2020",
-        "https://github.com/Opty1337/DB"
+        "https://github.com/LEIC-Opty/DB"
       ),
       new Subject(
         CES,
@@ -343,7 +343,7 @@ export default class Degree extends Vue {
         4.5,
         "Year 3, Sem. 1",
         "2019/2020",
-        "https://github.com/Opty1337/CG"
+        "https://github.com/LEIC-Opty/CG"
       ),
       new Subject(
         CES,
@@ -354,7 +354,7 @@ export default class Degree extends Vue {
         6,
         "Year 3, Sem. 1",
         "2019/2020",
-        "https://github.com/Opty1337/CO"
+        "https://github.com/LEIC-Opty/CO"
       ),
       /* Year 2, Sem. 2 */
       new Subject(
@@ -376,7 +376,7 @@ export default class Degree extends Vue {
         6,
         "Year 2, Sem. 2",
         "2018/2019",
-        "https://github.com/Opty1337/AAS"
+        "https://github.com/LEIC-Opty/AAS"
       ),
       new Subject(
         ES,
@@ -397,7 +397,7 @@ export default class Degree extends Vue {
         7.5,
         "Year 2, Sem. 2",
         "2018/2019",
-        "https://github.com/Opty1337/HMI"
+        "https://github.com/LEIC-Opty/HMI"
       ),
       new Subject(
         ES,
@@ -419,7 +419,7 @@ export default class Degree extends Vue {
         6,
         "Year 2, Sem. 1",
         "2018/2019",
-        "https://github.com/Opty1337/OS"
+        "https://github.com/LEIC-Opty/OS"
       ),
       new Subject(
         CES,
@@ -430,7 +430,7 @@ export default class Degree extends Vue {
         6,
         "Year 2, Sem. 1",
         "2018/2019",
-        "https://github.com/Opty1337/OOP"
+        "https://github.com/LEIC-Opty/OOP"
       ),
       new Subject(
         ES,
@@ -472,7 +472,7 @@ export default class Degree extends Vue {
         7.5,
         "Year 1, Sem. 2",
         "2017/2018",
-        "https://github.com/Opty1337/ADSI"
+        "https://github.com/LEIC-Opty/ADSI"
       ),
       new Subject(
         ES,
@@ -493,7 +493,7 @@ export default class Degree extends Vue {
         7.5,
         "Year 1, Sem. 2",
         "2017/2018",
-        "https://github.com/Opty1337/PL"
+        "https://github.com/LEIC-Opty/PL"
       ),
       new Subject(
         ES,
@@ -515,7 +515,7 @@ export default class Degree extends Vue {
         7.5,
         "Year 1, Sem. 1",
         "2017/2018",
-        "https://github.com/Opty1337/PF"
+        "https://github.com/LEIC-Opty/PF"
       ),
       new Subject(
         ES,
@@ -536,7 +536,7 @@ export default class Degree extends Vue {
         7.5,
         "Year 1, Sem. 1",
         "2017/2018",
-        "https://github.com/Opty1337/CAI"
+        "https://github.com/LEIC-Opty/CAI"
       ),
       new Subject(
         ES,
