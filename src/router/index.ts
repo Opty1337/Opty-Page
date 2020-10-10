@@ -28,7 +28,7 @@ export default new VueRouter({
       name: "CV",
       beforeEnter: (to, from, next) =>
         (window.location.href =
-          "https://github.com/Opty1337/PP/blob/master/LaTeX/CV/Opty_CV.pdf"),
+          "https://github.com/Opty1337/CV/blob/master/CV.pdf"),
       meta: {
         title: "Opty Curriculum"
       }
@@ -37,7 +37,7 @@ export default new VueRouter({
       path: "/PP",
       name: "PP",
       beforeEnter: (to, from, next) =>
-        (window.location.href = "https://github.com/Opty1337/PP"),
+        (window.location.href = "https://github.com/Opty-Projects"),
       meta: {
         title: "Opty Projects"
       }

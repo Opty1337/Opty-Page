@@ -49,7 +49,7 @@
       <v-spacer />
       <v-btn
         class="secondary pa-6"
-        href="https://github.com/Opty1337/Opty-Page"
+        href="https://github.com/Opty-Projects/Opty-Page"
         target="_blank"
         elevation="5"
       >
