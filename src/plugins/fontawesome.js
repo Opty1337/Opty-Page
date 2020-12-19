@@ -15,6 +15,7 @@ import {
   faCode,
   faCubes,
   faChevronRight,
+  faChevronDown,
   faLaptop,
   faTerminal
 } from "@fortawesome/free-solid-svg-icons";
@@ -39,6 +40,7 @@ library.add(
   faCode,
   faCubes,
   faChevronRight,
+  faChevronDown,
   faLaptop,
   faTerminal,
   faFortAwesome,

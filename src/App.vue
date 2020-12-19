@@ -27,14 +27,17 @@ export default class App extends Vue {}
   text-align: center;
   color: #2c3e50;
 }
+
 #card {
   background-color: rgba(245, 245, 245, 0.925);
   margin: 2%;
   padding: 2%;
 }
+
 .effect::before {
   opacity: 0.175 !important;
 }
+
 .no-effect::before {
   opacity: 0 !important;
 }

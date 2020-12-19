@@ -1,13 +1,13 @@
 {
-    "name": "Opty Page",
-    "short_name": "Opty",
-    "icons": [
-        {
-            "src": "terminal-solid.png",
-            "sizes": "640x512",
-            "type": "image/png"
-        }
-    ],
-    "theme_color": "#FFFFFF",
-    "background_color": "#FFFFFF"
+  "name": "Opty Page",
+  "short_name": "Opty",
+  "icons": [
+    {
+      "src": "terminal-solid.png",
+      "sizes": "640x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#FFFFFF",
+  "background_color": "#FFFFFF"
 }

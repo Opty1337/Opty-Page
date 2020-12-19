@@ -128,6 +128,7 @@ export default class OptyToolBar extends Vue {
 #toolbar {
   background-color: rgba(15, 15, 15, 0.925);
 }
+
 .v-btn {
   font-weight: normal;
   letter-spacing: normal;
@@ -135,9 +136,11 @@ export default class OptyToolBar extends Vue {
   text-transform: none;
   white-space: normal;
 }
+
 .v-btn.v-size--default {
   font-size: large;
 }
+
 .v-list-item .v-list-item__title {
   font-size: medium;
 }

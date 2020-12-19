@@ -113,13 +113,16 @@ export default class Home extends Vue {
 #card-2 {
   background-color: transparent;
 }
+
 #list {
   background-color: transparent;
   font-size: large;
 }
+
 .v-card__title {
   font-size: x-large;
 }
+
 .v-btn {
   font-weight: normal;
   letter-spacing: normal;
@@ -127,6 +130,7 @@ export default class Home extends Vue {
   text-transform: none;
   white-space: normal;
 }
+
 .v-btn.v-size--default {
   font-size: large;
 }
