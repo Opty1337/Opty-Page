@@ -1,24 +1,12 @@
 # Opty-Page
 
-## Project setup
-```
-npm install
-```
+### My Web Page
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Contains:
+- A little Description about myself.
+- My Social Networks.
+- My Academic Info such as my Subjects, its Projects & Grades, as well as my Interest [0-10] on each of them.
+- My Curriculum Vitae.
+- My Personal Projects.
+- My Academic Certificates.
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
