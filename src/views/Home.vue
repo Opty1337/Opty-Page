@@ -14,12 +14,12 @@
                 color="primary"
                 v-for="(link, i) in links"
                 :key="i"
-                :href="link.href"
+                :href="link.Href"
                 target="_blank"
                 icon
               >
                 <font-awesome-icon
-                  :icon="link.icon"
+                  :icon="link.Icon"
                   :size="inMobile ? '2x' : '3x'"
                 />
               </v-btn>
@@ -66,41 +66,43 @@
 
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
+// eslint-disable-next-line no-unused-vars
+import { SocialNetwork } from "@/models/Types";
 
 @Component
 export default class Home extends Vue {
   inMobile: boolean = window.innerWidth < 1250;
 
-  description: string[] = [
+  readonly description: string[] = [
     "Hello! My name is Ricardo Grade. I'm 21 Years old. I'm a Bologna Master's Degree Student in Information Systems & Computer Engineering @Instituto Superior Técnico. In which I'm specializing in Distributed Systems & Cybersecurity.",
     "I'm ambitious. I'm guided by goals. I'm always improving myself. Thanks to my creativity I can always find a simpler way to solve the problems to which I'm challenged.",
     "I love to program. I love to be challenged. I like to solve difficult problems, think of solutions that no one thought of or discover better's."
   ];
 
-  links: object[] = [
+  readonly links: SocialNetwork[] = [
     {
-      icon: ["fab", "discord"],
-      href: "https://discord.gg/TB86QHg"
+      Href: "https://discord.gg/TB86QHg",
+      Icon: ["fab", "discord"]
     },
     {
-      icon: ["fab", "facebook-square"],
-      href: "https://www.facebook.com/ricardo.grade.1337"
+      Href: "https://www.facebook.com/ricardo.grade.1337",
+      Icon: ["fab", "facebook-square"]
     },
     {
-      icon: ["fab", "linkedin"],
-      href: "https://www.linkedin.com/in/ricardograde"
+      Href: "https://www.linkedin.com/in/ricardograde",
+      Icon: ["fab", "linkedin"]
     },
     {
-      icon: ["fab", "github"],
-      href: "https://github.com/Opty1337"
+      Href: "https://github.com/Opty1337",
+      Icon: ["fab", "github"]
     },
     {
-      icon: ["fas", "envelope"],
-      href: "mailto:gradericardo@hotmail.com"
+      Href: "mailto:gradericardo@hotmail.com",
+      Icon: ["fas", "envelope"]
     }
   ];
 
-  async created() {
+  async created(): Promise<void> {
     window.addEventListener("resize", () => {
       this.inMobile = window.innerWidth < 1250;
     });

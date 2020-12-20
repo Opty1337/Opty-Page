@@ -1,16 +1,18 @@
 <template>
-  <OptySubjectTable :subjects="degreeSubjects" />
+  <SubjectsTable :items="degreeSubjects" />
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import OptySubjectTable from "@/components/OptySubjectTable.vue";
+import SubjectsTable from "@/components/SubjectsTable.vue";
 import DegreeSubjects from "@/assets/DegreeSubjects.json";
+// eslint-disable-next-line no-unused-vars
+import { Subjects } from "@/models/Types";
 
 @Component({
-  components: { OptySubjectTable }
+  components: { SubjectsTable }
 })
 export default class Degree extends Vue {
-  readonly degreeSubjects: any = DegreeSubjects;
+  readonly degreeSubjects: Subjects = DegreeSubjects;
 }
 </script>

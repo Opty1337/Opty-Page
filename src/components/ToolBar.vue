@@ -13,18 +13,18 @@
       <v-toolbar-items v-if="!inMobile">
         <v-btn
           active-class="effect"
-          v-for="(item, i) in menu"
+          v-for="(item, i) in menuOptions"
           :key="i"
-          :to="item.to"
-          :target="item.target"
+          :to="item.To"
+          :target="item.Target"
           text
         >
           <font-awesome-icon
             class="light-blue--text ma-3"
-            :icon="item.icon"
+            :icon="item.Icon"
             size="2x"
           />
-          {{ item.text }}
+          {{ item.Name }}
         </v-btn>
       </v-toolbar-items>
     </v-toolbar>
@@ -52,21 +52,21 @@
       </v-toolbar>
       <v-list nav>
         <v-list-item
-          v-for="(item, i) in menu"
+          v-for="(item, i) in menuOptions"
           :key="i"
-          :to="item.to"
-          :target="item.target"
+          :to="item.To"
+          :target="item.Target"
           link
         >
           <v-list-item-action>
             <font-awesome-icon
               class="light-blue--text"
-              :icon="item.icon"
+              :icon="item.Icon"
               size="2x"
             />
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title v-text="item.text" />
+            <v-list-item-title v-text="item.Name" />
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -76,47 +76,47 @@
 
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
+// eslint-disable-next-line no-unused-vars
+import { MenuOption } from "@/models/Types";
 
 @Component
-export default class OptyToolBar extends Vue {
-  pageTitle: string = "Opty Page";
+export default class ToolBar extends Vue {
+  readonly pageTitle: string = "Opty Page";
 
   inMobile: boolean = window.innerWidth < 1250;
   drawer: boolean = false;
-  menu: object[] = [
+  readonly menuOptions: MenuOption[] = [
     {
-      icon: ["fas", "igloo"],
-      text: "Home",
-      to: "/",
-      target: undefined
+      Name: "Home",
+      Icon: ["fas", "igloo"],
+      To: "/"
     },
     {
-      icon: ["fas", "user-graduate"],
-      text: "Degree",
-      to: "/Degree",
-      target: undefined
+      Name: "Degree",
+      Icon: ["fas", "user-graduate"],
+      To: "/Degree"
     },
     {
-      icon: ["fas", "id-card-alt"],
-      text: "Curriculum Vitae",
-      to: "/CV",
-      target: "_blank"
+      Name: "Curriculum Vitae",
+      Icon: ["fas", "id-card-alt"],
+      To: "/CV",
+      Target: "_blank"
     },
     {
-      icon: ["fab", "github"],
-      text: "Personal Projects",
-      to: "/PP",
-      target: "_blank"
+      Name: "Personal Projects",
+      Icon: ["fab", "github"],
+      To: "/PP",
+      Target: "_blank"
     },
     {
-      icon: ["fas", "certificate"],
-      text: "Certificates",
-      to: "/Certificates",
-      target: "_blank"
+      Name: "Certificates",
+      Icon: ["fas", "certificate"],
+      To: "/Certificates",
+      Target: "_blank"
     }
   ];
 
-  async created() {
+  async created(): Promise<void> {
     window.addEventListener("resize", () => {
       this.inMobile = window.innerWidth < 1250;
     });

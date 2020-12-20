@@ -5,6 +5,10 @@ import Degree from "@/views/Degree.vue";
 
 Vue.use(VueRouter);
 
+function goto(href: string): void {
+  window.location.href = href;
+}
+
 export default new VueRouter({
   routes: [
     {
@@ -26,9 +30,8 @@ export default new VueRouter({
     {
       path: "/CV",
       name: "CV",
-      beforeEnter: (to, from, next) =>
-        (window.location.href =
-          "https://github.com/Opty1337/PP/blob/master/LaTeX/CV/Opty_CV.pdf"),
+      beforeEnter: (): void =>
+        goto("https://github.com/Opty1337/CV/blob/master/CV.pdf"),
       meta: {
         title: "Opty Curriculum"
       }
@@ -36,8 +39,7 @@ export default new VueRouter({
     {
       path: "/PP",
       name: "PP",
-      beforeEnter: (to, from, next) =>
-        (window.location.href = "https://github.com/Opty1337/PP"),
+      beforeEnter: (): void => goto("https://github.com/Opty-Projects"),
       meta: {
         title: "Opty Projects"
       }
@@ -45,8 +47,7 @@ export default new VueRouter({
     {
       path: "/Certificates",
       name: "Certificates",
-      beforeEnter: (to, from, next) =>
-        (window.location.href = "https://github.com/Opty1337/Certificates"),
+      beforeEnter: (): void => goto("https://github.com/Opty1337/Certificates"),
       meta: {
         title: "Opty Certificates"
       }

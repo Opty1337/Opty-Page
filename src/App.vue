@@ -1,16 +1,16 @@
 <template>
   <v-app id="app">
-    <OptyToolbar />
+    <ToolBar />
     <router-view />
   </v-app>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import OptyToolbar from "./components/OptyToolBar.vue";
+import ToolBar from "./components/ToolBar.vue";
 
 @Component({
-  components: { OptyToolbar }
+  components: { ToolBar }
 })
 export default class App extends Vue {}
 </script>

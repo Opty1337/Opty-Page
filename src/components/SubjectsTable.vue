@@ -22,7 +22,7 @@
               <v-btn class="secondary mx-2 py-8" elevation="5" v-on="on" dark>
                 <font-awesome-icon
                   class="light-blue--text ma-2"
-                  :icon="groups[crrGid].icon"
+                  :icon="groups[crrGid].Icon"
                   size="2x"
                 />
                 Group
@@ -34,19 +34,23 @@
             </template>
             <v-list>
               <v-list-item
-                v-for="(group, i) in getGroups()"
+                v-for="(gid, i) in compGroups()"
                 :key="i"
-                @click="crrGid = group.id"
+                @click="crrGid = gid"
                 link
                 :style="inMobile ? 'font-size: medium;' : 'font-size: large;'"
               >
-                <font-awesome-icon class="mx-2" :icon="group.icon" size="2x" />
-                <v-list-item-title class="mx-2" v-text="group.name" />
+                <font-awesome-icon
+                  class="mx-2"
+                  :icon="groups[gid].Icon"
+                  size="2x"
+                />
+                <v-list-item-title class="mx-2" v-text="groups[gid].Name" />
               </v-list-item>
             </v-list>
           </v-menu>
           <v-spacer />
-          <div class="mx-2" v-text="groups[crrGid].name" />
+          <div class="mx-2" v-text="groups[crrGid].Name" />
           <v-spacer />
           <div class="mx-2">
             Subjects Average
@@ -69,27 +73,27 @@
         </v-card-title>
       </template>
 
-      <template v-slot:item.name="{ item }">
+      <template v-slot:item.Name="{ item }">
         <a
           class="light-blue--text text--darken-3"
-          :href="item.href"
+          :href="item.Href"
           target="_blank"
-          v-text="item.name"
+          v-text="item.Name"
         />
       </template>
 
-      <template v-slot:item.github="{ item }">
-        <v-btn :href="item.github" target="_blank" color="primary" icon>
+      <template v-slot:item.Github="{ item }">
+        <v-btn :href="item.Github" target="_blank" color="primary" icon>
           <font-awesome-icon :icon="['fab', 'github']" size="2x" />
         </v-btn>
       </template>
 
-      <template v-slot:item.interest="{ item }"
-        >{{ item.interest + "/10" }}
+      <template v-slot:item.Interest="{ item }"
+        >{{ item.Interest + "/10" }}
       </template>
 
-      <template v-slot:item.score="{ item }">
-        <v-chip :style="getScoreStyle(item.score)" v-text="item.score" label />
+      <template v-slot:item.Score="{ item }">
+        <v-chip :style="getScoreStyle(item.Score)" v-text="item.Score" label />
       </template>
 
       <template v-slot:item.ECTS="{ item }"
@@ -101,56 +105,41 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
-import { Subject } from "@/models/Subject";
-
-const CES = 0;
-const ES = 1;
-const CCS = 2;
+// eslint-disable-next-line no-unused-vars
+import { Subject, Gid, Groups, Header, Subjects } from "@/models/Types";
+// eslint-disable-next-line no-unused-vars
+import { PropType } from "vue";
+// eslint-disable-next-line no-unused-vars
+import { DataTableHeader } from "vuetify";
 
 @Component
-export default class Degree extends Vue {
-  @Prop({ required: true })
-  readonly subjects: any;
+export default class SubjectsTable extends Vue {
+  @Prop({ type: Object as PropType<Subjects>, required: true })
+  readonly items!: Subjects;
 
   inMobile: boolean = window.innerWidth < 1250;
   search: string = "";
-  crrGid: number = CES;
+  crrGid: Gid = "CES";
   crrAvg: number = -1;
-  groups: object[] = [
-    {
-      id: CES,
-      name: "Computer Engineering Sciences",
-      icon: ["fas", "laptop"]
-    },
-    {
-      id: ES,
-      name: "Engineering Sciences",
-      icon: ["fas", "calculator"]
-    },
-    {
-      id: CCS,
-      name: "Cross-Cutting Skills",
-      icon: ["fas", "cubes"]
-    }
-  ];
-  headers: object[] = [
-    [
-      /* Computer Engineering Sciences Header */
+
+  readonly headers: Header = {
+    /* Computer Engineering Sciences Header */
+    CES: [
       {
         text: "Name",
-        value: "name",
-        align: "left"
+        value: "Name",
+        align: "start"
       },
       {
         text: "Projects",
-        value: "github",
+        value: "Github",
         align: "center",
         sortable: false,
         filterable: false
       },
       {
         text: "Grade",
-        value: "score",
+        value: "Score",
         align: "center"
       },
       {
@@ -160,30 +149,30 @@ export default class Degree extends Vue {
       },
       {
         text: "Period",
-        value: "period",
+        value: "Period",
         align: "center"
       },
       {
         text: "Year",
-        value: "year",
+        value: "Year",
         align: "center"
       },
       {
         text: "Interest",
-        value: "interest",
+        value: "Interest",
         align: "center"
       }
     ],
-    [
-      /* Engineering Sciences Header */
+    /* Engineering Sciences Header */
+    ES: [
       {
         text: "Name",
-        value: "name",
-        align: "left"
+        value: "Name",
+        align: "start"
       },
       {
         text: "Grade",
-        value: "score",
+        value: "Score",
         align: "center"
       },
       {
@@ -193,30 +182,30 @@ export default class Degree extends Vue {
       },
       {
         text: "Period",
-        value: "period",
+        value: "Period",
         align: "center"
       },
       {
         text: "Year",
-        value: "year",
+        value: "Year",
         align: "center"
       },
       {
         text: "Interest",
-        value: "interest",
+        value: "Interest",
         align: "center"
       }
     ],
-    [
-      /* Cross-Cutting Skills Header */
+    /* Cross-Cutting Skills Header */
+    CCS: [
       {
         text: "Name",
-        value: "name",
-        align: "left"
+        value: "Name",
+        align: "start"
       },
       {
         text: "Grade",
-        value: "score",
+        value: "Score",
         align: "center"
       },
       {
@@ -226,74 +215,67 @@ export default class Degree extends Vue {
       },
       {
         text: "Period",
-        value: "period",
+        value: "Period",
         align: "center"
       },
       {
         text: "Year",
-        value: "year",
+        value: "Year",
         align: "center"
       },
       {
         text: "Interest",
-        value: "interest",
+        value: "Interest",
         align: "center"
       }
     ]
-  ];
-  items: Subject[] = [];
+  };
+  readonly groups: Groups = {
+    /* Computer Engineering Sciences Group */
+    CES: {
+      Name: "Computer Engineering Sciences",
+      Icon: ["fas", "laptop"]
+    },
+    /* Engineering Sciences Group */
+    ES: {
+      Name: "Engineering Sciences",
+      Icon: ["fas", "calculator"]
+    },
+    /* Cross-Cutting Skills Group */
+    CCS: {
+      Name: "Cross-Cutting Skills",
+      Icon: ["fas", "cubes"]
+    }
+  };
 
-  async created() {
-    this.loadData();
+  async created(): Promise<void> {
     window.addEventListener("resize", () => {
       this.inMobile = window.innerWidth < 1250;
     });
   }
 
-  loadData() {
-    this.subjects["Groups"]["CES"].forEach((s: any) => this.newSubject(CES, s));
-    this.subjects["Groups"]["ES"].forEach((s: any) => this.newSubject(ES, s));
-    this.subjects["Groups"]["CCS"].forEach((s: any) => this.newSubject(CCS, s));
-  }
-
-  newSubject(gid: number, subject: any) {
-    this.items.push(
-      new Subject(
-        gid,
-        subject["Name"],
-        subject["Href"],
-        subject["Score"],
-        subject["Interest"],
-        subject["ECTS"],
-        subject["Period"],
-        subject["Year"],
-        subject["Github"]
-      )
-    );
-  }
-
-  get compHeaders() {
+  get compHeaders(): DataTableHeader[] {
     return this.headers[this.crrGid];
   }
 
-  get compItems() {
-    return this.items.filter(e => e.gid == this.crrGid);
+  get compItems(): Subject[] {
+    return this.items[this.crrGid];
   }
 
-  setAvg(items: Subject[]) {
+  compGroups(): Gid[] {
+    return Object.keys(this.groups).filter(gid => gid != this.crrGid) as Gid[];
+  }
+
+  setAvg(items: Subject[]): void {
     let ECTS = (this.crrAvg = 0);
-    items.forEach(e => {
-      this.crrAvg += e.score * e.ECTS;
+    for (let e of items) {
+      this.crrAvg += e.Score * e.ECTS;
       ECTS += e.ECTS;
-    });
+    }
     this.crrAvg /= ECTS;
   }
 
-  getGroups() {
-    return this.groups.filter((e, id) => id != this.crrGid);
-  }
-
-  getScoreStyle(score: number) {
+  getScoreStyle(score: number): string {
     let style = "font-size: medium; font-weight: normal;";
     if (score < 10) style += "background-color: #F44336; color: white;";
     else if (score < 15) style += "background-color: #FFC107; color: black;";
