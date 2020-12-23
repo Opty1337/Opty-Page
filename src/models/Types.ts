@@ -1,5 +1,3 @@
-import { DataTableHeader } from "vuetify";
-
 export interface MenuOption {
   readonly Name: string;
   readonly Icon: string[];
@@ -29,10 +27,6 @@ export interface Subject {
 }
 
 export type Gid = "CES" | "ES" | "CCS";
-
-export type Header = {
-  [Key in Gid]: DataTableHeader[];
-};
 
 export type Groups = {
   [Key in Gid]: Group;

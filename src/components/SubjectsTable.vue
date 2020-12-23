@@ -2,7 +2,7 @@
   <v-card id="card">
     <v-data-table
       id="data-table"
-      :headers="compHeaders"
+      :headers="compHeader"
       :items="compItems"
       :search="search"
       @current-items="setAvg"
@@ -34,7 +34,7 @@
             </template>
             <v-list>
               <v-list-item
-                v-for="(gid, i) in compGroups()"
+                v-for="(gid, i) in compGroups"
                 :key="i"
                 @click="crrGid = gid"
                 link
@@ -53,7 +53,7 @@
           <div class="mx-2" v-text="groups[crrGid].Name" />
           <v-spacer />
           <div class="mx-2">
-            Subjects Average
+            Grades Average
             <v-chip
               class="mx-2"
               :style="getScoreStyle(crrAvg)"
@@ -88,9 +88,7 @@
         </v-btn>
       </template>
 
-      <template v-slot:item.Interest="{ item }"
-        >{{ item.Interest + "/10" }}
-      </template>
+      <template v-slot:item.Interest="{ item }">{{ item.Interest }}</template>
 
       <template v-slot:item.Score="{ item }">
         <v-chip :style="getScoreStyle(item.Score)" v-text="item.Score" label />
@@ -106,7 +104,7 @@
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
 // eslint-disable-next-line no-unused-vars
-import { Subject, Gid, Groups, Header, Subjects } from "@/models/Types";
+import { Subject, Gid, Groups, Subjects } from "@/models/Types";
 // eslint-disable-next-line no-unused-vars
 import { PropType } from "vue";
 // eslint-disable-next-line no-unused-vars
@@ -122,114 +120,38 @@ export default class SubjectsTable extends Vue {
   crrGid: Gid = "CES";
   crrAvg: number = -1;
 
-  readonly headers: Header = {
-    /* Computer Engineering Sciences Header */
-    CES: [
-      {
-        text: "Name",
-        value: "Name",
-        align: "start"
-      },
-      {
-        text: "Projects",
-        value: "Github",
-        align: "center",
-        sortable: false,
-        filterable: false
-      },
-      {
-        text: "Grade",
-        value: "Score",
-        align: "center"
-      },
-      {
-        text: "ECTS",
-        value: "ECTS",
-        align: "center"
-      },
-      {
-        text: "Period",
-        value: "Period",
-        align: "center"
-      },
-      {
-        text: "Year",
-        value: "Year",
-        align: "center"
-      },
-      {
-        text: "Interest",
-        value: "Interest",
-        align: "center"
-      }
-    ],
-    /* Engineering Sciences Header */
-    ES: [
-      {
-        text: "Name",
-        value: "Name",
-        align: "start"
-      },
-      {
-        text: "Grade",
-        value: "Score",
-        align: "center"
-      },
-      {
-        text: "ECTS",
-        value: "ECTS",
-        align: "center"
-      },
-      {
-        text: "Period",
-        value: "Period",
-        align: "center"
-      },
-      {
-        text: "Year",
-        value: "Year",
-        align: "center"
-      },
-      {
-        text: "Interest",
-        value: "Interest",
-        align: "center"
-      }
-    ],
-    /* Cross-Cutting Skills Header */
-    CCS: [
-      {
-        text: "Name",
-        value: "Name",
-        align: "start"
-      },
-      {
-        text: "Grade",
-        value: "Score",
-        align: "center"
-      },
-      {
-        text: "ECTS",
-        value: "ECTS",
-        align: "center"
-      },
-      {
-        text: "Period",
-        value: "Period",
-        align: "center"
-      },
-      {
-        text: "Year",
-        value: "Year",
-        align: "center"
-      },
-      {
-        text: "Interest",
-        value: "Interest",
-        align: "center"
-      }
-    ]
-  };
+  readonly header: DataTableHeader[] = [
+    {
+      text: "Name",
+      value: "Name",
+      align: "start"
+    },
+    {
+      text: "Grade [0, 20]",
+      value: "Score",
+      align: "center"
+    },
+    {
+      text: "ECTS",
+      value: "ECTS",
+      align: "center"
+    },
+    {
+      text: "Period",
+      value: "Period",
+      align: "center"
+    },
+    {
+      text: "Year",
+      value: "Year",
+      align: "center"
+    },
+    {
+      text: "Interest [0, 10]",
+      value: "Interest",
+      align: "center"
+    }
+  ];
   readonly groups: Groups = {
     /* Computer Engineering Sciences Group */
     CES: {
@@ -254,15 +176,27 @@ export default class SubjectsTable extends Vue {
     });
   }
 
-  get compHeaders(): DataTableHeader[] {
-    return this.headers[this.crrGid];
+  get compHeader(): DataTableHeader[] {
+    return this.crrGid != "CES"
+      ? this.header
+      : [
+          ...this.header.slice(undefined, 1),
+          {
+            text: "Projects",
+            value: "Github",
+            align: "center",
+            sortable: false,
+            filterable: false
+          },
+          ...this.header.slice(1, undefined)
+        ];
   }
 
   get compItems(): Subject[] {
     return this.items[this.crrGid];
   }
 
-  compGroups(): Gid[] {
+  get compGroups(): Gid[] {
     return Object.keys(this.groups).filter(gid => gid != this.crrGid) as Gid[];
   }
 
