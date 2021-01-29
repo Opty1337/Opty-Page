@@ -6,7 +6,14 @@
       <v-spacer v-if="inMobile" />
       <v-toolbar-items>
         <v-btn to="/" active-class="no-effect" text>
-          <v-toolbar-title v-text="pageTitle" />
+          <v-list-item>
+            <v-list-item-avatar>
+              <v-img src="../assets/Portrait.jpg" />
+            </v-list-item-avatar>
+            <v-list-item-content>
+              <v-toolbar-title v-text="pageTitle" />
+            </v-list-item-content>
+          </v-list-item>
         </v-btn>
       </v-toolbar-items>
       <v-spacer v-if="!inMobile" />
@@ -41,7 +48,7 @@
         <v-list nav>
           <v-list-item>
             <v-list-item-avatar>
-              <v-img src="../assets/Perfil.jpg" />
+              <v-img src="../assets/Portrait.jpg" />
             </v-list-item-avatar>
             <v-list-item-content>
               <v-list-item-title>Menu</v-list-item-title>
@@ -92,9 +99,14 @@ export default class ToolBar extends Vue {
       To: "/"
     },
     {
-      Name: "Degree",
+      Name: "BSc",
       Icon: ["fas", "user-graduate"],
-      To: "/Degree"
+      To: "/BSc"
+    },
+    {
+      Name: "MSc",
+      Icon: ["fas", "graduation-cap"],
+      To: "/MSc"
     },
     {
       Name: "Curriculum Vitae",

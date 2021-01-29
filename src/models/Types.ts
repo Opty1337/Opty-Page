@@ -10,9 +10,11 @@ export interface SocialNetwork {
   readonly Icon: string[];
 }
 
-export interface Group {
+export interface SKeyInfo {
   readonly Name: string;
+  readonly HasProjects: boolean;
   readonly Icon: string[];
+  readonly Mask?: string[];
 }
 
 export interface Subject {
@@ -26,12 +28,10 @@ export interface Subject {
   readonly Github?: string;
 }
 
-export type Gid = "CES" | "ES" | "CCS";
-
-export type Groups = {
-  [Key in Gid]: Group;
+export type SKeysInfo = {
+  [Key in string]: SKeyInfo;
 };
 
 export type Subjects = {
-  [Key in Gid]: Subject[];
+  [Key in string]: Subject[];
 };

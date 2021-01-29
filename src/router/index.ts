@@ -1,7 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "@/views/Home.vue";
-import Degree from "@/views/Degree.vue";
+import BSc from "@/views/BSc.vue";
+import MSc from "@/views/MSc.vue";
 
 Vue.use(VueRouter);
 
@@ -16,15 +17,23 @@ export default new VueRouter({
       name: "Home",
       component: Home,
       meta: {
-        title: "Opty Home"
+        title: "Opty's Home"
       }
     },
     {
-      path: "/Degree",
-      name: "Degree",
-      component: Degree,
+      path: "/BSc",
+      name: "BSc",
+      component: BSc,
       meta: {
-        title: "Opty Degree"
+        title: "Opty's BSc"
+      }
+    },
+    {
+      path: "/MSc",
+      name: "MSc",
+      component: MSc,
+      meta: {
+        title: "Opty's MSc"
       }
     },
     {
@@ -33,7 +42,7 @@ export default new VueRouter({
       beforeEnter: (): void =>
         goto("https://github.com/Opty1337/CV/blob/master/CV.pdf"),
       meta: {
-        title: "Opty Curriculum"
+        title: "Opty's Curriculum"
       }
     },
     {
@@ -41,7 +50,7 @@ export default new VueRouter({
       name: "PP",
       beforeEnter: (): void => goto("https://github.com/Opty-Projects"),
       meta: {
-        title: "Opty Projects"
+        title: "Opty's Projects"
       }
     },
     {
@@ -49,7 +58,7 @@ export default new VueRouter({
       name: "Certificates",
       beforeEnter: (): void => goto("https://github.com/Opty1337/Certificates"),
       meta: {
-        title: "Opty Certificates"
+        title: "Opty's Certificates"
       }
     },
     {

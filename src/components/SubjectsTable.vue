@@ -1,9 +1,9 @@
 <template>
   <v-card id="card">
     <v-data-table
-      id="data-table"
-      :headers="compHeader"
-      :items="compItems"
+      class="transparent"
+      :headers="compHeaders"
+      :items="compSubjects"
       :search="search"
       @current-items="setAvg"
       hide-default-footer
@@ -20,12 +20,21 @@
           <v-menu transition="slide-y-transition" offset-y>
             <template v-slot:activator="{ on }">
               <v-btn class="secondary mx-2 py-8" elevation="5" v-on="on" dark>
-                <font-awesome-icon
-                  class="light-blue--text ma-2"
-                  :icon="groups[crrGid].Icon"
-                  size="2x"
-                />
-                Group
+                <div class="light-blue--text ma-2 fa-2x">
+                  <font-awesome-icon
+                    v-if="sKeysInfo[iKey].Mask === undefined"
+                    :icon="sKeysInfo[iKey].Icon"
+                    spin
+                  />
+                  <font-awesome-icon
+                    v-else
+                    :icon="sKeysInfo[iKey].Icon"
+                    :mask="sKeysInfo[iKey].Mask"
+                    transform="shrink-8"
+                    spin
+                  />
+                </div>
+                Branches
                 <font-awesome-icon
                   class="light-blue--text ma-2"
                   :icon="['fas', 'chevron-down']"
@@ -34,23 +43,30 @@
             </template>
             <v-list>
               <v-list-item
-                v-for="(gid, i) in compGroups"
+                v-for="(key, i) in compSKeysInfo"
                 :key="i"
-                @click="crrGid = gid"
+                @click="iKey = key"
                 link
                 :style="inMobile ? 'font-size: medium;' : 'font-size: large;'"
               >
-                <font-awesome-icon
-                  class="mx-2"
-                  :icon="groups[gid].Icon"
-                  size="2x"
-                />
-                <v-list-item-title class="mx-2" v-text="groups[gid].Name" />
+                <div class="ma-2 fa-2x">
+                  <font-awesome-icon
+                    v-if="sKeysInfo[key].Mask === undefined"
+                    :icon="sKeysInfo[key].Icon"
+                  />
+                  <font-awesome-icon
+                    v-else
+                    :icon="sKeysInfo[key].Icon"
+                    :mask="sKeysInfo[key].Mask"
+                    transform="shrink-8"
+                  />
+                </div>
+                <v-list-item-title class="mx-2" v-text="sKeysInfo[key].Name" />
               </v-list-item>
             </v-list>
           </v-menu>
           <v-spacer />
-          <div class="mx-2" v-text="groups[crrGid].Name" />
+          <div class="mx-2" v-text="sKeysInfo[iKey].Name" />
           <v-spacer />
           <div class="mx-2">
             Grades Average
@@ -84,7 +100,10 @@
 
       <template v-slot:item.Github="{ item }">
         <v-btn :href="item.Github" target="_blank" color="primary" icon>
-          <font-awesome-icon :icon="['fab', 'github']" size="2x" />
+          <font-awesome-icon
+            class="fa-2x fa-spin-hover"
+            :icon="['fab', 'github']"
+          />
         </v-btn>
       </template>
 
@@ -104,7 +123,7 @@
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
 // eslint-disable-next-line no-unused-vars
-import { Subject, Gid, Groups, Subjects } from "@/models/Types";
+import { Subject, Subjects, SKeysInfo } from "@/models/Types";
 // eslint-disable-next-line no-unused-vars
 import { PropType } from "vue";
 // eslint-disable-next-line no-unused-vars
@@ -113,14 +132,17 @@ import { DataTableHeader } from "vuetify";
 @Component
 export default class SubjectsTable extends Vue {
   @Prop({ type: Object as PropType<Subjects>, required: true })
-  readonly items!: Subjects;
+  readonly subjects!: Subjects;
+  @Prop({ type: Object as PropType<SKeysInfo>, required: true })
+  readonly sKeysInfo!: SKeysInfo;
+  @Prop({ type: String, required: true })
+  iKey!: string;
 
   inMobile: boolean = window.innerWidth < 1250;
   search: string = "";
-  crrGid: Gid = "CES";
   crrAvg: number = -1;
 
-  readonly header: DataTableHeader[] = [
+  readonly headers: DataTableHeader[] = [
     {
       text: "Name",
       value: "Name",
@@ -152,23 +174,6 @@ export default class SubjectsTable extends Vue {
       align: "center"
     }
   ];
-  readonly groups: Groups = {
-    /* Computer Engineering Sciences Group */
-    CES: {
-      Name: "Computer Engineering Sciences",
-      Icon: ["fas", "laptop"]
-    },
-    /* Engineering Sciences Group */
-    ES: {
-      Name: "Engineering Sciences",
-      Icon: ["fas", "calculator"]
-    },
-    /* Cross-Cutting Skills Group */
-    CCS: {
-      Name: "Cross-Cutting Skills",
-      Icon: ["fas", "cubes"]
-    }
-  };
 
   async created(): Promise<void> {
     window.addEventListener("resize", () => {
@@ -176,11 +181,10 @@ export default class SubjectsTable extends Vue {
     });
   }
 
-  get compHeader(): DataTableHeader[] {
-    return this.crrGid != "CES"
-      ? this.header
-      : [
-          ...this.header.slice(undefined, 1),
+  get compHeaders(): DataTableHeader[] {
+    return this.sKeysInfo[this.iKey].HasProjects
+      ? [
+          ...this.headers.slice(undefined, 1),
           {
             text: "Projects",
             value: "Github",
@@ -188,21 +192,22 @@ export default class SubjectsTable extends Vue {
             sortable: false,
             filterable: false
           },
-          ...this.header.slice(1, undefined)
-        ];
+          ...this.headers.slice(1, undefined)
+        ]
+      : this.headers;
   }
 
-  get compItems(): Subject[] {
-    return this.items[this.crrGid];
+  get compSubjects(): Subject[] {
+    return this.subjects[this.iKey];
   }
 
-  get compGroups(): Gid[] {
-    return Object.keys(this.groups).filter(gid => gid != this.crrGid) as Gid[];
+  get compSKeysInfo(): string[] {
+    return Object.keys(this.sKeysInfo).filter(key => key != this.iKey);
   }
 
-  setAvg(items: Subject[]): void {
+  setAvg(subjects: Subject[]): void {
     let ECTS = (this.crrAvg = 0);
-    for (let e of items) {
+    for (let e of subjects) {
       this.crrAvg += e.Score * e.ECTS;
       ECTS += e.ECTS;
     }
@@ -221,13 +226,17 @@ export default class SubjectsTable extends Vue {
 </script>
 
 <style scoped>
+tr:hover .fa-spin-hover {
+  animation: fa-spin 3s infinite linear;
+}
+
 a {
   text-decoration: none;
   font-size: medium;
 }
 
-#data-table {
-  background-color: transparent;
+.fa-spin {
+  animation-duration: 3s;
 }
 
 .v-list-item__title {

@@ -1,16 +1,18 @@
 <template>
   <v-app id="app">
     <ToolBar />
-    <router-view />
+    <router-view class="flex" />
+    <Footer />
   </v-app>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import ToolBar from "./components/ToolBar.vue";
+import Footer from "./components/Footer.vue";
 
 @Component({
-  components: { ToolBar }
+  components: { ToolBar, Footer }
 })
 export default class App extends Vue {}
 </script>

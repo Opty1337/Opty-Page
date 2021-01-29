@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import {
   faIgloo,
   faUserGraduate,
+  faGraduationCap,
   faProjectDiagram,
   faIdCardAlt,
   faCertificate,
@@ -17,7 +18,9 @@ import {
   faChevronRight,
   faChevronDown,
   faLaptop,
-  faTerminal
+  faTerminal,
+  faLock,
+  faCloud
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faFortAwesome,
@@ -30,6 +33,7 @@ import {
 library.add(
   faIgloo,
   faUserGraduate,
+  faGraduationCap,
   faProjectDiagram,
   faIdCardAlt,
   faCertificate,
@@ -47,7 +51,9 @@ library.add(
   faFacebookSquare,
   faGithub,
   faLinkedin,
-  faDiscord
+  faDiscord,
+  faLock,
+  faCloud
 );
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);
