@@ -8,7 +8,7 @@
         <v-btn to="/" active-class="no-effect" text>
           <v-list-item>
             <v-list-item-avatar>
-              <v-img src="../assets/Portrait.jpg" />
+              <v-img src="../assets/jpg/Portrait.jpg" />
             </v-list-item-avatar>
             <v-list-item-content>
               <v-toolbar-title v-text="pageTitle" />
@@ -48,7 +48,7 @@
         <v-list nav>
           <v-list-item>
             <v-list-item-avatar>
-              <v-img src="../assets/Portrait.jpg" />
+              <v-img src="../assets/jpg/Portrait.jpg" />
             </v-list-item-avatar>
             <v-list-item-content>
               <v-list-item-title>Menu</v-list-item-title>

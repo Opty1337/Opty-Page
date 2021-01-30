@@ -39,8 +39,7 @@ export default new VueRouter({
     {
       path: "/CV",
       name: "CV",
-      beforeEnter: (): void =>
-        goto("https://github.com/Opty1337/CV/blob/master/CV.pdf"),
+      beforeEnter: (): void => goto("./pdf/CV.pdf"),
       meta: {
         title: "Opty's Curriculum"
       }

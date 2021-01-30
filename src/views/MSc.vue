@@ -5,7 +5,7 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import SubjectsTable from "@/components/SubjectsTable.vue";
-import MScSubjects from "@/assets/MScSubjects.json";
+import MScSubjects from "@/assets/json/MScSubjects.json";
 // eslint-disable-next-line no-unused-vars
 import { SKeysInfo, Subjects } from "@/models/Types";
 

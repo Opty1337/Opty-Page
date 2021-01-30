@@ -21,7 +21,7 @@
       <v-card-text class="pa-1" v-text="new Date().toDateString()" />
       <v-card-text class="pa-1">
         <v-btn
-          class="secondary pa-6"
+          class="pa-6"
           href="https://github.com/Opty-Projects/Opty-Page"
           target="_blank"
         >
@@ -78,6 +78,11 @@ export default class Footer extends Vue {
   font-size: medium;
 }
 
+.theme--dark.v-card > .v-card__text {
+  font-size: medium;
+  color: white;
+}
+
 .v-btn {
   font-weight: normal;
   letter-spacing: normal;
@@ -87,6 +92,6 @@ export default class Footer extends Vue {
 }
 
 .v-btn.v-size--default {
-  font-size: large;
+  font-size: medium;
 }
 </style>

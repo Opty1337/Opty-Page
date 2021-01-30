@@ -5,7 +5,7 @@
         <v-fab-transition>
           <v-card class="transparent" flat>
             <v-card-title class="justify-center" v-text="'<!-- Welcome -->'" />
-            <v-img src="../assets/Portrait.jpg" />
+            <v-img src="../assets/jpg/Portrait.jpg" />
             <v-card-title class="justify-center oblique"
               >Ricardo Grade
             </v-card-title>
