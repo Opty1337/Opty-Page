@@ -20,7 +20,7 @@
           <v-menu transition="slide-y-transition" offset-y>
             <template v-slot:activator="{ on }">
               <v-btn class="secondary mx-2 py-8" elevation="5" v-on="on" dark>
-                <div class="light-blue--text ma-2 fa-2x">
+                <div class="blue--text ma-2 fa-2x">
                   <font-awesome-icon
                     v-if="sKeysInfo[iKey].Mask === undefined"
                     :icon="sKeysInfo[iKey].Icon"
@@ -36,7 +36,7 @@
                 </div>
                 Branches
                 <font-awesome-icon
-                  class="light-blue--text ma-2"
+                  class="blue--text ma-2"
                   :icon="['fas', 'chevron-down']"
                 />
               </v-btn>
@@ -91,7 +91,7 @@
 
       <template v-slot:item.Name="{ item }">
         <a
-          class="light-blue--text text--darken-3"
+          class="blue--text text--darken-4"
           :href="item.Href"
           target="_blank"
           v-text="item.Name"
@@ -99,7 +99,12 @@
       </template>
 
       <template v-slot:item.Github="{ item }">
-        <v-btn :href="item.Github" target="_blank" color="primary" icon>
+        <v-btn
+          class="blue--text text--darken-4"
+          :href="item.Github"
+          target="_blank"
+          icon
+        >
           <font-awesome-icon
             class="fa-2x fa-spin-hover"
             :icon="['fab', 'github']"

@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- TopBar -->
-    <v-toolbar id="toolbar" dark>
+    <v-toolbar id="bar">
       <v-app-bar-nav-icon v-if="inMobile" @click.stop="drawer = !drawer" />
       <v-spacer v-if="inMobile" />
       <v-toolbar-items>
@@ -27,7 +27,7 @@
           text
         >
           <font-awesome-icon
-            class="light-blue--text ma-3"
+            class="blue--text text--darken-4 ma-3"
             :icon="item.Icon"
             size="2x"
           />
@@ -40,7 +40,6 @@
       v-if="inMobile"
       v-model="drawer"
       app
-      dark
       absolute
       temporary
     >
@@ -67,7 +66,7 @@
         >
           <v-list-item-action>
             <font-awesome-icon
-              class="light-blue--text"
+              class="blue--text text--darken-4"
               :icon="item.Icon"
               size="2x"
             />
@@ -137,10 +136,6 @@ export default class ToolBar extends Vue {
 </script>
 
 <style scoped>
-#toolbar {
-  background-color: rgba(15, 15, 15, 0.925);
-}
-
 .v-btn {
   font-weight: normal;
   letter-spacing: normal;

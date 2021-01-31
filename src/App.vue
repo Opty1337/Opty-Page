@@ -30,8 +30,12 @@ export default class App extends Vue {}
   color: #2c3e50;
 }
 
-#card {
+#card,
+#bar {
   background-color: rgba(245, 245, 245, 0.925);
+}
+
+#card {
   margin: 2%;
   padding: 2%;
 }

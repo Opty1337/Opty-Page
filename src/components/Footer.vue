@@ -1,5 +1,5 @@
 <template>
-  <v-footer id="footer" dark>
+  <v-footer id="bar" padless>
     <v-card class="flex transparent pa-2">
       <v-card-text class="pa-1">
         <v-btn
@@ -11,22 +11,28 @@
           icon
         >
           <font-awesome-icon
-            class="light-blue--text"
+            class="blue--text text--darken-4"
             :icon="socialNet.Icon"
             size="2x"
           />
         </v-btn>
       </v-card-text>
-      <v-card-text class="pa-1">Developed By Ricardo Grade</v-card-text>
-      <v-card-text class="pa-1" v-text="new Date().toDateString()" />
+      <v-card-text class="black--text pa-1"
+        >Developed By Ricardo Grade
+      </v-card-text>
+      <v-card-text
+        class="black--text pa-1"
+        v-text="new Date().toDateString()"
+      />
       <v-card-text class="pa-1">
         <v-btn
-          class="pa-6"
+          class="secondary pa-6"
           href="https://github.com/Opty-Projects/Opty-Page"
           target="_blank"
+          elevation="5"
         >
           <font-awesome-icon
-            class="light-blue--text ma-2"
+            class="blue--text ma-2"
             :icon="['fab', 'github']"
             size="2x"
           />
@@ -70,17 +76,12 @@ export default class Footer extends Vue {
 </script>
 
 <style scoped>
-#footer {
-  background-color: rgba(15, 15, 15, 0.925);
-}
-
 .v-card__text {
   font-size: medium;
 }
 
 .theme--dark.v-card > .v-card__text {
   font-size: medium;
-  color: white;
 }
 
 .v-btn {
