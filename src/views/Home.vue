@@ -14,10 +14,7 @@
       </v-col>
       <v-col class="ma-2" cols="11" sm="7" md="7">
         <v-card class="transparent" flat>
-          <v-card-title
-            class="justify-center"
-            v-text="'<!-- Self Description -->'"
-          />
+          <v-card-title class="justify-center" v-text="'<!-- Summary -->'" />
           <v-list>
             <v-list-item v-for="desc in description" :key="desc">
               <v-list-item-icon>
@@ -43,7 +40,7 @@ import { Vue, Component } from "vue-property-decorator";
 export default class Home extends Vue {
   readonly description: string[] = [
     "Hi! My name is Ricardo Grade. I'm 21 Years old. I'm a Bologna Master's Degree Student in Information Systems & Computer Engineering @ Instituto Superior Técnico. In which I'm specializing in Distributed Systems & Cyber-Security.",
-    "I have a Scholarship in Taguspark R&D Activities. My Role Consists in the Development & Maintenance of Functionalities of Applications to Support the Management of Técnico-Taguspark.",
+    "I have a Scholarship in Taguspark R&D Activities. My Role consists in the Development & Maintenance of Functionalities of Applications to Support the Management of Técnico-Taguspark.",
     "I'm ambitious. I'm guided by goals. I'm always improving myself. Thanks to my creativity I can always find a simpler way to solve the problems to which I'm challenged.",
     "I love to program. I love to be challenged. I like to solve difficult problems, think of solutions that no one thought of or discover better's."
   ];
