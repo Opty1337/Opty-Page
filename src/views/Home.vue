@@ -19,9 +19,9 @@
             <v-list-item v-for="desc in description" :key="desc">
               <v-list-item-icon>
                 <font-awesome-icon
+                  class="fa-2x"
                   color="orangered"
                   :icon="['fas', 'chevron-right']"
-                  size="2x"
                 />
               </v-list-item-icon>
               <v-list-item-content class="text-left" v-text="desc" />
@@ -39,8 +39,8 @@ import { Vue, Component } from "vue-property-decorator";
 @Component
 export default class Home extends Vue {
   readonly description: string[] = [
-    "Hi! My name is Ricardo Grade. I'm 21 Years old. I'm a Bologna Master's Degree Student in Information Systems & Computer Engineering @ Instituto Superior Técnico. In which I'm specializing in Distributed Systems & Cyber-Security.",
-    "I have a Scholarship in Taguspark R&D Activities. My Role consists in the Development & Maintenance of Functionalities of Applications to Support the Management of Técnico-Taguspark.",
+    "Hi! My name is Ricardo Grade. I'm 21 Years old. I'm a Bologna MSc Student in Computer Science & Engineering @ Instituto Superior Técnico. In which I'm Specializing in Distributed Systems & Cyber-Security.",
+    "I've a Scholarship within the Scope of the IST Project - Taguspark R&D Activities. In which I Develop & Maintain Functionalities of Applications to Support the Management of IST - Taguspark.",
     "I'm ambitious. I'm guided by goals. I'm always improving myself. Thanks to my creativity I can always find a simpler way to solve the problems to which I'm challenged.",
     "I love to program. I love to be challenged. I like to solve difficult problems, think of solutions that no one thought of or discover better's."
   ];

@@ -7,8 +7,8 @@
       <v-toolbar-items>
         <v-btn to="/" active-class="no-effect" text>
           <v-list-item>
-            <v-list-item-avatar>
-              <v-img src="../assets/jpg/Portrait.jpg" />
+            <v-list-item-avatar tile>
+              <v-img src="../assets/png/Portfolio.png" />
             </v-list-item-avatar>
             <v-list-item-content>
               <v-toolbar-title v-text="pageTitle" />
@@ -27,9 +27,8 @@
           text
         >
           <font-awesome-icon
-            class="blue--text text--darken-4 ma-3"
+            class="blue--text text--darken-4 ma-3 fa-2x"
             :icon="item.Icon"
-            size="2x"
           />
           {{ item.Name }}
         </v-btn>
@@ -46,8 +45,8 @@
       <v-toolbar>
         <v-list nav>
           <v-list-item>
-            <v-list-item-avatar>
-              <v-img src="../assets/jpg/Portrait.jpg" />
+            <v-list-item-avatar tile>
+              <v-img src="../assets/png/Portfolio.png" />
             </v-list-item-avatar>
             <v-list-item-content>
               <v-list-item-title>Menu</v-list-item-title>
@@ -66,9 +65,8 @@
         >
           <v-list-item-action>
             <font-awesome-icon
-              class="blue--text text--darken-4"
+              class="blue--text text--darken-4 fa-2x"
               :icon="item.Icon"
-              size="2x"
             />
           </v-list-item-action>
           <v-list-item-content>
@@ -87,7 +85,7 @@ import { MenuOption } from "@/models/Types";
 
 @Component
 export default class ToolBar extends Vue {
-  readonly pageTitle: string = "Opty Page";
+  readonly pageTitle: string = "Opty Portfolio";
 
   inMobile: boolean = window.innerWidth < 1250;
   drawer: boolean = false;

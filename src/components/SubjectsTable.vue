@@ -17,10 +17,15 @@
               : 'font-size: large;'
           "
         >
-          <v-menu transition="slide-y-transition" offset-y>
+          <v-menu transition="slide-y-transition" open-on-hover offset-y>
             <template v-slot:activator="{ on }">
-              <v-btn class="secondary mx-2 py-8" elevation="5" v-on="on" dark>
-                <div class="blue--text ma-2 fa-2x">
+              <v-btn
+                class="secondary light-blue--text text--accent-1 mx-2 py-8"
+                elevation="5"
+                v-on="on"
+                dark
+              >
+                <div class="ma-2 fa-2x">
                   <font-awesome-icon
                     v-if="sKeysInfo[iKey].Mask === undefined"
                     :icon="sKeysInfo[iKey].Icon"
@@ -36,7 +41,7 @@
                 </div>
                 Branches
                 <font-awesome-icon
-                  class="blue--text ma-2"
+                  class="ma-2"
                   :icon="['fas', 'chevron-down']"
                 />
               </v-btn>
@@ -90,26 +95,40 @@
       </template>
 
       <template v-slot:item.Name="{ item }">
-        <a
-          class="blue--text text--darken-4"
-          :href="item.Href"
-          target="_blank"
-          v-text="item.Name"
-        />
+        <v-tooltip bottom>
+          <template v-slot:activator="{ on, attrs }">
+            <a
+              class="blue--text text--darken-4"
+              :href="item.Href"
+              target="_blank"
+              v-bind="attrs"
+              v-on="on"
+              v-text="item.Name"
+            />
+          </template>
+          <span>Course Page</span>
+        </v-tooltip>
       </template>
 
       <template v-slot:item.Github="{ item }">
-        <v-btn
-          class="blue--text text--darken-4"
-          :href="item.Github"
-          target="_blank"
-          icon
-        >
-          <font-awesome-icon
-            class="fa-2x fa-spin-hover"
-            :icon="['fab', 'github']"
-          />
-        </v-btn>
+        <v-tooltip bottom>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn
+              class="blue--text text--darken-4"
+              :href="item.Github"
+              target="_blank"
+              v-bind="attrs"
+              v-on="on"
+              icon
+            >
+              <font-awesome-icon
+                class="fa-2x fa-spin-hover"
+                :icon="['fab', 'github']"
+              />
+            </v-btn>
+          </template>
+          <span>Projects Repository</span>
+        </v-tooltip>
       </template>
 
       <template v-slot:item.Interest="{ item }">{{ item.Interest }}</template>

@@ -8,6 +8,7 @@ export interface MenuOption {
 export interface SocialNetwork {
   readonly Href: string;
   readonly Icon: string[];
+  readonly Label: string;
 }
 
 export interface SKeyInfo {

@@ -13,7 +13,6 @@ import {
   faPhoneAlt,
   faArrowDown,
   faCalculator,
-  faCode,
   faCubes,
   faChevronRight,
   faChevronDown,
@@ -27,7 +26,8 @@ import {
   faFacebookSquare,
   faGithub,
   faLinkedin,
-  faDiscord
+  faDiscord,
+  faVuejs
 } from "@fortawesome/free-brands-svg-icons";
 
 library.add(
@@ -41,7 +41,6 @@ library.add(
   faPhoneAlt,
   faArrowDown,
   faCalculator,
-  faCode,
   faCubes,
   faChevronRight,
   faChevronDown,
@@ -53,7 +52,8 @@ library.add(
   faLinkedin,
   faDiscord,
   faLock,
-  faCloud
+  faCloud,
+  faVuejs
 );
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);
