@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 
 # Abort on Errors
 set -e
@@ -9,7 +9,9 @@ cd dist
 
 git init
 git add -A
-git commit -m 'deploy'
-git push -f git@github.com:Opty1337/Opty1337.github.io.git master
+git commit -m "Opty-Portfolio Deploy"
+git push -f git@github.com:RicardoGrade/RicardoGrade.github.io.git master
 
+# Cleanup Build Output Directory
 cd -
+rm -rf dist

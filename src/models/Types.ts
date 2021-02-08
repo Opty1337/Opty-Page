@@ -1,7 +1,8 @@
 export interface MenuOption {
   readonly Name: string;
   readonly Icon: string[];
-  readonly To: string;
+  readonly To?: string;
+  readonly Href?: string;
   readonly Target?: string;
 }
 
@@ -18,7 +19,7 @@ export interface SKeyInfo {
   readonly Mask?: string[];
 }
 
-export interface Subject {
+export interface Course {
   readonly Name: string;
   readonly Href: string;
   readonly Score: number;
@@ -33,6 +34,6 @@ export type SKeysInfo = {
   [Key in string]: SKeyInfo;
 };
 
-export type Subjects = {
-  [Key in string]: Subject[];
+export type Courses = {
+  [Key in string]: Course[];
 };

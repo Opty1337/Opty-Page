@@ -6,10 +6,6 @@ import MSc from "@/views/MSc.vue";
 
 Vue.use(VueRouter);
 
-function goto(href: string): void {
-  window.location.href = href;
-}
-
 export default new VueRouter({
   routes: [
     {
@@ -34,30 +30,6 @@ export default new VueRouter({
       component: MSc,
       meta: {
         title: "Opty's MSc"
-      }
-    },
-    {
-      path: "/CV",
-      name: "CV",
-      beforeEnter: (): void => goto("./pdf/CV.pdf"),
-      meta: {
-        title: "Opty's Curriculum"
-      }
-    },
-    {
-      path: "/PP",
-      name: "PP",
-      beforeEnter: (): void => goto("https://github.com/Opty-Projects"),
-      meta: {
-        title: "Opty's Projects"
-      }
-    },
-    {
-      path: "/Certificates",
-      name: "Certificates",
-      beforeEnter: (): void => goto("https://github.com/Opty1337/Certificates"),
-      meta: {
-        title: "Opty's Certificates"
       }
     },
     {

@@ -23,6 +23,7 @@
           v-for="(item, i) in menuOptions"
           :key="i"
           :to="item.To"
+          :href="item.Href"
           :target="item.Target"
           text
         >
@@ -60,6 +61,7 @@
           v-for="(item, i) in menuOptions"
           :key="i"
           :to="item.To"
+          :href="item.Href"
           :target="item.Target"
           link
         >
@@ -108,19 +110,19 @@ export default class ToolBar extends Vue {
     {
       Name: "Curriculum Vitae",
       Icon: ["fas", "id-card-alt"],
-      To: "/CV",
+      Href: "./pdf/OptyCV.pdf",
       Target: "_blank"
     },
     {
       Name: "Personal Projects",
       Icon: ["fab", "github"],
-      To: "/PP",
+      Href: "https://github.com/Opty-Projects",
       Target: "_blank"
     },
     {
       Name: "Certificates",
       Icon: ["fas", "certificate"],
-      To: "/Certificates",
+      Href: "https://github.com/RicardoGrade/Certificates",
       Target: "_blank"
     }
   ];

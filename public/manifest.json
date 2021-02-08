@@ -3,11 +3,9 @@
   "short_name": "Portfolio",
   "icons": [
     {
-      "src": "terminal-solid.png",
-      "sizes": "640x512",
+      "src": "./png/Portfolio.png",
+      "sizes": "512x512",
       "type": "image/png"
     }
-  ],
-  "theme_color": "#FFFFFF",
-  "background_color": "#FFFFFF"
+  ]
 }

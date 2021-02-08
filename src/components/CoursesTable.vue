@@ -3,7 +3,7 @@
     <v-data-table
       class="transparent"
       :headers="compHeaders"
-      :items="compSubjects"
+      :items="compCourses"
       :search="search"
       @current-items="setAvg"
       hide-default-footer
@@ -147,16 +147,16 @@
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
 // eslint-disable-next-line no-unused-vars
-import { Subject, Subjects, SKeysInfo } from "@/models/Types";
+import { Course, Courses, SKeysInfo } from "@/models/Types";
 // eslint-disable-next-line no-unused-vars
 import { PropType } from "vue";
 // eslint-disable-next-line no-unused-vars
 import { DataTableHeader } from "vuetify";
 
 @Component
-export default class SubjectsTable extends Vue {
-  @Prop({ type: Object as PropType<Subjects>, required: true })
-  readonly subjects!: Subjects;
+export default class CoursesTable extends Vue {
+  @Prop({ type: Object as PropType<Courses>, required: true })
+  readonly courses!: Courses;
   @Prop({ type: Object as PropType<SKeysInfo>, required: true })
   readonly sKeysInfo!: SKeysInfo;
   @Prop({ type: String, required: true })
@@ -168,7 +168,7 @@ export default class SubjectsTable extends Vue {
 
   readonly headers: DataTableHeader[] = [
     {
-      text: "Name",
+      text: "Course",
       value: "Name",
       align: "start"
     },
@@ -221,17 +221,17 @@ export default class SubjectsTable extends Vue {
       : this.headers;
   }
 
-  get compSubjects(): Subject[] {
-    return this.subjects[this.iKey];
+  get compCourses(): Course[] {
+    return this.courses[this.iKey];
   }
 
   get compSKeysInfo(): string[] {
     return Object.keys(this.sKeysInfo).filter(key => key != this.iKey);
   }
 
-  setAvg(subjects: Subject[]): void {
+  setAvg(courses: Course[]): void {
     let ECTS = (this.crrAvg = 0);
-    for (let e of subjects) {
+    for (let e of courses) {
       this.crrAvg += e.Score * e.ECTS;
       ECTS += e.ECTS;
     }
