@@ -8,7 +8,7 @@
       "ECTS": 7.5,
       "Period": "Year 3, Sem. 2",
       "Year": "2019/2020",
-      "Github": "https://github.com/Opty-DISCE/Quizzes-Tutor"
+      "Github": "https://github.com/Opty-BSc/Quizzes-Tutor"
     },
     {
       "Name": "Distributed Systems",
@@ -18,7 +18,7 @@
       "ECTS": 7.5,
       "Period": "Year 3, Sem. 2",
       "Year": "2019/2020",
-      "Github": "https://github.com/Opty-DISCE/DS"
+      "Github": "https://github.com/Opty-BSc/DS"
     },
     {
       "Name": "Compilers",
@@ -28,7 +28,7 @@
       "ECTS": 6,
       "Period": "Year 3, Sem. 2",
       "Year": "2019/2020",
-      "Github": "https://github.com/Opty-DISCE/Comp"
+      "Github": "https://github.com/Opty-BSc/Comp"
     },
     {
       "Name": "Systems Analysis & Modeling",
@@ -38,7 +38,7 @@
       "ECTS": 6,
       "Period": "Year 3, Sem. 2",
       "Year": "2019/2020",
-      "Github": "https://github.com/Opty-DISCE/SAM"
+      "Github": "https://github.com/Opty-BSc/SAM"
     },
     {
       "Name": "Computer Networks",
@@ -48,7 +48,7 @@
       "ECTS": 6,
       "Period": "Year 3, Sem. 1",
       "Year": "2019/2020",
-      "Github": "https://github.com/Opty-DISCE/CN"
+      "Github": "https://github.com/Opty-BSc/CN"
     },
     {
       "Name": "Artificial Intelligence",
@@ -58,7 +58,7 @@
       "ECTS": 7.5,
       "Period": "Year 3, Sem. 1",
       "Year": "2019/2020",
-      "Github": "https://github.com/Opty-DISCE/AI"
+      "Github": "https://github.com/Opty-BSc/AI"
     },
     {
       "Name": "Databases",
@@ -68,7 +68,7 @@
       "ECTS": 6,
       "Period": "Year 3, Sem. 1",
       "Year": "2019/2020",
-      "Github": "https://github.com/Opty-DISCE/DB"
+      "Github": "https://github.com/Opty-BSc/DB"
     },
     {
       "Name": "Computer Graphics",
@@ -78,7 +78,7 @@
       "ECTS": 4.5,
       "Period": "Year 3, Sem. 1",
       "Year": "2019/2020",
-      "Github": "https://github.com/Opty-DISCE/CG"
+      "Github": "https://github.com/Opty-BSc/CG"
     },
     {
       "Name": "Computer Organization",
@@ -88,7 +88,7 @@
       "ECTS": 6,
       "Period": "Year 3, Sem. 1",
       "Year": "2019/2020",
-      "Github": "https://github.com/Opty-DISCE/CO"
+      "Github": "https://github.com/Opty-BSc/CO"
     },
     {
       "Name": "Algorithms Analysis & Synthesis",
@@ -98,7 +98,7 @@
       "ECTS": 6,
       "Period": "Year 2, Sem. 2",
       "Year": "2018/2019",
-      "Github": "https://github.com/Opty-DISCE/AAS"
+      "Github": "https://github.com/Opty-BSc/AAS"
     },
     {
       "Name": "Human Machine Interfaces",
@@ -108,7 +108,7 @@
       "ECTS": 7.5,
       "Period": "Year 2, Sem. 2",
       "Year": "2018/2019",
-      "Github": "https://github.com/Opty-DISCE/HMI"
+      "Github": "https://github.com/Opty-BSc/HMI"
     },
     {
       "Name": "Operating Systems",
@@ -118,7 +118,7 @@
       "ECTS": 6,
       "Period": "Year 2, Sem. 1",
       "Year": "2018/2019",
-      "Github": "https://github.com/Opty-DISCE/OS"
+      "Github": "https://github.com/Opty-BSc/OS"
     },
     {
       "Name": "Object Oriented Programming",
@@ -128,7 +128,7 @@
       "ECTS": 6,
       "Period": "Year 2, Sem. 1",
       "Year": "2018/2019",
-      "Github": "https://github.com/Opty-DISCE/OOP"
+      "Github": "https://github.com/Opty-BSc/OOP"
     },
     {
       "Name": "Algorithms & Data Structures Introduction",
@@ -138,7 +138,7 @@
       "ECTS": 7.5,
       "Period": "Year 1, Sem. 2",
       "Year": "2017/2018",
-      "Github": "https://github.com/Opty-DISCE/ADSI"
+      "Github": "https://github.com/Opty-BSc/ADSI"
     },
     {
       "Name": "Programming Logic",
@@ -148,7 +148,7 @@
       "ECTS": 7.5,
       "Period": "Year 1, Sem. 2",
       "Year": "2017/2018",
-      "Github": "https://github.com/Opty-DISCE/PL"
+      "Github": "https://github.com/Opty-BSc/PL"
     },
     {
       "Name": "Programming Fundamentals",
@@ -158,7 +158,7 @@
       "ECTS": 7.5,
       "Period": "Year 1, Sem. 1",
       "Year": "2017/2018",
-      "Github": "https://github.com/Opty-DISCE/PF"
+      "Github": "https://github.com/Opty-BSc/PF"
     },
     {
       "Name": "Computer Architecture Introduction",
@@ -168,7 +168,7 @@
       "ECTS": 7.5,
       "Period": "Year 1, Sem. 1",
       "Year": "2017/2018",
-      "Github": "https://github.com/Opty-DISCE/CAI"
+      "Github": "https://github.com/Opty-BSc/CAI"
     }
   ],
   "ES": [

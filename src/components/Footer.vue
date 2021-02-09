@@ -5,7 +5,7 @@
         <v-tooltip v-for="(socialNet, i) in socialNetworks" :key="i" bottom>
           <template v-slot:activator="{ on, attrs }">
             <v-btn
-              class="px-6"
+              class="px-6 fa-spin-hover"
               :href="socialNet.Href"
               target="_blank"
               v-bind="attrs"
@@ -28,14 +28,14 @@
         <v-tooltip bottom>
           <template v-slot:activator="{ on, attrs }">
             <v-btn
-              href="https://github.com/Opty-Projects/Opty-Portfolio"
+              href="https://github.com/Opty-Projects/Portfolio"
               target="_blank"
               v-bind="attrs"
               v-on="on"
               icon
             >
               <font-awesome-icon
-                class="blue--text text--darken-4 fa-3x"
+                class="blue--text text--darken-4 fa-3x fa-spin-hover"
                 :icon="['fab', 'vuejs']"
               />
             </v-btn>
@@ -57,7 +57,7 @@ export default class Footer extends Vue {
   readonly socialNetworks: SocialNetwork[] = [
     {
       Icon: ["fab", "github"],
-      Href: "https://github.com/Opty1337",
+      Href: "https://github.com/RicardoGrade",
       Label: "Github"
     },
     {
@@ -85,6 +85,10 @@ export default class Footer extends Vue {
 </script>
 
 <style scoped>
+.fa-spin-hover:hover {
+  animation: fa-spin 3s infinite linear;
+}
+
 .v-card__text {
   font-size: medium;
 }
