@@ -5,7 +5,7 @@
         <v-tooltip v-for="(socialNet, i) in socialNetworks" :key="i" bottom>
           <template v-slot:activator="{ on, attrs }">
             <v-btn
-              class="px-6 fa-spin-hover"
+              class="px-6 periodicallySpinHover"
               :href="socialNet.Href"
               target="_blank"
               v-bind="attrs"
@@ -35,7 +35,7 @@
               icon
             >
               <font-awesome-icon
-                class="blue--text text--darken-4 fa-3x fa-spin-hover"
+                class="blue--text text--darken-4 fa-3x periodicallySpinHover"
                 :icon="['fab', 'vuejs']"
               />
             </v-btn>
@@ -58,51 +58,39 @@ export default class Footer extends Vue {
     {
       Icon: ["fab", "github"],
       Href: "https://github.com/RicardoGrade",
-      Label: "Github"
+      Label: "Github",
     },
     {
       Icon: ["fab", "linkedin"],
       Href: "https://www.linkedin.com/in/RicardoGrade",
-      Label: "LinkedIn"
+      Label: "LinkedIn",
     },
     {
       Icon: ["fas", "envelope"],
       Href: "mailto:ricardo.grade@tecnico.ulisboa.pt",
-      Label: "Mail"
+      Label: "Mail",
     },
     {
       Icon: ["fab", "facebook-square"],
       Href: "https://www.facebook.com/Opty1337",
-      Label: "Facebook"
+      Label: "Facebook",
     },
     {
       Href: "https://discord.gg/TB86QHg",
       Icon: ["fab", "discord"],
-      Label: "Discord"
-    }
+      Label: "Discord",
+    },
   ];
 }
 </script>
 
 <style scoped>
-.fa-spin-hover:hover {
-  animation: fa-spin 3s infinite linear;
+.periodicallySpinHover:hover {
+  animation: periodicallySpin 10s linear infinite;
 }
 
 .v-card__text {
   font-size: medium;
-}
-
-.theme--dark.v-card > .v-card__text {
-  font-size: medium;
-}
-
-.v-btn {
-  font-weight: normal;
-  letter-spacing: normal;
-  text-indent: inherit;
-  text-transform: none;
-  white-space: normal;
 }
 
 .v-btn.v-size--default {

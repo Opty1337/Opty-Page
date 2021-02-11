@@ -95,36 +95,36 @@ export default class ToolBar extends Vue {
     {
       Name: "Home",
       Icon: ["fas", "igloo"],
-      To: "/"
+      To: "/",
     },
     {
       Name: "BSc",
       Icon: ["fas", "user-graduate"],
-      To: "/BSc"
+      To: "/BSc",
     },
     {
       Name: "MSc",
       Icon: ["fas", "graduation-cap"],
-      To: "/MSc"
+      To: "/MSc",
     },
     {
       Name: "Curriculum Vitae",
       Icon: ["fas", "id-card-alt"],
       Href: "./pdf/OptyCV.pdf",
-      Target: "_blank"
+      Target: "_blank",
     },
     {
       Name: "Personal Projects",
       Icon: ["fab", "github"],
       Href: "https://github.com/Opty-Projects",
-      Target: "_blank"
+      Target: "_blank",
     },
     {
       Name: "Certificates",
       Icon: ["fas", "certificate"],
       Href: "https://github.com/RicardoGrade/Certificates",
-      Target: "_blank"
-    }
+      Target: "_blank",
+    },
   ];
 
   async created(): Promise<void> {

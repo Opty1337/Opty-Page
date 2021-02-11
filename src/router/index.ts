@@ -13,28 +13,28 @@ export default new VueRouter({
       name: "Home",
       component: Home,
       meta: {
-        title: "Opty's Home"
-      }
+        title: "Opty's Home",
+      },
     },
     {
       path: "/BSc",
       name: "BSc",
       component: BSc,
       meta: {
-        title: "Opty's BSc"
-      }
+        title: "Opty's BSc",
+      },
     },
     {
       path: "/MSc",
       name: "MSc",
       component: MSc,
       meta: {
-        title: "Opty's MSc"
-      }
+        title: "Opty's MSc",
+      },
     },
     {
       path: "*",
-      redirect: "/"
-    }
-  ]
+      redirect: "/",
+    },
+  ],
 });

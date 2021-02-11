@@ -1,31 +1,31 @@
 <template>
-  <CoursesTable :courses="courses" :s-keys-info="sKeysInfo" i-key="SP" />
+  <courses-table :courses="courses" :c-branches="cBranches" c-branch-key="SP" />
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import CoursesTable from "@/components/CoursesTable.vue";
+import CoursesTable from "@/components/CoursesTable/CoursesTable.vue";
 import MScCourses from "@/assets/json/MScCourses.json";
 // eslint-disable-next-line no-unused-vars
-import { SKeysInfo, Courses } from "@/models/Types";
+import { CoursesBranches, Courses } from "@/models/Types";
 
 @Component({
-  components: { CoursesTable }
+  components: { CoursesTable },
 })
 export default class MSc extends Vue {
   readonly courses: Courses = MScCourses;
-  readonly sKeysInfo: SKeysInfo = {
+  readonly cBranches: CoursesBranches = {
     SP: {
       Name: "Specializations",
       HasProjects: true,
       Icon: ["fas", "lock"],
-      Mask: ["fas", "cloud"]
+      Mask: ["fas", "cloud"],
     },
     CB: {
       Name: "Common Branch",
       HasProjects: true,
-      Icon: ["fas", "cubes"]
-    }
+      Icon: ["fas", "cubes"],
+    },
   };
 }
 </script>

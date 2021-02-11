@@ -12,7 +12,7 @@ export interface SocialNetwork {
   readonly Label: string;
 }
 
-export interface SKeyInfo {
+export interface CoursesBranch {
   readonly Name: string;
   readonly HasProjects: boolean;
   readonly Icon: string[];
@@ -22,7 +22,7 @@ export interface SKeyInfo {
 export interface Course {
   readonly Name: string;
   readonly Href: string;
-  readonly Score: number;
+  readonly Grade: number;
   readonly Interest: number;
   readonly ECTS: number;
   readonly Period: string;
@@ -30,10 +30,14 @@ export interface Course {
   readonly Github?: string;
 }
 
-export type SKeysInfo = {
-  [Key in string]: SKeyInfo;
+export type CoursesBranches = {
+  [Key in string]: CoursesBranch;
 };
 
 export type Courses = {
   [Key in string]: Course[];
+};
+
+export type Style = {
+  [Key in string]: string;
 };

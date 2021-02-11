@@ -12,7 +12,7 @@ import ToolBar from "./components/ToolBar.vue";
 import Footer from "./components/Footer.vue";
 
 @Component({
-  components: { ToolBar, Footer }
+  components: { ToolBar, Footer },
 })
 export default class App extends Vue {}
 </script>
@@ -46,5 +46,17 @@ export default class App extends Vue {}
 
 .no-effect::before {
   opacity: 0 !important;
+}
+
+@keyframes periodicallySpin {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  5% {
+    transform: rotateZ(360deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
 }
 </style>

@@ -19,7 +19,7 @@ import {
   faLaptop,
   faTerminal,
   faLock,
-  faCloud
+  faCloud,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faFortAwesome,
@@ -27,7 +27,7 @@ import {
   faGithub,
   faLinkedin,
   faDiscord,
-  faVuejs
+  faVuejs,
 } from "@fortawesome/free-brands-svg-icons";
 
 library.add(
