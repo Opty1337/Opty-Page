@@ -8,7 +8,7 @@
         <v-btn to="/" active-class="no-effect" text>
           <v-list-item>
             <v-list-item-avatar tile>
-              <v-img src="../assets/png/Portfolio.png" />
+              <v-img src="../assets/Images/Portfolio.png" />
             </v-list-item-avatar>
             <v-list-item-content>
               <v-toolbar-title v-text="pageTitle" />
@@ -47,7 +47,7 @@
         <v-list nav>
           <v-list-item>
             <v-list-item-avatar tile>
-              <v-img src="../assets/png/Portfolio.png" />
+              <v-img src="../assets/Images/Portfolio.png" />
             </v-list-item-avatar>
             <v-list-item-content>
               <v-list-item-title>Menu</v-list-item-title>
@@ -110,7 +110,7 @@ export default class ToolBar extends Vue {
     {
       Name: "Curriculum Vitae",
       Icon: ["fas", "id-card-alt"],
-      Href: "./pdf/OptyCV.pdf",
+      Href: "./OptyCV.pdf",
       Target: "_blank",
     },
     {
@@ -127,10 +127,12 @@ export default class ToolBar extends Vue {
     },
   ];
 
-  async created(): Promise<void> {
-    window.addEventListener("resize", () => {
-      this.inMobile = window.innerWidth < 1250;
-    });
+  async created() {
+    window.onresize = this.onResize;
+  }
+
+  onResize() {
+    this.inMobile = window.innerWidth < 1350;
   }
 }
 </script>

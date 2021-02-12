@@ -9,6 +9,16 @@
       "Period": "Year 1, Sem. 1",
       "Year": "2020/2021",
       "Github": "https://github.com/Opty-MSc/DIDA"
+    },
+    {
+      "Name": "Forensics Cyber-Security",
+      "Href": "https://fenix.tecnico.ulisboa.pt/disciplinas/CSF7/2020-2021/1-semestre",
+      "Grade": 18,
+      "Interest": 8,
+      "ECTS": 7.5,
+      "Period": "Year 1, Sem. 1",
+      "Year": "2020/2021",
+      "Github": "https://github.com/Opty-MSc/FCS"
     }
   ],
   "CB": [

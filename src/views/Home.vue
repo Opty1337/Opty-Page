@@ -5,7 +5,11 @@
         <v-fab-transition>
           <v-card class="transparent" flat>
             <v-card-title class="justify-center" v-text="'<!-- Welcome -->'" />
-            <v-img src="../assets/jpg/Portrait.jpg" />
+            <v-img
+              class="ma-auto rounded-circle"
+              src="../assets/Images/Portrait.jpg"
+              max-width="65%"
+            />
             <v-card-title class="justify-center oblique"
               >Ricardo Grade
             </v-card-title>
@@ -19,8 +23,7 @@
             <v-list-item v-for="desc in description" :key="desc">
               <v-list-item-icon>
                 <font-awesome-icon
-                  class="fa-2x"
-                  color="orangered"
+                  class="deep-orange--text fa-2x"
                   :icon="['fas', 'chevron-right']"
                 />
               </v-list-item-icon>

@@ -1,11 +1,15 @@
 <template>
-  <courses-table :courses="courses" :c-branches="cBranches" c-branch-key="SP" />
+  <courses-table
+    :courses="courses"
+    :c-branches="cBranches"
+    :pinned-c-branch-key="pinnedCBranchKey"
+  />
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import CoursesTable from "@/components/CoursesTable/CoursesTable.vue";
-import MScCourses from "@/assets/json/MScCourses.json";
+import MScCourses from "@/assets/Data/MScCourses.json";
 // eslint-disable-next-line no-unused-vars
 import { CoursesBranches, Courses } from "@/models/Types";
 
@@ -14,6 +18,7 @@ import { CoursesBranches, Courses } from "@/models/Types";
 })
 export default class MSc extends Vue {
   readonly courses: Courses = MScCourses;
+  readonly pinnedCBranchKey: string = "SP";
   readonly cBranches: CoursesBranches = {
     SP: {
       Name: "Specializations",

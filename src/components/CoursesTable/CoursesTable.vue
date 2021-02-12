@@ -18,9 +18,9 @@
             }"
           >
             <courses-branches-menu
-              v-model="cBranchKey"
-              @onBranchChange="(key) => (cBranchKey = key)"
               :c-branches="cBranches"
+              :c-branch-key="cBranchKey"
+              v-on:c-branch-update="(key) => (cBranchKey = key)"
             />
             <v-spacer />
             <div class="mx-2" v-text="cBranches[cBranchKey].Name" />
@@ -89,7 +89,11 @@
       </template>
 
       <template v-slot:[`item.Grade`]="{ item }">
-        <v-chip :style="getGradeStyle(item.Grade)" v-text="item.Grade" label />
+        <v-chip
+          v-bind:style="getGradeStyle(item.Grade)"
+          v-text="item.Grade"
+          label
+        />
       </template>
 
       <template v-slot:[`item.ECTS`]="{ item }"
@@ -118,8 +122,9 @@ export default class CoursesTable extends Vue {
   @Prop({ type: Object as PropType<CoursesBranches>, required: true })
   readonly cBranches!: CoursesBranches;
   @Prop({ type: String, required: true })
-  cBranchKey!: string;
+  readonly pinnedCBranchKey!: string;
 
+  cBranchKey: string = this.pinnedCBranchKey;
   inMobile: boolean = window.innerWidth < 1250;
   search: string = "";
   average: number = -1;
@@ -157,11 +162,12 @@ export default class CoursesTable extends Vue {
     },
   ];
 
-  constructor() {
-    super();
-    window.addEventListener("resize", () => {
-      this.inMobile = window.innerWidth < 1250;
-    });
+  async created() {
+    window.onresize = this.onResize;
+  }
+
+  onResize() {
+    this.inMobile = window.innerWidth < 1350;
   }
 
   get compHeaders(): DataTableHeader[] {
@@ -186,7 +192,7 @@ export default class CoursesTable extends Vue {
 
   setAvg(courses: Course[]): void {
     let ECTS = (this.average = 0);
-    for (let e of courses) {
+    for (const e of courses) {
       this.average += e.Grade * e.ECTS;
       ECTS += e.ECTS;
     }
@@ -194,24 +200,24 @@ export default class CoursesTable extends Vue {
   }
 
   getGradeStyle(grade: number): Style {
-    let styleObject: Style = {
+    const style: Style = {
       fontSize: "medium",
       fontWeight: "normal",
     };
     if (grade >= 18) {
-      styleObject.backgroundColor = "#4CAF50";
-      styleObject.color = "white";
+      style.backgroundColor = "#4CAF50";
+      style.color = "white";
     } else if (grade >= 15) {
-      styleObject.backgroundColor = "#CDDC39";
-      styleObject.color = "black";
+      style.backgroundColor = "#CDDC39";
+      style.color = "black";
     } else if (grade >= 10) {
-      styleObject.backgroundColor = "#FFC107";
-      styleObject.color = "black";
+      style.backgroundColor = "#FFC107";
+      style.color = "black";
     } else {
-      styleObject.backgroundColor = "#F44336";
-      styleObject.color = "white";
+      style.backgroundColor = "#F44336";
+      style.color = "white";
     }
-    return styleObject;
+    return style;
   }
 }
 </script>

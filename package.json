@@ -1,6 +1,6 @@
 {
   "name": "opty-portfolio",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "license": "MIT",
   "private": true,
   "scripts": {
@@ -62,7 +62,19 @@
     "parserOptions": {
       "parser": "@typescript-eslint/parser"
     },
-    "rules": {}
+    "rules": {
+      "vue/comment-directive": "off"
+    }
+  },
+  "prettier": {
+    "overrides": [
+      {
+        "files": "*.html",
+        "options": {
+          "parser": "html"
+        }
+      }
+    ]
   },
   "browserslist": [
     "> 1%",
@@ -73,7 +85,7 @@
     "pre-commit": "lint-staged"
   },
   "lint-staged": {
-    "*.{js,jsx,vue}": [
+    "*.{ts,js,jsx,vue}": [
       "vue-cli-service lint"
     ]
   }

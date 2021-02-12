@@ -19,7 +19,7 @@ export default class App extends Vue {}
 
 <style>
 #app {
-  background-image: url("assets/jpg/Background.jpg");
+  background-image: url("assets/Images/Background.jpg");
   background-position: 0 0;
   background-repeat: no-repeat;
   background-size: 100% 100%;

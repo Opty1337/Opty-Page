@@ -1,6 +1,6 @@
 # Portfolio
 
-<img src="./src/assets/png/Portfolio.png" alt="WebPage-Tracker-Icon" width="200">
+<img src="src/assets/Images/Portfolio.png" alt="Opty-Portfolio-Icon" width="200">
 
 ### Components
 

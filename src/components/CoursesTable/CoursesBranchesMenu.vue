@@ -2,7 +2,7 @@
   <v-menu transition="slide-y-transition" open-on-hover offset-y>
     <template v-slot:activator="{ on }">
       <v-btn
-        class="ma-2 py-8 blue--text text--darken-4"
+        class="ma-2 py-8 blue--text text--darken-4 rounded-0"
         :elevation="10"
         v-on="on"
         outlined
@@ -23,7 +23,7 @@
       <v-list-item
         v-for="(key, i) in cBranchesFilter()"
         :key="i"
-        @click="onBranchChange(key)"
+        @click="cBranchUpdate(key)"
         link
       >
         <font-awesome-icon
@@ -41,7 +41,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Model, Prop } from "vue-property-decorator";
+import { Vue, Component, Prop, Emit } from "vue-property-decorator";
 // eslint-disable-next-line no-unused-vars
 import { CoursesBranches } from "@/models/Types";
 // eslint-disable-next-line no-unused-vars
@@ -49,19 +49,20 @@ import { PropType } from "vue";
 
 @Component
 export default class CoursesBranchesMenu extends Vue {
-  @Model("onBranchChange", { type: String, required: true })
-  cBranchKey!: string;
   @Prop({ type: Object as PropType<CoursesBranches>, required: true })
   readonly cBranches!: CoursesBranches;
+  @Prop({ type: String, required: true })
+  readonly cBranchKey!: string;
 
   cBranchesFilter(): string[] {
-    return Object.keys(this.cBranches).filter((key) => key != this.cBranchKey);
+    return Object.keys(this.cBranches).filter(
+      (key: string) => key != this.cBranchKey
+    );
   }
 
-  onBranchChange(key: string) {
-    this.cBranchKey = key;
-    this.$emit("onBranchChange", key);
-  }
+  @Emit()
+  // eslint-disable-next-line no-unused-vars
+  cBranchUpdate(key: string) {}
 }
 </script>
 
@@ -70,17 +71,11 @@ export default class CoursesBranchesMenu extends Vue {
   animation: periodicallySpin 10s linear infinite;
 }
 
-.fa-border {
-  color: black;
-  background-color: black;
-}
-
 .v-btn {
   font-weight: normal;
   letter-spacing: normal;
   text-transform: none;
   text-decoration: none;
-  border-width: 2px;
 }
 
 .v-btn.v-size--default {
