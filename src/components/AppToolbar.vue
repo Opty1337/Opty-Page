@@ -11,7 +11,7 @@
               <v-img src="../assets/Images/Portfolio.png" />
             </v-list-item-avatar>
             <v-list-item-content>
-              <v-toolbar-title v-text="pageTitle" />
+              <v-toolbar-title>Opty Portfolio</v-toolbar-title>
             </v-list-item-content>
           </v-list-item>
         </v-btn>
@@ -51,7 +51,7 @@
             </v-list-item-avatar>
             <v-list-item-content>
               <v-list-item-title>Menu</v-list-item-title>
-              <v-list-item-subtitle v-text="pageTitle" />
+              <v-list-item-subtitle>Opty Portfolio</v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
         </v-list>
@@ -82,15 +82,17 @@
 
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
-// eslint-disable-next-line no-unused-vars
 import { MenuOption } from "@/models/Types";
+import { mapState } from "vuex";
 
-@Component
-export default class ToolBar extends Vue {
-  readonly pageTitle: string = "Opty Portfolio";
+@Component({
+  computed: mapState(["inMobile"]),
+})
+export default class AppToolbar extends Vue {
+  readonly inMobile!: boolean;
 
-  inMobile: boolean = window.innerWidth < 1250;
   drawer: boolean = false;
+
   readonly menuOptions: MenuOption[] = [
     {
       Name: "Home",
@@ -126,14 +128,6 @@ export default class ToolBar extends Vue {
       Target: "_blank",
     },
   ];
-
-  async created() {
-    window.onresize = this.onResize;
-  }
-
-  onResize() {
-    this.inMobile = window.innerWidth < 1350;
-  }
 }
 </script>
 

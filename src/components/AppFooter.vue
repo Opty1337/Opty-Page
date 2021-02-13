@@ -49,11 +49,10 @@
 
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
-// eslint-disable-next-line no-unused-vars
 import { SocialNetwork } from "@/models/Types";
 
 @Component
-export default class Footer extends Vue {
+export default class AppFooter extends Vue {
   readonly socialNetworks: SocialNetwork[] = [
     {
       Icon: ["fab", "github"],

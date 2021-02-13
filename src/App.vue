@@ -1,20 +1,26 @@
 <template>
   <v-app id="app">
-    <ToolBar />
+    <app-toolbar />
     <router-view class="flex" />
-    <Footer />
+    <app-footer />
   </v-app>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import ToolBar from "./components/ToolBar.vue";
-import Footer from "./components/Footer.vue";
+import AppToolbar from "./components/AppToolbar.vue";
+import AppFooter from "./components/AppFooter.vue";
 
 @Component({
-  components: { ToolBar, Footer },
+  components: { AppToolbar, AppFooter },
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  created() {
+    window.onresize = () => {
+      this.$store.commit("onResize");
+    };
+  }
+}
 </script>
 
 <style>

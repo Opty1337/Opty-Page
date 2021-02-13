@@ -2,10 +2,9 @@
   <v-card id="card">
     <v-data-table
       class="transparent"
-      :headers="compHeaders"
-      :items="compCourses"
+      :headers="Headers"
+      :items="degree.SelectedCourses"
       :search="search"
-      @current-items="setAvg"
       hide-default-footer
       disable-pagination
     >
@@ -17,20 +16,16 @@
               lineHeight: inMobile ? 3 : undefined,
             }"
           >
-            <courses-branches-menu
-              :c-branches="cBranches"
-              :c-branch-key="cBranchKey"
-              v-on:c-branch-update="(key) => (cBranchKey = key)"
-            />
+            <degree-branches-menu />
             <v-spacer />
-            <div class="mx-2" v-text="cBranches[cBranchKey].Name" />
+            <div class="mx-2" v-text="degree.SelectedBranch.Name" />
             <v-spacer />
             <div class="mx-2">
               Grades Average
               <v-chip
                 class="mx-2"
-                v-text="average.toFixed(1)"
-                v-bind:style="getGradeStyle(average)"
+                v-text="degree.SelectedCoursesAVG.toFixed(1)"
+                v-bind:style="getGradeStyle(degree.SelectedCoursesAVG)"
                 label
               />
             </div>
@@ -104,30 +99,22 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
-// eslint-disable-next-line no-unused-vars
-import { Course, Courses, CoursesBranches, Style } from "@/models/Types";
-// eslint-disable-next-line no-unused-vars
-import { PropType } from "vue";
-// eslint-disable-next-line no-unused-vars
+import { Vue, Component } from "vue-property-decorator";
+import { Style } from "@/models/Types";
 import { DataTableHeader } from "vuetify";
-import CoursesBranchesMenu from "@/components/CoursesTable/CoursesBranchesMenu.vue";
+import DegreeBranchesMenu from "@/components/CoursesTable/DegreeBranchesMenu.vue";
+import { mapState } from "vuex";
+import Degree from "@/models/Degree";
 
 @Component({
-  components: { CoursesBranchesMenu },
+  components: { DegreeBranchesMenu },
+  computed: mapState(["inMobile", "degree"]),
 })
-export default class CoursesTable extends Vue {
-  @Prop({ type: Object as PropType<Courses>, required: true })
-  readonly courses!: Courses;
-  @Prop({ type: Object as PropType<CoursesBranches>, required: true })
-  readonly cBranches!: CoursesBranches;
-  @Prop({ type: String, required: true })
-  readonly pinnedCBranchKey!: string;
+export default class DegreeTable extends Vue {
+  readonly inMobile!: boolean;
+  readonly degree!: Degree;
 
-  cBranchKey: string = this.pinnedCBranchKey;
-  inMobile: boolean = window.innerWidth < 1250;
   search: string = "";
-  average: number = -1;
 
   readonly headers: DataTableHeader[] = [
     {
@@ -162,16 +149,8 @@ export default class CoursesTable extends Vue {
     },
   ];
 
-  async created() {
-    window.onresize = this.onResize;
-  }
-
-  onResize() {
-    this.inMobile = window.innerWidth < 1350;
-  }
-
-  get compHeaders(): DataTableHeader[] {
-    return this.cBranches[this.cBranchKey].HasProjects
+  get Headers(): DataTableHeader[] {
+    return this.degree.SelectedBranch.HasProjects
       ? [
           ...this.headers.slice(undefined, 1),
           {
@@ -184,19 +163,6 @@ export default class CoursesTable extends Vue {
           ...this.headers.slice(1, undefined),
         ]
       : this.headers;
-  }
-
-  get compCourses(): Course[] {
-    return this.courses[this.cBranchKey];
-  }
-
-  setAvg(courses: Course[]): void {
-    let ECTS = (this.average = 0);
-    for (const e of courses) {
-      this.average += e.Grade * e.ECTS;
-      ECTS += e.ECTS;
-    }
-    this.average /= ECTS;
   }
 
   getGradeStyle(grade: number): Style {
