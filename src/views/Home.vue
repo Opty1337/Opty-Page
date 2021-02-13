@@ -1,5 +1,5 @@
 <template>
-  <v-card id="card">
+  <v-card v-bind:style="mode.WrapperStyle" :dark="mode.isDark">
     <v-row no-gutters>
       <v-col class="ma-2" cols="11" sm="4" md="4">
         <v-fab-transition>
@@ -8,7 +8,7 @@
             <v-img
               class="ma-auto rounded-circle"
               src="../assets/Images/Portrait.jpg"
-              max-width="65%"
+              max-width="60%"
             />
             <v-card-title class="justify-center oblique"
               >Ricardo Grade
@@ -38,9 +38,12 @@
 
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
+import { Mode } from "@/models/Types";
 
 @Component
 export default class Home extends Vue {
+  readonly mode: Mode = this.$store.state.mode;
+
   readonly description: string[] = [
     "Hi! My name is Ricardo Grade. I'm 21 Years old. I'm a Bologna MSc Student in Computer Science & Engineering @ Instituto Superior Técnico. In which I'm Specializing in Distributed Systems & Cyber-Security.",
     "I've a Scholarship within the Scope of the IST Project - Taguspark R&D Activities. In which I Develop & Maintain Functionalities of Applications to Support the Management of IST - Taguspark.",

@@ -1,5 +1,5 @@
 <template>
-  <v-footer id="bar" padless>
+  <v-footer v-bind:style="mode.WrapperStyle" :dark="mode.isDark" padless>
     <v-card class="flex transparent pa-2">
       <v-card-text class="pa-1">
         <v-tooltip v-for="(socialNet, i) in socialNetworks" :key="i" bottom>
@@ -13,7 +13,8 @@
               icon
             >
               <font-awesome-icon
-                class="blue--text text--darken-4 fa-2x"
+                class="fa-2x"
+                v-bind:class="mode.IconClassList"
                 :icon="socialNet.Icon"
               />
             </v-btn>
@@ -21,7 +22,7 @@
           <span v-text="socialNet.Label" />
         </v-tooltip>
       </v-card-text>
-      <v-card-text class="black--text pa-1">
+      <v-card-text class="pa-2" v-bind:style="AuthorStyle">
         Ricardo Grade &#8226; {{ new Date().toDateString() }}
       </v-card-text>
       <v-card-text class="pa-1">
@@ -35,7 +36,8 @@
               icon
             >
               <font-awesome-icon
-                class="blue--text text--darken-4 fa-3x periodicallySpinHover"
+                class="fa-3x periodicallySpinHover"
+                v-bind:class="mode.IconClassList"
                 :icon="['fab', 'vuejs']"
               />
             </v-btn>
@@ -49,10 +51,12 @@
 
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
-import { SocialNetwork } from "@/models/Types";
+import { Mode, SocialNetwork, Style } from "@/models/Types";
 
 @Component
 export default class AppFooter extends Vue {
+  readonly mode: Mode = this.$store.state.mode;
+
   readonly socialNetworks: SocialNetwork[] = [
     {
       Icon: ["fab", "github"],
@@ -80,6 +84,10 @@ export default class AppFooter extends Vue {
       Label: "Discord",
     },
   ];
+
+  get AuthorStyle(): Style {
+    return { color: this.mode.isDark ? "white" : "black" };
+  }
 }
 </script>
 

@@ -41,3 +41,10 @@ export type Courses = {
 export type Style = {
   [Key in string]: string;
 };
+
+export interface Mode {
+  readonly inMobile: boolean;
+  readonly isDark: boolean;
+  readonly IconClassList: string[];
+  readonly WrapperStyle: Style;
+}

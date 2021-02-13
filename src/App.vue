@@ -1,7 +1,7 @@
 <template>
   <v-app id="app">
     <app-toolbar />
-    <router-view class="flex" />
+    <router-view class="maRouter flex" />
     <app-footer />
   </v-app>
 </template>
@@ -25,7 +25,7 @@ export default class App extends Vue {
 
 <style>
 #app {
-  background-image: url("assets/Images/Background.jpg");
+  background-image: url("./assets/Images/Background.png");
   background-position: 0 0;
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -36,22 +36,9 @@ export default class App extends Vue {
   color: #2c3e50;
 }
 
-#card,
-#bar {
-  background-color: rgba(245, 245, 245, 0.925);
-}
-
-#card {
+.maRouter {
   margin: 2%;
   padding: 2%;
-}
-
-.effect::before {
-  opacity: 0.175 !important;
-}
-
-.no-effect::before {
-  opacity: 0 !important;
 }
 
 @keyframes periodicallySpin {

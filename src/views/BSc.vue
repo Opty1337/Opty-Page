@@ -4,7 +4,7 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import DegreeTable from "@/components/CoursesTable/DegreeTable.vue";
+import DegreeTable from "@/components/DegreeTable/DegreeTable.vue";
 
 @Component({
   components: { DegreeTable },

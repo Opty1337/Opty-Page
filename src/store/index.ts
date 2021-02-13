@@ -48,12 +48,30 @@ const MSc = new Degree(
 
 export default new Vuex.Store({
   state: {
-    inMobile: window.innerWidth < 1350,
+    mode: {
+      inMobile: window.innerWidth < 1500,
+      isDark: false,
+      IconClassList: ["blue--text", "text--darken-4"],
+      WrapperStyle: {
+        backgroundColor: "rgba(230, 240, 250, 0.95)",
+      },
+    },
     degree: BSc,
   },
   mutations: {
     onResize(state) {
-      state.inMobile = window.innerWidth < 1350;
+      state.mode.inMobile = window.innerWidth < 1350;
+    },
+    changeTheme(state, isDark) {
+      if (state.mode.isDark === isDark) return;
+      if (isDark) {
+        state.mode.WrapperStyle.backgroundColor = "rgba(50, 60, 70, 0.95)";
+        state.mode.IconClassList = ["blue--text", "text--accent-1"];
+      } else {
+        state.mode.WrapperStyle.backgroundColor = "rgba(230, 240, 250, 0.95)";
+        state.mode.IconClassList = ["blue--text", "text--darken-4"];
+      }
+      state.mode.isDark = isDark;
     },
     inBSc(state) {
       state.degree = BSc;

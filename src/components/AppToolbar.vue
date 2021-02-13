@@ -1,10 +1,8 @@
 <template>
   <div>
     <!-- TopBar -->
-    <v-toolbar id="bar">
-      <v-app-bar-nav-icon v-if="inMobile" @click.stop="drawer = !drawer" />
-      <v-spacer v-if="inMobile" />
-      <v-toolbar-items>
+    <v-toolbar v-bind:style="mode.WrapperStyle" :dark="mode.isDark">
+      <v-toolbar-items v-if="!mode.inMobile">
         <v-btn to="/" active-class="no-effect" text>
           <v-list-item>
             <v-list-item-avatar tile>
@@ -16,8 +14,9 @@
           </v-list-item>
         </v-btn>
       </v-toolbar-items>
-      <v-spacer v-if="!inMobile" />
-      <v-toolbar-items v-if="!inMobile">
+      <v-app-bar-nav-icon v-else @click.stop="drawer = !drawer" />
+      <v-spacer v-if="!mode.inMobile" />
+      <v-toolbar-items v-if="!mode.inMobile">
         <v-btn
           active-class="effect"
           v-for="(item, i) in menuOptions"
@@ -28,22 +27,35 @@
           text
         >
           <font-awesome-icon
-            class="blue--text text--darken-4 ma-3 fa-2x"
+            class="ma-3 fa-2x"
+            v-bind:class="mode.IconClassList"
             :icon="item.Icon"
           />
           {{ item.Name }}
         </v-btn>
       </v-toolbar-items>
+      <v-spacer />
+      <v-toolbar-items class="fill-height">
+        <v-container>
+          <v-switch
+            v-model="Switch"
+            :label="mode.isDark ? 'Darken' : 'Lighten'"
+            inset
+          ></v-switch>
+        </v-container>
+      </v-toolbar-items>
     </v-toolbar>
     <!-- Mobile Side Menu -->
     <v-navigation-drawer
-      v-if="inMobile"
+      v-if="mode.inMobile"
       v-model="drawer"
       app
       absolute
       temporary
+      v-bind:style="mode.WrapperStyle"
+      :dark="mode.isDark"
     >
-      <v-toolbar>
+      <v-toolbar v-bind:style="mode.WrapperStyle" :dark="mode.isDark">
         <v-list nav>
           <v-list-item>
             <v-list-item-avatar tile>
@@ -67,7 +79,8 @@
         >
           <v-list-item-action>
             <font-awesome-icon
-              class="blue--text text--darken-4 fa-2x"
+              class="fa-2x"
+              v-bind:class="mode.IconClassList"
               :icon="item.Icon"
             />
           </v-list-item-action>
@@ -82,16 +95,21 @@
 
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
-import { MenuOption } from "@/models/Types";
-import { mapState } from "vuex";
+import { MenuOption, Mode } from "@/models/Types";
 
-@Component({
-  computed: mapState(["inMobile"]),
-})
+@Component
 export default class AppToolbar extends Vue {
-  readonly inMobile!: boolean;
+  readonly mode: Mode = this.$store.state.mode;
 
   drawer: boolean = false;
+
+  set Switch(isDark: boolean) {
+    this.$store.commit("changeTheme", isDark);
+  }
+
+  get Switch() {
+    return this.mode.isDark;
+  }
 
   readonly menuOptions: MenuOption[] = [
     {
@@ -142,6 +160,14 @@ export default class AppToolbar extends Vue {
 
 .v-btn.v-size--default {
   font-size: large;
+}
+
+.effect::before {
+  opacity: 0.175 !important;
+}
+
+.no-effect::before {
+  opacity: 0 !important;
 }
 
 .v-list-item .v-list-item__title {
