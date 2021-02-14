@@ -60,15 +60,4 @@ export default class DegreeBranchesMenu extends Vue {
 .periodicallySpin {
   animation: periodicallySpin 10s linear infinite;
 }
-
-.v-btn {
-  font-weight: normal;
-  letter-spacing: normal;
-  text-transform: none;
-  text-decoration: none;
-}
-
-.v-btn.v-size--default {
-  font-size: large;
-}
 </style>

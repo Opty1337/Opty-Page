@@ -57,7 +57,9 @@ export default new Vuex.Store({
           : ["blue--text", "text--darken-4"],
       WrapperStyle: {
         backgroundColor:
-          window.innerWidth < 1500 ? "rgb(40, 45, 50)" : "rgb(255, 255, 255)",
+          window.innerWidth < 1500
+            ? "rgba(40, 45, 50, 0.95)"
+            : "rgba(240, 245, 250,0.95)",
       },
     },
     degree: BSc,
@@ -69,10 +71,10 @@ export default new Vuex.Store({
     modifyMode(state, isDark) {
       if (state.mode.isDark === isDark) return;
       if (isDark) {
-        state.mode.WrapperStyle.backgroundColor = "rgb(40, 45, 50)";
+        state.mode.WrapperStyle.backgroundColor = "rgba(40, 45, 50,0.95)";
         state.mode.IconClassList = ["blue--text", "text--accent-1"];
       } else {
-        state.mode.WrapperStyle.backgroundColor = "rgb(255, 255, 255)";
+        state.mode.WrapperStyle.backgroundColor = "rgba(240, 245, 250,0.95)";
         state.mode.IconClassList = ["blue--text", "text--darken-4"];
       }
       state.mode.isDark = isDark;

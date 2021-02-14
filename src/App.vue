@@ -49,6 +49,38 @@ export default class App extends Vue {
   text-align: center;
 }
 
+.v-card__title {
+  font-size: x-large;
+}
+
+.v-card__text {
+  font-size: medium;
+}
+
+.v-list {
+  font-size: large;
+}
+
+.v-list-item .v-list-item__title {
+  font-size: medium;
+}
+
+a {
+  font-size: medium;
+  text-decoration: none;
+}
+
+.v-btn {
+  font-weight: normal;
+  letter-spacing: normal;
+  text-transform: none;
+  text-decoration: none;
+}
+
+.v-btn.v-size--default {
+  font-size: large;
+}
+
 @keyframes periodicallySpin {
   0% {
     transform: rotateZ(0deg);

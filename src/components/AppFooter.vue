@@ -96,12 +96,4 @@ export default class AppFooter extends Vue {
 .periodicallySpinHover:hover {
   animation: periodicallySpin 10s linear infinite;
 }
-
-.v-card__text {
-  font-size: medium;
-}
-
-.v-btn.v-size--default {
-  font-size: medium;
-}
 </style>

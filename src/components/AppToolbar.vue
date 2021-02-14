@@ -157,27 +157,11 @@ export default class AppToolbar extends Vue {
 </script>
 
 <style scoped>
-.v-btn {
-  font-weight: normal;
-  letter-spacing: normal;
-  text-indent: inherit;
-  text-transform: none;
-  white-space: normal;
-}
-
-.v-btn.v-size--default {
-  font-size: large;
-}
-
 .effect::before {
   opacity: 0.175 !important;
 }
 
 .no-effect::before {
   opacity: 0 !important;
-}
-
-.v-list-item .v-list-item__title {
-  font-size: medium;
 }
 </style>

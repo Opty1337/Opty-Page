@@ -121,7 +121,7 @@ export default class DegreeTable extends Vue {
       });
     }
     headers.push({
-      text: "0 ≤ Grade ≤ 20",
+      text: "Grade [0 - 20]",
       value: "Grade",
       align: "center",
     });
@@ -142,7 +142,7 @@ export default class DegreeTable extends Vue {
         align: "center",
       });
       headers.push({
-        text: "0 ≤ Interest ≤ 10",
+        text: "Interest [0 - 10]",
         value: "Interest",
         align: "center",
       });
@@ -187,14 +187,5 @@ export default class DegreeTable extends Vue {
 <style scoped>
 tr:hover .periodicallySpinHover {
   animation: periodicallySpin 10s linear infinite;
-}
-
-a {
-  font-size: medium;
-  text-decoration: none;
-}
-
-.v-btn.v-size--default {
-  font-size: large;
 }
 </style>

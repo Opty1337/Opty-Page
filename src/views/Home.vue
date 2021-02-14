@@ -7,7 +7,7 @@
     </v-row>
     <v-divider />
     <v-row class="ma-6" no-gutters>
-      <v-col class="ma-auto" cols="12" sm="4" md="4">
+      <v-col class="ma-auto" cols="12" sm="6" md="6" lg="4">
         <v-img
           class="ma-auto"
           src="../assets/Images/Portrait.jpg"
@@ -17,8 +17,8 @@
           >Ricardo Grade
         </v-card-title>
       </v-col>
-      <v-col class="ma-auto" cols="12" sm="4" md="4">
-        <v-list>
+      <v-col class="ma-auto" cols="12" sm="6" md="6" lg="4">
+        <v-list class="transparent">
           <v-list-item v-for="desc in description" :key="desc">
             <v-list-item-icon>
               <v-icon class="deep-orange--text" large
@@ -51,15 +51,6 @@ export default class Home extends Vue {
 </script>
 
 <style scoped>
-.v-list {
-  background-color: transparent;
-  font-size: large;
-}
-
-.v-card__title {
-  font-size: x-large;
-}
-
 .oblique {
   font-style: oblique;
 }
