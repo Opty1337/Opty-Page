@@ -1,6 +1,6 @@
 export interface MenuOption {
   readonly Name: string;
-  readonly Icon: string[];
+  readonly Icon: string;
   readonly To?: string;
   readonly Href?: string;
   readonly Target?: string;
@@ -8,15 +8,15 @@ export interface MenuOption {
 
 export interface SocialNetwork {
   readonly Href: string;
-  readonly Icon: string[];
+  readonly Icon: string;
   readonly Label: string;
 }
 
 export interface CoursesBranch {
   readonly Name: string;
   readonly HasProjects: boolean;
-  readonly Icon: string[];
-  readonly Mask?: string[];
+  readonly Icon: string;
+  readonly Mask?: string;
 }
 
 export interface Course {

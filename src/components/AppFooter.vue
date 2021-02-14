@@ -1,6 +1,6 @@
 <template>
-  <v-footer v-bind:style="mode.WrapperStyle" :dark="mode.isDark" padless>
-    <v-card class="flex transparent pa-2">
+  <v-footer class="transparent" :dark="mode.isDark">
+    <v-card class="flex transparent pa-2" flat>
       <v-card-text class="pa-1">
         <v-tooltip v-for="(socialNet, i) in socialNetworks" :key="i" bottom>
           <template v-slot:activator="{ on, attrs }">
@@ -12,10 +12,10 @@
               v-on="on"
               icon
             >
-              <font-awesome-icon
-                class="fa-2x"
+              <v-icon
                 v-bind:class="mode.IconClassList"
-                :icon="socialNet.Icon"
+                v-text="socialNet.Icon"
+                large
               />
             </v-btn>
           </template>
@@ -35,11 +35,12 @@
               v-on="on"
               icon
             >
-              <font-awesome-icon
-                class="fa-3x periodicallySpinHover"
+              <v-icon
+                class="periodicallySpinHover"
                 v-bind:class="mode.IconClassList"
-                :icon="['fab', 'vuejs']"
-              />
+                x-large
+                >fab fa-vuejs
+              </v-icon>
             </v-btn>
           </template>
           <span>Source Code</span>
@@ -59,28 +60,28 @@ export default class AppFooter extends Vue {
 
   readonly socialNetworks: SocialNetwork[] = [
     {
-      Icon: ["fab", "github"],
+      Icon: "fab fa-github",
       Href: "https://github.com/RicardoGrade",
       Label: "Github",
     },
     {
-      Icon: ["fab", "linkedin"],
+      Icon: "fab fa-linkedin",
       Href: "https://www.linkedin.com/in/RicardoGrade",
       Label: "LinkedIn",
     },
     {
-      Icon: ["fas", "envelope"],
+      Icon: "fas fa-envelope",
       Href: "mailto:ricardo.grade@tecnico.ulisboa.pt",
       Label: "Mail",
     },
     {
-      Icon: ["fab", "facebook-square"],
+      Icon: "fab fa-facebook-square",
       Href: "https://www.facebook.com/Opty1337",
       Label: "Facebook",
     },
     {
       Href: "https://discord.gg/TB86QHg",
-      Icon: ["fab", "discord"],
+      Icon: "fab fa-discord",
       Label: "Discord",
     },
   ];

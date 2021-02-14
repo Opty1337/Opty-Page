@@ -10,6 +10,10 @@ export default new VueRouter({
   routes: [
     {
       path: "/",
+      redirect: "/Home",
+    },
+    {
+      path: "/Home",
       name: "Home",
       component: Home,
       meta: {
@@ -34,7 +38,7 @@ export default new VueRouter({
     },
     {
       path: "*",
-      redirect: "/",
+      redirect: "/Home",
     },
   ],
 });

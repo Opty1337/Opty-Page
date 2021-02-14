@@ -1,36 +1,33 @@
 <template>
-  <v-card v-bind:style="mode.WrapperStyle" :dark="mode.isDark">
+  <v-card flat :dark="mode.isDark">
     <v-row no-gutters>
-      <v-col class="ma-2" cols="11" sm="4" md="4">
-        <v-fab-transition>
-          <v-card class="transparent" flat>
-            <v-card-title class="justify-center" v-text="'<!-- Welcome -->'" />
-            <v-img
-              class="ma-auto rounded-circle"
-              src="../assets/Images/Portrait.jpg"
-              max-width="60%"
-            />
-            <v-card-title class="justify-center oblique"
-              >Ricardo Grade
-            </v-card-title>
-          </v-card>
-        </v-fab-transition>
+      <v-col class="ma-auto" cols="12" sm="12" md="12">
+        <v-card-title class="justify-center" v-text="'<!-- Summary -->'" />
       </v-col>
-      <v-col class="ma-2" cols="11" sm="7" md="7">
-        <v-card class="transparent" flat>
-          <v-card-title class="justify-center" v-text="'<!-- Summary -->'" />
-          <v-list>
-            <v-list-item v-for="desc in description" :key="desc">
-              <v-list-item-icon>
-                <font-awesome-icon
-                  class="deep-orange--text fa-2x"
-                  :icon="['fas', 'chevron-right']"
-                />
-              </v-list-item-icon>
-              <v-list-item-content class="text-left" v-text="desc" />
-            </v-list-item>
-          </v-list>
-        </v-card>
+    </v-row>
+    <v-divider />
+    <v-row class="ma-6" no-gutters>
+      <v-col class="ma-auto" cols="12" sm="4" md="4">
+        <v-img
+          class="ma-auto"
+          src="../assets/Images/Portrait.jpg"
+          max-width="65%"
+        />
+        <v-card-title class="justify-center oblique"
+          >Ricardo Grade
+        </v-card-title>
+      </v-col>
+      <v-col class="ma-auto" cols="12" sm="4" md="4">
+        <v-list>
+          <v-list-item v-for="desc in description" :key="desc">
+            <v-list-item-icon>
+              <v-icon class="deep-orange--text" large
+                >fas fa-chevron-right
+              </v-icon>
+            </v-list-item-icon>
+            <v-list-item-content class="text-left" v-text="desc" />
+          </v-list-item>
+        </v-list>
       </v-col>
     </v-row>
   </v-card>

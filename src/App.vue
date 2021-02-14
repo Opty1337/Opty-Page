@@ -1,7 +1,10 @@
 <template>
-  <v-app id="app">
+  <v-app id="app" v-bind:style="mode.WrapperStyle">
     <app-toolbar />
-    <router-view class="maRouter flex" />
+    <router-view
+      class="pa-5 pa-md-10 rounded-0 flex"
+      v-bind:style="RouterViewStyle"
+    />
     <app-footer />
   </v-app>
 </template>
@@ -10,35 +13,40 @@
 import { Component, Vue } from "vue-property-decorator";
 import AppToolbar from "./components/AppToolbar.vue";
 import AppFooter from "./components/AppFooter.vue";
+import { Mode, Style } from "@/models/Types";
 
 @Component({
   components: { AppToolbar, AppFooter },
 })
 export default class App extends Vue {
+  readonly mode: Mode = this.$store.state.mode;
+
   created() {
     window.onresize = () => {
       this.$store.commit("onResize");
     };
+  }
+
+  get RouterViewStyle(): Style {
+    const style: Style = {
+      backgroundColor: "transparent",
+    };
+    style.borderTopStyle = style.borderBottomStyle = "solid";
+    style.borderTopWidth = style.borderBottomWidth = "1px";
+    style.borderTopColor = style.borderBottomColor = this.mode.isDark
+      ? "rgba(255, 255, 255, 0.12)"
+      : "rgba(0, 0, 0, 0.12)";
+    return style;
   }
 }
 </script>
 
 <style>
 #app {
-  background-image: url("./assets/Images/Background.png");
-  background-position: 0 0;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-}
-
-.maRouter {
-  margin: 2%;
-  padding: 2%;
 }
 
 @keyframes periodicallySpin {

@@ -12,17 +12,17 @@ const BSc = new Degree(
     CES: {
       Name: "Computer Engineering Sciences",
       HasProjects: true,
-      Icon: ["fas", "laptop"],
+      Icon: "fas fa-laptop",
     },
     ES: {
       Name: "Engineering Sciences",
       HasProjects: false,
-      Icon: ["fas", "calculator"],
+      Icon: "fas fa-calculator",
     },
     CCS: {
       Name: "Cross-Cutting Skills",
       HasProjects: false,
-      Icon: ["fas", "cubes"],
+      Icon: "fas fa-puzzle-piece",
     },
   },
   "CES"
@@ -34,13 +34,13 @@ const MSc = new Degree(
     SP: {
       Name: "Specializations",
       HasProjects: true,
-      Icon: ["fas", "lock"],
-      Mask: ["fas", "cloud"],
+      Icon: "fas fa-cloud",
+      Mask: "fas fa-lock",
     },
     CB: {
       Name: "Common Branch",
       HasProjects: true,
-      Icon: ["fas", "cubes"],
+      Icon: "fas fa-puzzle-piece",
     },
   },
   "SP"
@@ -50,10 +50,14 @@ export default new Vuex.Store({
   state: {
     mode: {
       inMobile: window.innerWidth < 1500,
-      isDark: false,
-      IconClassList: ["blue--text", "text--darken-4"],
+      isDark: window.innerWidth < 1500,
+      IconClassList:
+        window.innerWidth < 1500
+          ? ["blue--text", "text--accent-1"]
+          : ["blue--text", "text--darken-4"],
       WrapperStyle: {
-        backgroundColor: "rgba(230, 240, 250, 0.95)",
+        backgroundColor:
+          window.innerWidth < 1500 ? "rgb(40, 45, 50)" : "rgb(255, 255, 255)",
       },
     },
     degree: BSc,
@@ -62,13 +66,13 @@ export default new Vuex.Store({
     onResize(state) {
       state.mode.inMobile = window.innerWidth < 1350;
     },
-    changeTheme(state, isDark) {
+    modifyMode(state, isDark) {
       if (state.mode.isDark === isDark) return;
       if (isDark) {
-        state.mode.WrapperStyle.backgroundColor = "rgba(50, 60, 70, 0.95)";
+        state.mode.WrapperStyle.backgroundColor = "rgb(40, 45, 50)";
         state.mode.IconClassList = ["blue--text", "text--accent-1"];
       } else {
-        state.mode.WrapperStyle.backgroundColor = "rgba(230, 240, 250, 0.95)";
+        state.mode.WrapperStyle.backgroundColor = "rgb(255, 255, 255)";
         state.mode.IconClassList = ["blue--text", "text--darken-4"];
       }
       state.mode.isDark = isDark;

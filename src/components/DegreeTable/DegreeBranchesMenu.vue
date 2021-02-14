@@ -2,21 +2,20 @@
   <v-menu transition="slide-y-transition" open-on-hover offset-y>
     <template v-slot:activator="{ on }">
       <v-btn class="ma-2 py-8 rounded-0" :elevation="10" v-on="on" outlined>
-        <font-awesome-icon
-          class="periodicallySpin ma-2 fa-2x"
+        <span
+          class="ma-2 fa-stack periodicallySpin"
           v-bind:class="mode.IconClassList"
-          :icon="degree.SelectedBranch.Icon"
-          :mask="degree.SelectedBranch.Mask"
-          :transform="
-            degree.SelectedBranch.Mask === undefined ? undefined : 'shrink-8'
-          "
-        />
+        >
+          <i v-bind:class="[degree.SelectedBranch.Icon, 'fa-stack-2x']" />
+          <i
+            v-bind:class="[degree.SelectedBranch.Mask, 'fa-stack-1x']"
+            v-bind:style="MaskStyle"
+          />
+        </span>
         <span>Branches</span>
-        <font-awesome-icon
-          class="ma-2"
-          v-bind:class="mode.IconClassList"
-          :icon="['fas', 'chevron-down']"
-        />
+        <v-icon class="ma-2" v-bind:class="mode.IconClassList" small
+          >fas fa-chevron-down
+        </v-icon>
       </v-btn>
     </template>
     <v-list v-bind:style="mode.WrapperStyle" :dark="mode.isDark">
@@ -26,16 +25,16 @@
         @click="degree.SelectedKey = key"
         link
       >
-        <font-awesome-icon
-          class="ma-2 fa-2x"
-          v-bind:class="mode.IconClassList"
-          :icon="degree.getBranch(key).Icon"
-          :mask="degree.getBranch(key).Mask"
-          :transform="
-            degree.getBranch(key).Mask === undefined ? undefined : 'shrink-8'
-          "
-        />
-        <v-list-item-title class="ma-2" v-text="degree.getBranch(key).Name" />
+        <v-list-item-title class="text-left">
+          <span class="ma-2 fa-stack" v-bind:class="mode.IconClassList">
+            <i v-bind:class="[degree.getBranch(key).Icon, 'fa-stack-2x']" />
+            <i
+              v-bind:class="[degree.getBranch(key).Mask, 'fa-stack-1x']"
+              v-bind:style="MaskStyle"
+            />
+          </span>
+          {{ degree.getBranch(key).Name }}
+        </v-list-item-title>
       </v-list-item>
     </v-list>
   </v-menu>
@@ -43,13 +42,17 @@
 
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
-import { Mode } from "@/models/Types";
+import { Mode, Style } from "@/models/Types";
 import Degree from "@/models/Degree";
 
 @Component
 export default class DegreeBranchesMenu extends Vue {
   readonly mode: Mode = this.$store.state.mode;
   readonly degree: Degree = this.$store.state.degree;
+
+  get MaskStyle(): Style {
+    return { color: this.mode.WrapperStyle.backgroundColor };
+  }
 }
 </script>
 

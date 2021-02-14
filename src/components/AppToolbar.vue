@@ -1,9 +1,9 @@
 <template>
   <div>
     <!-- TopBar -->
-    <v-toolbar v-bind:style="mode.WrapperStyle" :dark="mode.isDark">
+    <v-toolbar class="transparent" :dark="mode.isDark" flat>
       <v-toolbar-items v-if="!mode.inMobile">
-        <v-btn to="/" active-class="no-effect" text>
+        <v-btn to="/Home" active-class="no-effect" text>
           <v-list-item>
             <v-list-item-avatar tile>
               <v-img src="../assets/Images/Portfolio.png" />
@@ -26,10 +26,11 @@
           :target="item.Target"
           text
         >
-          <font-awesome-icon
-            class="ma-3 fa-2x"
+          <v-icon
+            class="ma-3"
             v-bind:class="mode.IconClassList"
-            :icon="item.Icon"
+            v-text="item.Icon"
+            large
           />
           {{ item.Name }}
         </v-btn>
@@ -38,10 +39,11 @@
       <v-toolbar-items class="fill-height">
         <v-container>
           <v-switch
-            v-model="Switch"
-            :label="mode.isDark ? 'Darken' : 'Lighten'"
+            v-model="DarkMode"
+            prepend-icon="fas fa-moon"
+            color="#FFC107"
             inset
-          ></v-switch>
+          />
         </v-container>
       </v-toolbar-items>
     </v-toolbar>
@@ -55,7 +57,11 @@
       v-bind:style="mode.WrapperStyle"
       :dark="mode.isDark"
     >
-      <v-toolbar v-bind:style="mode.WrapperStyle" :dark="mode.isDark">
+      <v-toolbar
+        v-bind:style="mode.WrapperStyle"
+        :dark="mode.isDark"
+        :elevation="0"
+      >
         <v-list nav>
           <v-list-item>
             <v-list-item-avatar tile>
@@ -68,6 +74,7 @@
           </v-list-item>
         </v-list>
       </v-toolbar>
+      <v-divider />
       <v-list nav>
         <v-list-item
           v-for="(item, i) in menuOptions"
@@ -78,10 +85,10 @@
           link
         >
           <v-list-item-action>
-            <font-awesome-icon
-              class="fa-2x"
+            <v-icon
               v-bind:class="mode.IconClassList"
-              :icon="item.Icon"
+              v-text="item.Icon"
+              large
             />
           </v-list-item-action>
           <v-list-item-content>
@@ -103,45 +110,45 @@ export default class AppToolbar extends Vue {
 
   drawer: boolean = false;
 
-  set Switch(isDark: boolean) {
-    this.$store.commit("changeTheme", isDark);
+  set DarkMode(isDark: boolean) {
+    this.$store.commit("modifyMode", isDark);
   }
 
-  get Switch() {
+  get DarkMode() {
     return this.mode.isDark;
   }
 
   readonly menuOptions: MenuOption[] = [
     {
       Name: "Home",
-      Icon: ["fas", "igloo"],
-      To: "/",
+      Icon: "fas fa-igloo",
+      To: "/Home",
     },
     {
       Name: "BSc",
-      Icon: ["fas", "user-graduate"],
+      Icon: "fas fa-user-graduate",
       To: "/BSc",
     },
     {
       Name: "MSc",
-      Icon: ["fas", "graduation-cap"],
+      Icon: "fas fa-graduation-cap",
       To: "/MSc",
     },
     {
       Name: "Curriculum Vitae",
-      Icon: ["fas", "id-card-alt"],
+      Icon: "fas fa-id-card-alt",
       Href: "./OptyCV.pdf",
       Target: "_blank",
     },
     {
       Name: "Personal Projects",
-      Icon: ["fab", "github"],
+      Icon: "fab fa-github",
       Href: "https://github.com/Opty-Projects",
       Target: "_blank",
     },
     {
       Name: "Certificates",
-      Icon: ["fas", "certificate"],
+      Icon: "fas fa-certificate",
       Href: "https://github.com/RicardoGrade/Certificates",
       Target: "_blank",
     },
