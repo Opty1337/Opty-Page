@@ -11,7 +11,11 @@ const routes: Array<RouteConfig> = [
   {
     path: "/Home",
     name: "Home",
-    component: () => import("@/views/Home.vue"),
+    component: () =>
+      import(
+        /* webpackChunkName: "Home" */
+        "@/views/Home.vue"
+      ),
     meta: {
       title: "Opty's Home",
     },
@@ -19,7 +23,11 @@ const routes: Array<RouteConfig> = [
   {
     path: "/BSc",
     name: "BSc",
-    component: () => import("@/views/BSc.vue"),
+    component: () =>
+      import(
+        /* webpackChunkName: "BSc" */
+        "@/views/BSc.vue"
+      ),
     meta: {
       title: "Opty's BSc",
     },
@@ -27,7 +35,11 @@ const routes: Array<RouteConfig> = [
   {
     path: "/MSc",
     name: "MSc",
-    component: () => import("@/views/MSc.vue"),
+    component: () =>
+      import(
+        /* webpackChunkName: "MSc" */
+        "@/views/MSc.vue"
+      ),
     meta: {
       title: "Opty's MSc",
     },

@@ -1,6 +1,6 @@
-# Optyfolio
+# Optyfolio (Opty + Portfolio)
 
-<img src="src/assets/Images/Portfolio.png" alt="Opty-Portfolio-Icon" width="200">
+<img src="src/assets/Images/Portfolio.png" alt="Optyfolio-Icon" width="200">
 
 ### Components
 

@@ -1,6 +1,16 @@
 {
   "name": "optyfolio",
-  "version": "2.0.0",
+  "version": "2.1.0",
+  "description": "My Portfolio",
+  "homepage": "https://RicardoGrade.github.io/",
+  "author": {
+    "name": "Ricardo Grade",
+    "email": "ricardo.grade@tecnico.ulisboa.pt"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Opty-Projects/Optyfolio.git"
+  },
   "license": "MIT",
   "private": true,
   "scripts": {
