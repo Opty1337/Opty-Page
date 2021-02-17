@@ -1,22 +1,22 @@
 <template>
   <div>
     <!-- TopBar -->
-    <v-toolbar class="transparent" :dark="mode.isDark" flat>
-      <v-toolbar-items v-if="!mode.inMobile">
+    <v-toolbar class="appBackground" :dark="aService.dark" flat>
+      <v-toolbar-items v-if="!aService.inMobile">
         <v-btn to="/Home" active-class="no-effect" text>
           <v-list-item>
             <v-list-item-avatar tile>
               <v-img src="../assets/Images/Portfolio.png" />
             </v-list-item-avatar>
             <v-list-item-content>
-              <v-toolbar-title>Opty Portfolio</v-toolbar-title>
+              <v-toolbar-title class="appText">Optyfolio</v-toolbar-title>
             </v-list-item-content>
           </v-list-item>
         </v-btn>
       </v-toolbar-items>
       <v-app-bar-nav-icon v-else @click.stop="drawer = !drawer" />
-      <v-spacer v-if="!mode.inMobile" />
-      <v-toolbar-items v-if="!mode.inMobile">
+      <v-spacer v-if="!aService.inMobile" />
+      <v-toolbar-items v-if="!aService.inMobile">
         <v-btn
           active-class="effect"
           v-for="(item, i) in menuOptions"
@@ -26,22 +26,17 @@
           :target="item.Target"
           text
         >
-          <v-icon
-            class="ma-3"
-            v-bind:class="mode.IconClassList"
-            v-text="item.Icon"
-            large
-          />
-          {{ item.Name }}
+          <font-awesome-icon class="fa-2x ma-3" :icon="item.Icon" />
+          <v-toolbar-title class="appText" v-text="item.Name" />
         </v-btn>
       </v-toolbar-items>
       <v-spacer />
       <v-toolbar-items class="fill-height">
         <v-container>
           <v-switch
-            v-model="DarkMode"
-            prepend-icon="fas fa-moon"
-            color="#FFC107"
+            v-model="aService.dark"
+            prepend-icon="$moon"
+            color="rgb(255, 195, 5)"
             inset
           />
         </v-container>
@@ -49,27 +44,25 @@
     </v-toolbar>
     <!-- Mobile Side Menu -->
     <v-navigation-drawer
-      v-if="mode.inMobile"
+      class="appBackground"
+      :dark="aService.dark"
+      v-if="aService.inMobile"
       v-model="drawer"
       app
       absolute
       temporary
-      v-bind:style="mode.WrapperStyle"
-      :dark="mode.isDark"
     >
-      <v-toolbar
-        v-bind:style="mode.WrapperStyle"
-        :dark="mode.isDark"
-        :elevation="0"
-      >
+      <v-toolbar class="appBackground" flat :dark="aService.dark">
         <v-list nav>
           <v-list-item>
             <v-list-item-avatar tile>
               <v-img src="../assets/Images/Portfolio.png" />
             </v-list-item-avatar>
             <v-list-item-content>
-              <v-list-item-title>Menu</v-list-item-title>
-              <v-list-item-subtitle>Opty Portfolio</v-list-item-subtitle>
+              <v-list-item-title class="appText">Menu</v-list-item-title>
+              <v-list-item-subtitle class="appText"
+                >Optyfolio
+              </v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
         </v-list>
@@ -77,6 +70,7 @@
       <v-divider />
       <v-list nav>
         <v-list-item
+          active-class="effect"
           v-for="(item, i) in menuOptions"
           :key="i"
           :to="item.To"
@@ -85,14 +79,10 @@
           link
         >
           <v-list-item-action>
-            <v-icon
-              v-bind:class="mode.IconClassList"
-              v-text="item.Icon"
-              large
-            />
+            <font-awesome-icon class="fa-2x" :icon="item.Icon" />
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title v-text="item.Name" />
+            <v-list-item-title class="appText" v-text="item.Name" />
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -102,53 +92,46 @@
 
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
-import { MenuOption, Mode } from "@/models/Types";
+import AppService from "@/services/App/AppService";
+import { MenuOption } from "@/models/App";
 
 @Component
 export default class AppToolbar extends Vue {
-  readonly mode: Mode = this.$store.state.mode;
+  readonly aService = AppService.singleton;
 
-  drawer: boolean = false;
-
-  set DarkMode(isDark: boolean) {
-    this.$store.commit("modifyMode", isDark);
-  }
-
-  get DarkMode() {
-    return this.mode.isDark;
-  }
+  drawer = false;
 
   readonly menuOptions: MenuOption[] = [
     {
       Name: "Home",
-      Icon: "fas fa-igloo",
+      Icon: ["fas", "igloo"],
       To: "/Home",
     },
     {
       Name: "BSc",
-      Icon: "fas fa-user-graduate",
+      Icon: ["fas", "university"],
       To: "/BSc",
     },
     {
       Name: "MSc",
-      Icon: "fas fa-graduation-cap",
+      Icon: ["fas", "user-graduate"],
       To: "/MSc",
     },
     {
       Name: "Curriculum Vitae",
-      Icon: "fas fa-id-card-alt",
+      Icon: ["fas", "id-card-alt"],
       Href: "./OptyCV.pdf",
       Target: "_blank",
     },
     {
       Name: "Personal Projects",
-      Icon: "fab fa-github",
+      Icon: ["fab", "github"],
       Href: "https://github.com/Opty-Projects",
       Target: "_blank",
     },
     {
       Name: "Certificates",
-      Icon: "fas fa-certificate",
+      Icon: ["fas", "certificate"],
       Href: "https://github.com/RicardoGrade/Certificates",
       Target: "_blank",
     },
@@ -158,7 +141,7 @@ export default class AppToolbar extends Vue {
 
 <style scoped>
 .effect::before {
-  opacity: 0.175 !important;
+  opacity: 0.15 !important;
 }
 
 .no-effect::before {

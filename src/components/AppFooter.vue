@@ -1,49 +1,43 @@
 <template>
-  <v-footer class="transparent" :dark="mode.isDark">
+  <v-footer class="appBackground" :dark="aService.dark">
     <v-card class="flex transparent pa-2" flat>
       <v-card-text class="pa-1">
-        <v-tooltip v-for="(socialNet, i) in socialNetworks" :key="i" bottom>
+        <v-tooltip v-for="(sNet, i) in socialNetworks" :key="i" bottom>
           <template v-slot:activator="{ on, attrs }">
             <v-btn
               class="px-6 periodicallySpinHover"
-              :href="socialNet.Href"
+              :href="sNet.Href"
               target="_blank"
               v-bind="attrs"
               v-on="on"
               icon
             >
-              <v-icon
-                v-bind:class="mode.IconClassList"
-                v-text="socialNet.Icon"
-                large
-              />
+              <font-awesome-icon class="bodyIcon fa-2x" :icon="sNet.Icon" />
             </v-btn>
           </template>
-          <span v-text="socialNet.Label" />
+          <span class="appText" v-text="sNet.Label" />
         </v-tooltip>
       </v-card-text>
-      <v-card-text class="pa-2" v-bind:style="AuthorStyle">
-        Ricardo Grade &#8226; {{ new Date().toDateString() }}
+      <v-card-text class="appText pa-2">
+        Ricardo Grade &bull; {{ new Date().toDateString() }}
       </v-card-text>
       <v-card-text class="pa-1">
         <v-tooltip bottom>
           <template v-slot:activator="{ on, attrs }">
             <v-btn
-              href="https://github.com/Opty-Projects/Portfolio"
+              href="https://github.com/Opty-Projects/Optyfolio"
               target="_blank"
               v-bind="attrs"
               v-on="on"
               icon
             >
-              <v-icon
-                class="periodicallySpinHover"
-                v-bind:class="mode.IconClassList"
-                x-large
-                >fab fa-vuejs
-              </v-icon>
+              <font-awesome-icon
+                class="bodyIcon fa-2x periodicallySpinHover"
+                :icon="['fab', 'vuejs']"
+              />
             </v-btn>
           </template>
-          <span>Source Code</span>
+          <span class="appText">Source Code</span>
         </v-tooltip>
       </v-card-text>
     </v-card>
@@ -52,48 +46,49 @@
 
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
-import { Mode, SocialNetwork, Style } from "@/models/Types";
+import AppService from "@/services/App/AppService";
+import { SocialNetwork } from "@/models/App";
 
 @Component
 export default class AppFooter extends Vue {
-  readonly mode: Mode = this.$store.state.mode;
+  readonly aService = AppService.singleton;
 
   readonly socialNetworks: SocialNetwork[] = [
     {
-      Icon: "fab fa-github",
+      Icon: ["fab", "github"],
       Href: "https://github.com/RicardoGrade",
       Label: "Github",
     },
     {
-      Icon: "fab fa-linkedin",
+      Icon: ["fab", "linkedin"],
       Href: "https://www.linkedin.com/in/RicardoGrade",
       Label: "LinkedIn",
     },
     {
-      Icon: "fas fa-envelope",
+      Icon: ["fas", "envelope"],
       Href: "mailto:ricardo.grade@tecnico.ulisboa.pt",
       Label: "Mail",
     },
     {
-      Icon: "fab fa-facebook-square",
+      Icon: ["fab", "facebook-square"],
       Href: "https://www.facebook.com/Opty1337",
       Label: "Facebook",
     },
     {
       Href: "https://discord.gg/TB86QHg",
-      Icon: "fab fa-discord",
+      Icon: ["fab", "discord"],
       Label: "Discord",
     },
   ];
-
-  get AuthorStyle(): Style {
-    return { color: this.mode.isDark ? "white" : "black" };
-  }
 }
 </script>
 
 <style scoped>
 .periodicallySpinHover:hover {
   animation: periodicallySpin 10s linear infinite;
+}
+
+.v-card__text {
+  font-size: medium;
 }
 </style>

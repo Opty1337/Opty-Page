@@ -1,10 +1,9 @@
 <template>
-  <v-app id="app" v-bind:style="mode.WrapperStyle">
+  <v-app id="app">
     <app-toolbar />
-    <router-view
-      class="pa-5 pa-md-10 rounded-0 flex"
-      v-bind:style="RouterViewStyle"
-    />
+    <v-divider :dark="aService.dark" />
+    <router-view class="pa-5 pa-md-10 rounded-0 flex" />
+    <v-divider :dark="aService.dark" />
     <app-footer />
   </v-app>
 </template>
@@ -13,31 +12,13 @@
 import { Component, Vue } from "vue-property-decorator";
 import AppToolbar from "./components/AppToolbar.vue";
 import AppFooter from "./components/AppFooter.vue";
-import { Mode, Style } from "@/models/Types";
+import AppService from "@/services/App/AppService";
 
 @Component({
   components: { AppToolbar, AppFooter },
 })
 export default class App extends Vue {
-  readonly mode: Mode = this.$store.state.mode;
-
-  created() {
-    window.onresize = () => {
-      this.$store.commit("onResize");
-    };
-  }
-
-  get RouterViewStyle(): Style {
-    const style: Style = {
-      backgroundColor: "transparent",
-    };
-    style.borderTopStyle = style.borderBottomStyle = "solid";
-    style.borderTopWidth = style.borderBottomWidth = "1px";
-    style.borderTopColor = style.borderBottomColor = this.mode.isDark
-      ? "rgba(255, 255, 255, 0.12)"
-      : "rgba(0, 0, 0, 0.12)";
-    return style;
-  }
+  readonly aService = AppService.singleton;
 }
 </script>
 
@@ -49,36 +30,68 @@ export default class App extends Vue {
   text-align: center;
 }
 
-.v-card__title {
-  font-size: x-large;
+.theme--light.appBackground {
+  background-color: white !important;
 }
 
-.v-card__text {
-  font-size: medium;
+.theme--dark.appBackground {
+  background-color: #272727 !important;
 }
 
-.v-list {
-  font-size: large;
+.theme--light .appText,
+.theme--light.v-data-table,
+.theme--light.v-input input {
+  color: black !important;
 }
 
-.v-list-item .v-list-item__title {
-  font-size: medium;
+.theme--dark .appText,
+.theme--dark.v-data-table,
+.theme--dark.v-input input {
+  color: rgba(255, 255, 255, 0.6) !important;
 }
 
-a {
-  font-size: medium;
-  text-decoration: none;
+.theme--light .svg-inline--fa,
+.theme--light .v-input__slot {
+  color: rgb(80, 50, 185) !important;
+}
+
+.theme--light.v-divider,
+.theme--light.v-btn--outlined {
+  border-color: rgb(80, 50, 185) !important;
+}
+
+.theme--light .v-input__slot {
+  caret-color: rgb(80, 50, 185) !important;
+}
+
+.theme--dark .svg-inline--fa,
+.theme--dark .v-input__slot {
+  color: rgb(255, 195, 5) !important;
+}
+
+.theme--dark.v-divider,
+.theme--dark.v-btn--outlined {
+  border-color: rgb(255, 195, 5) !important;
+}
+
+.theme--dark .v-input__slot {
+  caret-color: rgb(255, 195, 5) !important;
+}
+
+.theme--light .bodyIcon,
+.theme--light.v-data-table a {
+  color: rgb(65, 85, 185) !important;
+}
+
+.theme--dark .bodyIcon,
+.theme--dark.v-data-table a {
+  color: rgba(35, 150, 245, 0.9) !important;
 }
 
 .v-btn {
-  font-weight: normal;
   letter-spacing: normal;
   text-transform: none;
-  text-decoration: none;
-}
-
-.v-btn.v-size--default {
-  font-size: large;
+  font-size: large !important;
 }
 
 @keyframes periodicallySpin {

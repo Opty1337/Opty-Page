@@ -1,4 +1,4 @@
-# Portfolio
+# Optyfolio
 
 <img src="src/assets/Images/Portfolio.png" alt="Opty-Portfolio-Icon" width="200">
 

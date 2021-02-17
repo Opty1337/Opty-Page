@@ -1,36 +1,37 @@
 <template>
   <v-data-table
-    :headers="Headers"
-    :items="degree.SelectedCourses"
+    class="appBackground"
+    :dark="aService.dark"
+    :headers="headers"
+    :items="cService.currentCourses"
     :search="search"
     hide-default-footer
     disable-pagination
     :mobile-breakpoint="1200"
-    :dark="mode.isDark"
   >
     <template v-slot:top>
       <v-container fluid>
-        <v-card-title v-bind:style="CardTitleStyle">
-          <degree-branches-menu />
+        <v-card-title v-bind:style="cardTitleStyle">
+          <courses-branches-menu />
           <v-spacer />
-          <div class="mx-2" v-text="degree.SelectedBranch.Name" />
+          <div class="appText mx-2" v-text="cService.currentBranch.Name" />
           <v-spacer />
           <div class="mx-2">
-            Grades Average
+            <span class="appText">Grades Average</span>
             <v-chip
-              class="mx-2 pa-6 rounded-0"
-              v-text="degree.SelectedCoursesAVG.toFixed(1)"
-              v-bind:style="getGradeStyle(degree.SelectedCoursesAVG)"
+              class="appText mx-2 pa-6 rounded-0"
+              v-text="cService.currentCoursesAvg.toFixed(1)"
+              v-bind:style="getGradeStyle(cService.currentCoursesAvg)"
             />
           </div>
           <v-spacer />
-          <v-switch v-model="coursesDetails" label="Courses Details" inset />
+          <v-switch v-model="cDetails" label="Courses Details" inset />
           <v-spacer />
           <v-text-field
-            v-model="search"
-            append-icon="fas fa-search"
-            label="Search"
             class="mx-2"
+            v-model="search"
+            append-icon="$search"
+            label="Search"
             single-line
             hide-details
           />
@@ -42,7 +43,6 @@
       <v-tooltip bottom>
         <template v-slot:activator="{ on, attrs }">
           <a
-            v-bind:class="mode.IconClassList"
             :href="item.Href"
             target="_blank"
             v-bind="attrs"
@@ -50,7 +50,7 @@
             v-text="item.Name"
           />
         </template>
-        <span>Course Page</span>
+        <span class="appText">Course Page</span>
       </v-tooltip>
     </template>
 
@@ -58,52 +58,67 @@
       <v-tooltip bottom>
         <template v-slot:activator="{ on, attrs }">
           <v-btn
-            v-bind:class="mode.IconClassList"
             :href="item.Github"
             target="_blank"
             v-bind="attrs"
             v-on="on"
             icon
           >
-            <v-icon class="periodicallySpinHover" large>fab fa-github</v-icon>
+            <font-awesome-icon
+              class="bodyIcon fa-2x periodicallySpinHover"
+              :icon="['fab', 'github']"
+            />
           </v-btn>
         </template>
-        <span>Projects Repository</span>
+        <span class="appText">Projects Repository</span>
       </v-tooltip>
     </template>
 
     <template v-slot:[`item.Grade`]="{ item }">
       <v-chip
-        class="pa-6 rounded-0"
+        class="appText pa-6 rounded-0"
         v-bind:style="getGradeStyle(item.Grade)"
         v-text="item.Grade"
       />
     </template>
 
-    <template v-slot:[`item.ECTS`]="{ item }"
-      >{{ item.ECTS.toFixed(1) }}
+    <template v-slot:[`item.ECTS`]="{ item }">
+      <span class="appText" v-text="item.ECTS.toFixed(1)" />
+    </template>
+
+    <template v-slot:[`item.Period`]="{ item }">
+      <span class="appText" v-text="item.Period" />
+    </template>
+
+    <template v-slot:[`item.Year`]="{ item }">
+      <span class="appText" v-text="item.Year" />
+    </template>
+
+    <template v-slot:[`item.Interest`]="{ item }">
+      <span class="appText" v-text="item.Interest" />
     </template>
   </v-data-table>
 </template>
 
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
-import { Mode, Style } from "@/models/Types";
+import CoursesBranchesMenu from "@/components/CoursesTable/CoursesBranchesMenu.vue";
+import AppService from "@/services/App/AppService";
+import CoursesService from "@/services/Courses/CoursesService";
 import { DataTableHeader } from "vuetify";
-import DegreeBranchesMenu from "@/components/DegreeTable/DegreeBranchesMenu.vue";
-import Degree from "@/models/Degree";
+import { Style } from "@/models/App";
 
 @Component({
-  components: { DegreeBranchesMenu },
+  components: { CoursesBranchesMenu },
 })
 export default class DegreeTable extends Vue {
-  readonly mode: Mode = this.$store.state.mode;
-  readonly degree: Degree = this.$store.state.degree;
+  readonly aService = AppService.singleton;
+  readonly cService = CoursesService.singleton;
 
-  coursesDetails: boolean = false;
-  search: string = "";
+  cDetails = false;
+  search = "";
 
-  get Headers(): DataTableHeader[] {
+  get headers(): DataTableHeader[] {
     let headers: DataTableHeader[] = [
       {
         text: "Course",
@@ -111,7 +126,7 @@ export default class DegreeTable extends Vue {
         align: "start",
       },
     ];
-    if (this.degree.SelectedBranch.HasProjects) {
+    if (this.cService.currentBranch.HasProjects) {
       headers.push({
         text: "Projects",
         value: "Github",
@@ -125,7 +140,7 @@ export default class DegreeTable extends Vue {
       value: "Grade",
       align: "center",
     });
-    if (this.coursesDetails) {
+    if (this.cDetails) {
       headers.push({
         text: "ECTS",
         value: "ECTS",
@@ -156,23 +171,19 @@ export default class DegreeTable extends Vue {
       fontWeight: "normal",
     };
     if (grade >= 18) {
-      style.backgroundColor = "#4CAF50";
-      style.color = "white";
+      style.backgroundColor = "rgba(75, 175, 80, 0.6)";
     } else if (grade >= 15) {
-      style.backgroundColor = "#CDDC39";
-      style.color = "black";
+      style.backgroundColor = "rgba(205, 220, 55, 0.6)";
     } else if (grade >= 10) {
-      style.backgroundColor = "#FFC107";
-      style.color = "black";
+      style.backgroundColor = "rgba(255, 195, 5, 0.6)";
     } else {
-      style.backgroundColor = "#F44336";
-      style.color = "white";
+      style.backgroundColor = "rgba(255, 85, 35, 0.6)";
     }
     return style;
   }
 
-  get CardTitleStyle(): Style {
-    return this.mode.inMobile
+  get cardTitleStyle(): Style {
+    return this.aService.inMobile
       ? {
           fontSize: "medium",
           lineHeight: "3",
@@ -185,7 +196,24 @@ export default class DegreeTable extends Vue {
 </script>
 
 <style scoped>
+a {
+  font-size: medium;
+  text-decoration: none;
+}
+
 tr:hover .periodicallySpinHover {
   animation: periodicallySpin 10s linear infinite;
+}
+
+.theme--light.v-data-table tr:hover {
+  background: rgba(0, 0, 0, 0.05) !important;
+}
+
+.theme--dark.v-data-table tr:hover {
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.v-data-table__mobile-row__header {
+  font-weight: normal !important;
 }
 </style>

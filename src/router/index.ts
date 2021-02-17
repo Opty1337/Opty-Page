@@ -1,44 +1,47 @@
 import Vue from "vue";
-import VueRouter from "vue-router";
-import Home from "@/views/Home.vue";
-import BSc from "@/views/BSc.vue";
-import MSc from "@/views/MSc.vue";
+import VueRouter, { RouteConfig } from "vue-router";
 
 Vue.use(VueRouter);
 
-export default new VueRouter({
-  routes: [
-    {
-      path: "/",
-      redirect: "/Home",
+const routes: Array<RouteConfig> = [
+  {
+    path: "/",
+    redirect: "/Home",
+  },
+  {
+    path: "/Home",
+    name: "Home",
+    component: () => import("@/views/Home.vue"),
+    meta: {
+      title: "Opty's Home",
     },
-    {
-      path: "/Home",
-      name: "Home",
-      component: Home,
-      meta: {
-        title: "Opty's Home",
-      },
+  },
+  {
+    path: "/BSc",
+    name: "BSc",
+    component: () => import("@/views/BSc.vue"),
+    meta: {
+      title: "Opty's BSc",
     },
-    {
-      path: "/BSc",
-      name: "BSc",
-      component: BSc,
-      meta: {
-        title: "Opty's BSc",
-      },
+  },
+  {
+    path: "/MSc",
+    name: "MSc",
+    component: () => import("@/views/MSc.vue"),
+    meta: {
+      title: "Opty's MSc",
     },
-    {
-      path: "/MSc",
-      name: "MSc",
-      component: MSc,
-      meta: {
-        title: "Opty's MSc",
-      },
-    },
-    {
-      path: "*",
-      redirect: "/Home",
-    },
-  ],
+  },
+  {
+    path: "*",
+    redirect: "/Home",
+  },
+];
+
+const router = new VueRouter({
+  mode: "history",
+  base: process.env.BASE_URL,
+  routes,
 });
+
+export default router;

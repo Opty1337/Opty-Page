@@ -1,0 +1,22 @@
+{
+  "SP": {
+    "Name": "Specializations",
+    "HasProjects": true,
+    "Icon": [
+      "fas",
+      "lock"
+    ],
+    "Mask": [
+      "fas",
+      "cloud"
+    ]
+  },
+  "CB": {
+    "Name": "Common Branch",
+    "HasProjects": true,
+    "Icon": [
+      "fas",
+      "puzzle-piece"
+    ]
+  }
+}

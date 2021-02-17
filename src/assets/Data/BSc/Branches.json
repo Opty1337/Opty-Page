@@ -1,0 +1,26 @@
+{
+  "CES": {
+    "Name": "Computer Engineering Sciences",
+    "HasProjects": true,
+    "Icon": [
+      "fas",
+      "laptop"
+    ]
+  },
+  "ES": {
+    "Name": "Engineering Sciences",
+    "HasProjects": false,
+    "Icon": [
+      "fas",
+      "calculator"
+    ]
+  },
+  "CCS": {
+    "Name": "Cross-Cutting Skills",
+    "HasProjects": false,
+    "Icon": [
+      "fas",
+      "puzzle-piece"
+    ]
+  }
+}
