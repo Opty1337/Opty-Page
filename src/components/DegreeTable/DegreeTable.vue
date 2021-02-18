@@ -1,9 +1,9 @@
 <template>
   <v-data-table
     class="appBackground"
-    :dark="aService.dark"
+    :dark="themeService.dark"
     :headers="headers"
-    :items="cService.currentCourses"
+    :items="degreeService.branch.Courses"
     :search="search"
     hide-default-footer
     disable-pagination
@@ -12,16 +12,16 @@
     <template v-slot:top>
       <v-container fluid>
         <v-card-title v-bind:style="cardTitleStyle">
-          <courses-branches-menu />
+          <degree-branches-menu :degree-service="degreeService" />
           <v-spacer />
-          <div class="appText mx-2" v-text="cService.currentBranch.Name" />
+          <div class="appText mx-2" v-text="degreeService.branch.Name" />
           <v-spacer />
           <div class="mx-2">
-            <span class="appText">Grades Average</span>
+            <span class="appText">Weighted Average</span>
             <v-chip
               class="appText mx-2 pa-6 rounded-0"
-              v-text="cService.currentCoursesAvg.toFixed(1)"
-              v-bind:style="getGradeStyle(cService.currentCoursesAvg)"
+              v-text="degreeService.branch.WeightedAVG.toFixed(1)"
+              v-bind:style="getGradeStyle(degreeService.branch.WeightedAVG)"
             />
           </div>
           <v-spacer />
@@ -101,20 +101,23 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from "vue-property-decorator";
-import CoursesBranchesMenu from "@/components/CoursesTable/CoursesBranchesMenu.vue";
-import AppService from "@/services/App/AppService";
-import CoursesService from "@/services/Courses/CoursesService";
+import { Vue, Component, Prop } from "vue-property-decorator";
+import { PropType } from "vue";
 import { DataTableHeader } from "vuetify";
-import { Style } from "@/models/App";
+import Style from "@/models/Style";
+import DegreeBranchesMenu from "@/components/DegreeTable/DegreeBranchesMenu.vue";
+import DegreeService from "@/services/Degree/DegreeService";
+import ThemeService from "@/services/ThemeService";
+import DeviceService from "@/services/DeviceService";
 
 @Component({
-  components: { CoursesBranchesMenu },
+  components: { DegreeBranchesMenu },
 })
 export default class DegreeTable extends Vue {
-  readonly aService = AppService.singleton;
-  readonly cService = CoursesService.singleton;
-
+  @Prop({ type: Object as PropType<DegreeService>, required: true })
+  readonly degreeService!: DegreeService;
+  readonly themeService = ThemeService.singleton;
+  readonly deviceService = DeviceService.singleton;
   cDetails = false;
   search = "";
 
@@ -126,7 +129,7 @@ export default class DegreeTable extends Vue {
         align: "start",
       },
     ];
-    if (this.cService.currentBranch.HasProjects) {
+    if (this.degreeService.branch.HasGithub) {
       headers.push({
         text: "Projects",
         value: "Github",
@@ -183,10 +186,10 @@ export default class DegreeTable extends Vue {
   }
 
   get cardTitleStyle(): Style {
-    return this.aService.inMobile
+    return this.deviceService.inMobile
       ? {
           fontSize: "medium",
-          lineHeight: "3",
+          lineHeight: 3,
         }
       : {
           fontSize: "large",

@@ -1,18 +1,16 @@
 <template>
-  <courses-table />
+  <degree-table :degree-service="mScService" />
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import CoursesTable from "@/components/CoursesTable/CoursesTable.vue";
-import CoursesService from "@/services/Courses/CoursesService";
+import DegreeTable from "@/components/DegreeTable/DegreeTable.vue";
+import MScService from "@/services/Degree/MScService";
 
 @Component({
-  components: { CoursesTable },
+  components: { DegreeTable },
 })
 export default class BSc extends Vue {
-  created(): void {
-    CoursesService.singleton.toMSc();
-  }
+  readonly mScService = MScService.singleton;
 }
 </script>

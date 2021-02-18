@@ -1,0 +1,42 @@
+[
+  {
+    "Icon": [
+      "fab",
+      "github"
+    ],
+    "Href": "https://github.com/RicardoGrade",
+    "Label": "Github"
+  },
+  {
+    "Icon": [
+      "fab",
+      "linkedin"
+    ],
+    "Href": "https://www.linkedin.com/in/RicardoGrade",
+    "Label": "LinkedIn"
+  },
+  {
+    "Icon": [
+      "fas",
+      "envelope"
+    ],
+    "Href": "mailto:ricardo.grade@tecnico.ulisboa.pt",
+    "Label": "Mail"
+  },
+  {
+    "Icon": [
+      "fab",
+      "facebook-square"
+    ],
+    "Href": "https://www.facebook.com/Opty1337",
+    "Label": "Facebook"
+  },
+  {
+    "Href": "https://discord.gg/TB86QHg",
+    "Icon": [
+      "fab",
+      "discord"
+    ],
+    "Label": "Discord"
+  }
+]

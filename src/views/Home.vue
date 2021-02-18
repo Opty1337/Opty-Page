@@ -1,5 +1,5 @@
 <template>
-  <v-card class="appBackground" :dark="aService.dark" flat>
+  <v-card class="appBackground" :dark="themeService.dark" flat>
     <v-row no-gutters>
       <v-col class="ma-auto" cols="12" sm="12" md="12">
         <v-card-title
@@ -39,12 +39,11 @@
 
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
-import AppService from "@/services/App/AppService";
+import ThemeService from "@/services/ThemeService";
 
 @Component
 export default class Home extends Vue {
-  readonly aService = AppService.singleton;
-
+  readonly themeService = ThemeService.singleton;
   readonly description: string[] = [
     "Hi! My name is Ricardo Grade. I'm 21 Years old. I'm a Bologna MSc Student in Computer Science & Engineering @ Instituto Superior Técnico. In which I'm Specializing in Distributed Systems & Cyber-Security.",
     "I've a Scholarship within the Scope of the IST Project - Taguspark R&D Activities. In which I Develop & Maintain Functionalities of Applications to Support the Management of IST - Taguspark.",

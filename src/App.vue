@@ -1,24 +1,24 @@
 <template>
   <v-app id="app">
     <app-toolbar />
-    <v-divider :dark="aService.dark" />
+    <v-divider :dark="themeService.dark" />
     <router-view class="pa-5 pa-md-10 rounded-0 flex" />
-    <v-divider :dark="aService.dark" />
+    <v-divider :dark="themeService.dark" />
     <app-footer />
   </v-app>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import AppToolbar from "./components/AppToolbar.vue";
-import AppFooter from "./components/AppFooter.vue";
-import AppService from "@/services/App/AppService";
+import AppToolbar from "@/components/AppToolbar.vue";
+import AppFooter from "@/components/AppFooter.vue";
+import ThemeService from "@/services/ThemeService";
 
 @Component({
   components: { AppToolbar, AppFooter },
 })
 export default class App extends Vue {
-  readonly aService = AppService.singleton;
+  readonly themeService = ThemeService.singleton;
 }
 </script>
 
@@ -52,40 +52,40 @@ export default class App extends Vue {
 
 .theme--light .svg-inline--fa,
 .theme--light .v-input__slot {
-  color: rgb(80, 50, 185) !important;
+  color: rgb(100, 55, 180) !important;
 }
 
 .theme--light.v-divider,
 .theme--light.v-btn--outlined {
-  border-color: rgb(80, 50, 185) !important;
+  border-color: rgb(100, 55, 180) !important;
 }
 
 .theme--light .v-input__slot {
-  caret-color: rgb(80, 50, 185) !important;
+  caret-color: rgb(100, 55, 180) !important;
 }
 
 .theme--dark .svg-inline--fa,
 .theme--dark .v-input__slot {
-  color: rgb(255, 195, 5) !important;
+  color: rgb(255, 155, 0) !important;
 }
 
 .theme--dark.v-divider,
 .theme--dark.v-btn--outlined {
-  border-color: rgb(255, 195, 5) !important;
+  border-color: rgb(255, 155, 0) !important;
 }
 
 .theme--dark .v-input__slot {
-  caret-color: rgb(255, 195, 5) !important;
+  caret-color: rgb(255, 155, 0) !important;
 }
 
 .theme--light .bodyIcon,
 .theme--light.v-data-table a {
-  color: rgb(65, 85, 185) !important;
+  color: rgb(60, 80, 180) !important;
 }
 
 .theme--dark .bodyIcon,
 .theme--dark.v-data-table a {
-  color: rgba(35, 150, 245, 0.9) !important;
+  color: rgba(30, 150, 240, 0.9) !important;
 }
 
 .v-btn {

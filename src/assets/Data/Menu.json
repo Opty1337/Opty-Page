@@ -1,0 +1,53 @@
+[
+  {
+    "Name": "Home",
+    "Icon": [
+      "fas",
+      "igloo"
+    ],
+    "To": "/Home"
+  },
+  {
+    "Name": "BSc",
+    "Icon": [
+      "fas",
+      "university"
+    ],
+    "To": "/BSc"
+  },
+  {
+    "Name": "MSc",
+    "Icon": [
+      "fas",
+      "user-graduate"
+    ],
+    "To": "/MSc"
+  },
+  {
+    "Name": "Curriculum Vitae",
+    "Icon": [
+      "fas",
+      "id-card-alt"
+    ],
+    "Href": "./OptyCV.pdf",
+    "Target": "_blank"
+  },
+  {
+    "Name": "Personal Projects",
+    "Icon": [
+      "fab",
+      "github"
+    ],
+    "Href": "https://github.com/Opty-Projects",
+    "Target": "_blank"
+  },
+  {
+    "Name": "Certificates",
+    "Icon": [
+      "fas",
+      "certificate"
+    ],
+    "Href": "https://github.com/RicardoGrade/Certificates",
+    "Target": "_blank"
+  }
+]

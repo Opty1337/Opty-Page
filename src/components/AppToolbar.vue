@@ -1,8 +1,8 @@
 <template>
   <div>
     <!-- TopBar -->
-    <v-toolbar class="appBackground" :dark="aService.dark" flat>
-      <v-toolbar-items v-if="!aService.inMobile">
+    <v-toolbar class="appBackground" :dark="themeService.dark" flat>
+      <v-toolbar-items v-if="!deviceService.inMobile">
         <v-btn to="/Home" active-class="no-effect" text>
           <v-list-item>
             <v-list-item-avatar tile>
@@ -15,11 +15,11 @@
         </v-btn>
       </v-toolbar-items>
       <v-app-bar-nav-icon v-else @click.stop="drawer = !drawer" />
-      <v-spacer v-if="!aService.inMobile" />
-      <v-toolbar-items v-if="!aService.inMobile">
+      <v-spacer v-if="!deviceService.inMobile" />
+      <v-toolbar-items v-if="!deviceService.inMobile">
         <v-btn
           active-class="effect"
-          v-for="(item, i) in menuOptions"
+          v-for="(item, i) in menu"
           :key="i"
           :to="item.To"
           :href="item.Href"
@@ -34,9 +34,9 @@
       <v-toolbar-items class="fill-height">
         <v-container>
           <v-switch
-            v-model="aService.dark"
+            v-model="themeService.dark"
             prepend-icon="$moon"
-            color="rgb(255, 195, 5)"
+            color="rgb(255, 155, 0)"
             inset
           />
         </v-container>
@@ -45,14 +45,14 @@
     <!-- Mobile Side Menu -->
     <v-navigation-drawer
       class="appBackground"
-      :dark="aService.dark"
-      v-if="aService.inMobile"
+      :dark="themeService.dark"
+      v-if="deviceService.inMobile"
       v-model="drawer"
       app
       absolute
       temporary
     >
-      <v-toolbar class="appBackground" flat :dark="aService.dark">
+      <v-toolbar class="appBackground" flat :dark="themeService.dark">
         <v-list nav>
           <v-list-item>
             <v-list-item-avatar tile>
@@ -71,7 +71,7 @@
       <v-list nav>
         <v-list-item
           active-class="effect"
-          v-for="(item, i) in menuOptions"
+          v-for="(item, i) in menu"
           :key="i"
           :to="item.To"
           :href="item.Href"
@@ -92,50 +92,17 @@
 
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
-import AppService from "@/services/App/AppService";
-import { MenuOption } from "@/models/App";
+import MenuOption from "@/models/MenuOption";
+import Menu from "@/assets/Data/Menu.json";
+import ThemeService from "@/services/ThemeService";
+import DeviceService from "@/services/DeviceService";
 
 @Component
 export default class AppToolbar extends Vue {
-  readonly aService = AppService.singleton;
-
+  readonly themeService = ThemeService.singleton;
+  readonly deviceService = DeviceService.singleton;
+  readonly menu: MenuOption[] = Menu;
   drawer = false;
-
-  readonly menuOptions: MenuOption[] = [
-    {
-      Name: "Home",
-      Icon: ["fas", "igloo"],
-      To: "/Home",
-    },
-    {
-      Name: "BSc",
-      Icon: ["fas", "university"],
-      To: "/BSc",
-    },
-    {
-      Name: "MSc",
-      Icon: ["fas", "user-graduate"],
-      To: "/MSc",
-    },
-    {
-      Name: "Curriculum Vitae",
-      Icon: ["fas", "id-card-alt"],
-      Href: "./OptyCV.pdf",
-      Target: "_blank",
-    },
-    {
-      Name: "Personal Projects",
-      Icon: ["fab", "github"],
-      Href: "https://github.com/Opty-Projects",
-      Target: "_blank",
-    },
-    {
-      Name: "Certificates",
-      Icon: ["fas", "certificate"],
-      Href: "https://github.com/RicardoGrade/Certificates",
-      Target: "_blank",
-    },
-  ];
 }
 </script>
 
