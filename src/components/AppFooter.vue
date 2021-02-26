@@ -12,14 +12,14 @@
               v-on="on"
               icon
             >
-              <font-awesome-icon class="bodyIcon fa-2x" :icon="sNet.Icon" />
+              <font-awesome-icon class="fa-2x" :icon="sNet.Icon" />
             </v-btn>
           </template>
-          <span class="appText" v-text="sNet.Label" />
+          <span v-text="sNet.Label" />
         </v-tooltip>
       </v-card-text>
       <v-card-text class="appText pa-2">
-        Ricardo Grade &bull; {{ new Date().toDateString() }}
+        &copy; Copyright {{ new Date().getFullYear() }}, Ricardo Grade
       </v-card-text>
       <v-card-text class="pa-1">
         <v-tooltip bottom>
@@ -32,12 +32,12 @@
               icon
             >
               <font-awesome-icon
-                class="bodyIcon fa-2x periodicallySpinHover"
+                class="fa-2x periodicallySpinHover"
                 :icon="['fab', 'vuejs']"
               />
             </v-btn>
           </template>
-          <span class="appText">Source Code</span>
+          <span>Source Code</span>
         </v-tooltip>
       </v-card-text>
     </v-card>

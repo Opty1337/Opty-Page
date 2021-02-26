@@ -36,7 +36,7 @@
           <v-switch
             v-model="themeService.dark"
             prepend-icon="$moon"
-            color="rgb(255, 155, 0)"
+            color="rgb(255, 185, 75)"
             inset
           />
         </v-container>

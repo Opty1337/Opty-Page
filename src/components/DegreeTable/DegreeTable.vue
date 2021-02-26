@@ -50,7 +50,7 @@
             v-text="item.Name"
           />
         </template>
-        <span class="appText">Course Page</span>
+        <span>Course Page</span>
       </v-tooltip>
     </template>
 
@@ -70,7 +70,7 @@
             />
           </v-btn>
         </template>
-        <span class="appText">Projects Repository</span>
+        <span>Projects Repository</span>
       </v-tooltip>
     </template>
 
@@ -206,17 +206,5 @@ a {
 
 tr:hover .periodicallySpinHover {
   animation: periodicallySpin 10s linear infinite;
-}
-
-.theme--light.v-data-table tr:hover {
-  background: rgba(0, 0, 0, 0.05) !important;
-}
-
-.theme--dark.v-data-table tr:hover {
-  background: rgba(255, 255, 255, 0.05) !important;
-}
-
-.v-data-table__mobile-row__header {
-  font-weight: normal !important;
 }
 </style>

@@ -25,6 +25,7 @@ import {
   faMoon,
   faSearch,
   faSortUp,
+  faCaretDown,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faFortAwesome,
@@ -59,6 +60,7 @@ library.add(
   faMoon,
   faSearch,
   faSortUp,
+  faCaretDown,
   faFortAwesome,
   faFacebookSquare,
   faGithub,

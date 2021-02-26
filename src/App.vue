@@ -52,40 +52,53 @@ export default class App extends Vue {
 
 .theme--light .svg-inline--fa,
 .theme--light .v-input__slot {
-  color: rgb(100, 55, 180) !important;
+  color: rgb(105, 60, 185) !important;
 }
 
 .theme--light.v-divider,
 .theme--light.v-btn--outlined {
-  border-color: rgb(100, 55, 180) !important;
+  border-color: rgb(105, 60, 185) !important;
 }
 
 .theme--light .v-input__slot {
-  caret-color: rgb(100, 55, 180) !important;
+  caret-color: rgb(105, 60, 185) !important;
 }
 
 .theme--dark .svg-inline--fa,
 .theme--dark .v-input__slot {
-  color: rgb(255, 155, 0) !important;
+  color: rgb(255, 185, 75) !important;
 }
 
 .theme--dark.v-divider,
 .theme--dark.v-btn--outlined {
-  border-color: rgb(255, 155, 0) !important;
+  border-color: rgb(255, 185, 75) !important;
 }
 
 .theme--dark .v-input__slot {
-  caret-color: rgb(255, 155, 0) !important;
+  caret-color: rgb(255, 185, 75) !important;
 }
 
 .theme--light .bodyIcon,
 .theme--light.v-data-table a {
-  color: rgb(60, 80, 180) !important;
+  color: rgb(60, 65, 160) !important;
 }
 
 .theme--dark .bodyIcon,
 .theme--dark.v-data-table a {
-  color: rgba(30, 150, 240, 0.9) !important;
+  color: rgb(120, 130, 205) !important;
+}
+
+.theme--light.v-data-table tr:hover {
+  background: rgba(105, 60, 185, 0.05) !important;
+}
+
+.theme--dark.v-data-table tr:hover {
+  background: rgba(255, 185, 75, 0.05) !important;
+}
+
+.v-input,
+.v-data-table__mobile-row__header {
+  font-weight: normal !important;
 }
 
 .v-btn {
