@@ -35,7 +35,7 @@ export default class App extends Vue {
 }
 
 .theme--dark.appBackground {
-  background-color: #272727 !important;
+  background-color: #252530 !important;
 }
 
 .theme--light .appText,
@@ -47,7 +47,7 @@ export default class App extends Vue {
 .theme--dark .appText,
 .theme--dark.v-data-table,
 .theme--dark.v-input input {
-  color: rgba(255, 255, 255, 0.6) !important;
+  color: rgba(255, 255, 255, 0.8) !important;
 }
 
 .theme--light .svg-inline--fa,
@@ -89,11 +89,11 @@ export default class App extends Vue {
 }
 
 .theme--light.v-data-table tr:hover {
-  background: rgba(105, 60, 185, 0.05) !important;
+  background: rgba(0, 0, 0, 0.05) !important;
 }
 
 .theme--dark.v-data-table tr:hover {
-  background: rgba(255, 185, 75, 0.05) !important;
+  background: rgba(255, 255, 255, 0.05) !important;
 }
 
 .v-input,
