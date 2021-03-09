@@ -29,7 +29,7 @@
       "fas",
       "id-card-alt"
     ],
-    "Href": "./OptyCV.pdf",
+    "Href": "https://bit.ly/OptyCurriculum",
     "Target": "_blank"
   },
   {
@@ -47,7 +47,7 @@
       "fas",
       "certificate"
     ],
-    "Href": "https://github.com/RicardoGrade/Certificates",
+    "Href": "https://bit.ly/OptyCrt",
     "Target": "_blank"
   }
 ]
