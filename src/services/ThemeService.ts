@@ -30,6 +30,9 @@ export default class ThemeService {
 
   private static get localDark(): boolean {
     const dark = localStorage.getItem(THEME_STORAGE_KEY);
-    return dark ? JSON.parse(dark) : window.innerWidth < 1500;
+    return dark
+      ? JSON.parse(dark)
+      : window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches;
   }
 }
