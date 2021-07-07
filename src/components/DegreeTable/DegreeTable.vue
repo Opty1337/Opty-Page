@@ -25,7 +25,7 @@
             />
           </div>
           <v-spacer />
-          <v-switch v-model="cDetails" label="Courses Details" inset />
+          <v-switch v-model="cDetails" label="Courses Details" flat />
           <v-spacer />
           <v-text-field
             class="mx-2"

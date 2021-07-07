@@ -6,7 +6,7 @@
     offset-y
   >
     <template v-slot:activator="{ on }">
-      <v-btn class="ma-2 py-8 rounded-0" :elevation="10" v-on="on" outlined>
+      <v-btn class="ma-2 py-8 rounded-0" v-on="on" outlined>
         <font-awesome-icon
           class="fa-2x ma-2 periodicallySpin"
           :icon="degreeService.branch.Icon"

@@ -37,7 +37,7 @@
             v-model="themeService.dark"
             prepend-icon="$moon"
             color="rgb(255, 185, 75)"
-            inset
+            flat
           />
         </v-container>
       </v-toolbar-items>
